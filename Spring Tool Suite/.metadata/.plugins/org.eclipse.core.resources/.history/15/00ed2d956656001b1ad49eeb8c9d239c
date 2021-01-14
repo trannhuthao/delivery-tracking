@@ -1,0 +1,7 @@
+package vn.kase.model;
+
+public class Package {
+	private Long id;
+	
+	
+}
