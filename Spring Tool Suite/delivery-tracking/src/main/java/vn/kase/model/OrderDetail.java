@@ -18,7 +18,9 @@ public class OrderDetail {
     @Column(name = "id")
     private Long id;
 
-    private Long userId;
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     private Long packageId;
 

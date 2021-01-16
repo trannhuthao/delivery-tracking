@@ -46,4 +46,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private List<Role> roles = new ArrayList<Role>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    private List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
 }
