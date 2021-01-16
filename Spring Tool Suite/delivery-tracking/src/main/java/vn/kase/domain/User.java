@@ -52,4 +52,7 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private List<Package> packages = new ArrayList<Package>();
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    private DeliveryAddress deliveryAddress;
 }
