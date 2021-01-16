@@ -22,7 +22,7 @@ public class OrderDetail {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(mappedBy = "orderDetails", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     private Package shippingPackage;
 
     private String status;

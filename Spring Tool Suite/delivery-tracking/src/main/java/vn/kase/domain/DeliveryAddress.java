@@ -18,6 +18,6 @@ public class DeliveryAddress {
     @Column(name = "id")
     private Long id;
 
-    @OneToOne(mappedBy = "deliveryAddress", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     private User user;
 }
