@@ -3,6 +3,8 @@ package vn.kase.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,4 +25,7 @@ public class Role {
 
     @Column(name = "description")
     private String description;
+
+    @ManyToMany(mappedBy = "roles", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    private List<User> users = new ArrayList<User>();
 }
