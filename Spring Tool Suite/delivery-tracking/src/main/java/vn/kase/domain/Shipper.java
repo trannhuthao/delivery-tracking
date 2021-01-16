@@ -1,4 +1,4 @@
-package vn.kase.model;
+package vn.kase.domain;
 
 public class Shipper {
 }
