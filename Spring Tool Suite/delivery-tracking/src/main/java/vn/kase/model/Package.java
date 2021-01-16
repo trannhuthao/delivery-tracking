@@ -37,4 +37,7 @@ public class Package {
 
 	@Column(name = "description")
 	private String description;
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	private User user;
 }

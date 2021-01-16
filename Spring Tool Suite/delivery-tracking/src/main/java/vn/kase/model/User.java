@@ -49,4 +49,7 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    private List<Package> packages = new ArrayList<Package>();
 }
