@@ -40,4 +40,7 @@ public class Package {
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	private User user;
+
+	@OneToOne(mappedBy = "shippingPackage", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	private OrderDetail orderDetail;
 }

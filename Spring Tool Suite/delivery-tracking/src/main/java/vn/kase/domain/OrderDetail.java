@@ -22,7 +22,8 @@ public class OrderDetail {
     @JoinColumn(name = "user_id")
     private User user;
 
-    private Long packageId;
+    @OneToOne(mappedBy = "orderDetails", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    private Package shippingPackage;
 
     private String status;
 }
