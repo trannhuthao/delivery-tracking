@@ -21,8 +21,6 @@ spring:
       ddl-auto: create-drop
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/delivery_tracking
+    url: jdbc:mysql://localhost:3306/delivery_tracking_prod
     username: root
     password:
-  profiles:
-    active:
