@@ -26,4 +26,7 @@ public class OrderDetail {
     private Package shippingPackage;
 
     private String status;
+
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    private Shipper shipper;
 }

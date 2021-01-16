@@ -39,6 +39,9 @@ public class User {
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
+    @Column(name = "address")
+    private String address;
+
     @ManyToMany(mappedBy = "users", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_role",

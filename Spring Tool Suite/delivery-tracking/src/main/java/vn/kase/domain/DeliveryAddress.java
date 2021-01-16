@@ -20,6 +20,4 @@ public class DeliveryAddress {
 
     @OneToOne(mappedBy = "deliveryAddress", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     private User user;
-
-    private String deliveryAddress;
 }
