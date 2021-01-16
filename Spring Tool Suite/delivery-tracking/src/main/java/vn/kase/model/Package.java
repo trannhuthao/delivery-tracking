@@ -1,11 +1,6 @@
 package vn.kase.model;
 
-import java.util.UUID;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -21,18 +16,25 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString
 @Entity
+@Table(name = "package")
 public class Package {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
-	
+
+	@Column(name = "package_name")
 	private String packageName;
-	
-	private Byte image;
-	
-	private Integer weight;
-	
+
+	@Column(name = "image")
+	private byte image;
+
+	@Column(name = "weight")
+	private int weight;
+
+	@Column(name = "box_size")
 	private String boxSize;
-	
+
+	@Column(name = "description")
 	private String description;
 }
