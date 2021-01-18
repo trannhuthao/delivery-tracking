@@ -18,7 +18,7 @@ public class PackageController {
         this.packageService = packageService;
     }
 
-    @GetMapping("")
+    @GetMapping
     public String getPackages(Model model) {
         model.addAttribute("shippingPackages", this.packageService.findAll());
         return "v1/package/index";

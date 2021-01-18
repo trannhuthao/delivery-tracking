@@ -10,7 +10,7 @@ import vn.kase.service.v1.PackageService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/packages")
+@RequestMapping("/api/v1/shipping-packages")
 public class PackageRestApi {
     private final PackageService packageService;
 
@@ -19,7 +19,7 @@ public class PackageRestApi {
         this.packageService = packageService;
     }
 
-    @PostMapping(path = { "" })
+    @PostMapping
     public Object addShippingPackage(@RequestBody PackageDto packageDto) {
         try {
             this.packageService.add(packageDto);
@@ -29,7 +29,7 @@ public class PackageRestApi {
         }
     }
 
-    @GetMapping(path = { "" })
+    @GetMapping
     public Object getShippingPackages() {
         try {
             List<PackageDto> packageDtos = this.packageService.findAll();
@@ -39,7 +39,7 @@ public class PackageRestApi {
         }
     }
 
-    @GetMapping(path = { "/{id}" })
+    @GetMapping("/{id}")
     public Object getShippingPackage(@PathVariable("id") Long id) {
         try {
             PackageDto packageDto = this.packageService.findById(id);
@@ -49,7 +49,7 @@ public class PackageRestApi {
         }
     }
 
-    @PutMapping(path = { "" })
+    @PutMapping
     public Object updateShippingPackage(@RequestBody PackageDto packageDto) {
         try {
             this.packageService.update(packageDto);
@@ -59,7 +59,7 @@ public class PackageRestApi {
         }
     }
 
-    @DeleteMapping(path = { "/{id}" })
+    @DeleteMapping("/{id}")
     public Object removeShippingPackage(@PathVariable("id") Long id) {
         try {
             this.packageService.delete(id);
