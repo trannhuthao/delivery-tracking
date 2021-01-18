@@ -4,6 +4,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/package")
+@RequestMapping("/api/v1/packages")
 public class PackageRestApi {
 }

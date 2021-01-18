@@ -4,6 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/delivery-address")
+@RequestMapping("/delivery-addresses")
 public class DeliveryAddressController {
 }
