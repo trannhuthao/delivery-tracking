@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(exclude = { "roles", "orderDetailList", "shippingPackages", "deliveryAddress" })
 @ToString
 @Entity
 @Table(name = "user")
@@ -46,10 +46,10 @@ public class User {
     private List<Role> roles = new ArrayList<Role>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    private List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
+    private List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    private List<Package> packages = new ArrayList<Package>();
+    private List<Package> shippingPackages = new ArrayList<Package>();
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private DeliveryAddress deliveryAddress;
