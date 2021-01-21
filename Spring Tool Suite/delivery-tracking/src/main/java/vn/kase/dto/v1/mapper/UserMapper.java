@@ -15,8 +15,8 @@ public class UserMapper {
                 user.getDateOfBirth(),
                 user.getAddress(),
                 user.getRoles(),
-                user.getOrderDetails(),
-                user.getPackages(),
+                user.getOrderDetailList(),
+                user.getShippingPackages(),
                 user.getDeliveryAddress()
         );
     }
