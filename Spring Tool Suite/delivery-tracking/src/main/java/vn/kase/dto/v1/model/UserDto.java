@@ -37,7 +37,7 @@ public class UserDto {
 
     private List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
 
-    private List<Package> packages = new ArrayList<Package>();
+    private List<Package> shippingPackages = new ArrayList<Package>();
 
     private DeliveryAddress deliveryAddress;
 }

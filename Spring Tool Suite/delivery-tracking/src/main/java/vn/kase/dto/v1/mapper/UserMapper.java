@@ -33,7 +33,7 @@ public class UserMapper {
                 userDto.getAddress(),
                 userDto.getRoles(),
                 userDto.getOrderDetails(),
-                userDto.getPackages(),
+                userDto.getShippingPackages(),
                 userDto.getDeliveryAddress()
         );
     }

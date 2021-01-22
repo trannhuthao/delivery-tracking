@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import vn.kase.dto.v1.model.PackageDto;
 import vn.kase.dto.v1.model.ShipperDto;
-import vn.kase.service.v1.PackageService;
 import vn.kase.service.v1.ShipperService;
 
 import java.util.List;
