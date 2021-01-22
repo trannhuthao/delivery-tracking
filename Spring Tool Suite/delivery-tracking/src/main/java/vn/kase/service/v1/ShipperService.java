@@ -10,7 +10,7 @@ public interface ShipperService {
 
     List<ShipperDto> findAll();
 
-    RoleDto findById(Long id);
+    ShipperDto findById(Long id);
 
     void update(ShipperDto shipperDto);
 
