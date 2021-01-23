@@ -25,12 +25,12 @@ public class OpenApiConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "Delivery Tracking Web Application",
-                "Delivery Tracking Web Application and RESTful Web Services",
+                "AB Express",
+                "AB Express Web Application and RESTful Web Services",
                 "1.0",
                 "",
                 new Contact("Hao Nhut Tran, Cuong Quoc", "", ""),
-                "Delivery Tracking Web Application - CNC Aptech Education","", Collections.emptyList()
+                "AB Express","", Collections.emptyList()
         );
     }
 }
