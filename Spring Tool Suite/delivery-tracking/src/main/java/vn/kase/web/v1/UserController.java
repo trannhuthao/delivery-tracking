@@ -80,4 +80,14 @@ public class UserController {
         this.userService.delete(id);
         return "redirect:/users";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "v1/user/login";
+    }
+
+    @GetMapping("/register")
+    public String register() {
+        return "v1/user/register";
+    }
 }

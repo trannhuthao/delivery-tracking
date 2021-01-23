@@ -1,10 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Delivery Tracking</title>
+	<meta charset="UTF-8">
+	<title>Delivery Tracking</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<div th:replace="./v1/fragments/navbar"></div>
+	<div class="row" style="margin-top: 30px">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+			<div class="card bg-warning">
+				<h1 style="color: blue; font-size: 70px;" class="text-center">Create Order</h1>
+					<div class="form-group pl-4 pr-4">
+						<h5>Name:</h5> <input class="form-control"
+							placeholder="Name" required="required">
+					</div>
 
+					<div class="form-group  pl-4 pr-4">
+						<h5>Phone Number:</h5> <input class="form-control"
+							placeholder="Phone Number" required="required">
+					</div>
+
+					<div class="form-group pl-4 pr-4">
+						<h5>Email:</h5> <input class="form-control"
+							placeholder="Email..." required="required">
+					</div>
+
+					<div class="form-group pl-4 pr-4">
+						<h5>Recipient's Name:</h5> <input class="form-control"
+							placeholder="Recipient's Name" required="required">
+					</div>
+
+					<div class="form-group pl-4 pr-4">
+						<h5>Recipient's Phone:</h5> <input class="form-control"
+							placeholder="Recipient's Phone" required="required">
+					</div>
+
+					<div class="card bg-light">
+
+						<div class="form-group  pl-4 pr-4">
+							<h5>Package Name:</h5> <input class="form-control"
+								placeholder="Package Name">
+						</div>
+						<div class="form-group  pl-4 pr-4">
+							<h5>Box Size:</h5>
+							<div class="form-check">
+								<label class="form-check-label"> <input type="radio"
+									class="form-check-input" name="optradio">15cm x 15cm
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label"> <input type="radio"
+									class="form-check-input" name="optradio">30cm x 30cm
+								</label>
+							</div>
+							<div class="form-check disabled">
+								<label class="form-check-label"> <input type="radio"
+									class="form-check-input" name="optradio">45cm x 45cm
+								</label>
+							</div>
+						</div>
+						<div class="form-group pl-4 pr-4">
+							<h5 for="sel1">Select weight:</h5> <select
+								class="form-control" id="sel1">
+								<option>0kg--2kg</option>
+								<option>2kg--4kg</option>
+								<option>4kg--8kg</option>
+								<option>8kg--12kg</option>
+							</select>
+						</div>
+						<div class="form-group  pl-4 pr-4">
+							<h5>Image:</h5>
+							<div class="form-group">
+								<input type="file" id="myFile" name="filename">
+							</div>
+						</div>
+						<div class="form-group  pl-4 pr-4">
+							<h5 for="Description">Description:</h5>
+							<textarea class="form-control" rows="5" id="Description"></textarea>
+						</div>
+						<div class="form-group  pl-4 pr-4">
+							<h5>From:</h5> <select class="form-control" id="sel1">
+								<option>ABExpress</option>
+							</select>
+						</div>
+						<div class="form-group  pl-4 pr-4">
+							<h5 for="sel1">Select District:</h5> <select
+								class="form-control" id="sel1">
+								<option>District 1</option>
+								<option>District 2</option>
+								<option>District 3</option>
+								<option>District 4</option>
+								<option>District 5</option>
+								<option>District 6</option>
+								<option>District 7</option>
+								<option>District 8</option>
+								<option>District 9</option>
+								<option>District 10</option>
+								<option>District 11</option>
+								<option>District 12</option>
+								<option>District GO VAP</option>
+								<option>District TAN BINH</option>
+								<option>District TAN PHU</option>
+								<option>District THU DUC</option>
+								<option>District BINH TAN</option>
+								<option>District PHU NHUAN</option>
+								<option>District BINH THANH</option>
+							</select>
+						</div>
+						<div class="form-group pl-4 pr-4">
+							<h5>To:</h5> <input class="form-control"
+								placeholder="From to">
+						</div>
+					</div>
+			</div>
+			<button type="" class="btn btn-primary" style="margin-top: 10px">Create
+				Order</button>
+		</div>
+		<div class="col-sm-3"></div>
+	</div>
+	<div th:replace="./v1/fragments/footer"></div>
 </body>
 </html>
