@@ -14,11 +14,11 @@ public class RoleMapper {
     }
 
     public static Role toEntity(RoleDto roleDto) {
-        return new Role(
-                roleDto.getId(),
-                roleDto.getRoleName(),
-                roleDto.getDescription(),
-                roleDto.getUsers()
-        );
+        Role role = new Role();
+        role.setId(roleDto.getId());
+        role.setRoleName(roleDto.getRoleName());
+        role.setDescription(roleDto.getDescription());
+        role.setUsers(roleDto.getUsers());
+        return role;
     }
 }

@@ -14,12 +14,11 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "shipper")
-public class Shipper {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
+public class Shipper extends BaseEntity {
     @OneToMany(mappedBy = "shipper", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>();
+
+    public Shipper(Long id) {
+        super(id);
+    }
 }

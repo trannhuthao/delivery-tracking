@@ -12,5 +12,15 @@ import vn.kase.domain.v1.User;
 public class DeliveryAddressDto {
     private Long id;
 
-    private User user;
+    private Long userId;
+
+    private String username;
+
+    private String userFullname;
+
+    private String userEmail;
+
+    private String userPhoneNumber;
+
+    private String userAddress;
 }

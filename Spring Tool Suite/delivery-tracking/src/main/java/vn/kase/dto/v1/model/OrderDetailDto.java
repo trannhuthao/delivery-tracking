@@ -14,11 +14,31 @@ import vn.kase.domain.v1.User;
 public class OrderDetailDto {
     private Long id;
 
-    private User user;
+    private Long userId;
 
-    private Package shippingPackage;
+    private String username;
+
+    private String userFullname;
+
+    private String userEmail;
+
+    private String userPhoneNumber;
+
+    private String userAddress;
+
+    private Long shippingPackageId;
+
+    private String packageName;
+
+    private byte packageImage;
+
+    private int packageWeight;
+
+    private String packageBoxSize;
+
+    private String packageDescription;
 
     private String status;
 
-    private Shipper shipper;
+    private Long shipperId;
 }

@@ -2,7 +2,9 @@ package vn.kase.service.v1.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import vn.kase.domain.v1.OrderDetail;
 import vn.kase.domain.v1.Package;
+import vn.kase.domain.v1.User;
 import vn.kase.dto.v1.mapper.PackageMapper;
 import vn.kase.dto.v1.model.PackageDto;
 import vn.kase.repository.v1.PackageRepository;
@@ -49,8 +51,8 @@ public class PackageServiceImpl implements PackageService {
         shippingPackage.setWeight(packageDto.getWeight());
         shippingPackage.setBoxSize(packageDto.getBoxSize());
         shippingPackage.setDescription(packageDto.getDescription());
-        shippingPackage.setUser(packageDto.getUser());
-        shippingPackage.setOrderDetail(packageDto.getOrderDetail());
+        shippingPackage.setUser(new User(packageDto.getUserId()));
+        shippingPackage.setOrderDetail(new OrderDetail(packageDto.getOrderDetailId()));
         this.packageRepository.save(shippingPackage);
     }
 

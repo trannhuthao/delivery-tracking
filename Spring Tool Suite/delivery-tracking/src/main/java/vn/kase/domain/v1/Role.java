@@ -14,12 +14,7 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "role")
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
+public class Role extends BaseEntity {
     @Column(name = "role_name")
     private String roleName;
 
@@ -28,4 +23,8 @@ public class Role {
 
     @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private List<User> users = new ArrayList<User>();
+
+    public Role(Long id) {
+        super(id);
+    }
 }

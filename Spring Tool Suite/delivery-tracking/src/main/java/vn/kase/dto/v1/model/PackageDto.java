@@ -23,7 +23,21 @@ public class PackageDto {
 
     private String description;
 
-    private User user;
+    private Long userId;
 
-    private OrderDetail orderDetail;
+    private String username;
+
+    private String userFullname;
+
+    private String userEmail;
+
+    private String userPhoneNumber;
+
+    private String userAddress;
+
+    private Long orderDetailId;
+
+    private String orderDetailStatus;
+
+    private Long shipperId;
 }

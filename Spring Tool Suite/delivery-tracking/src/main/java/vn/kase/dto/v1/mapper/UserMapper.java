@@ -22,19 +22,15 @@ public class UserMapper {
     }
 
     public static User toEntity(UserDto userDto) {
-        return new User(
-                userDto.getId(),
-                userDto.getUsername(),
-                userDto.getPassword(),
-                userDto.getFullName(),
-                userDto.getEmail(),
-                userDto.getPhoneNumber(),
-                userDto.getDateOfBirth(),
-                userDto.getAddress(),
-                userDto.getRoles(),
-                userDto.getOrderDetails(),
-                userDto.getShippingPackages(),
-                userDto.getDeliveryAddress()
-        );
+        User user = new User();
+        user.setId(userDto.getId());
+        user.setUsername(userDto.getUsername());
+        user.setPassword(userDto.getPassword());
+        user.setFullName(userDto.getFullName());
+        user.setEmail(userDto.getEmail());
+        user.setPhoneNumber(userDto.getPhoneNumber());
+        user.setDateOfBirth(userDto.getDateOfBirth());
+        user.setAddress(userDto.getAddress());
+        return user;
     }
 }

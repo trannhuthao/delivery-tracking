@@ -9,6 +9,9 @@ public class ShipperMapper {
     }
 
     public static Shipper toEntity(ShipperDto shipperDto) {
-        return new Shipper(shipperDto.getId(), shipperDto.getOrderDetailList());
+        Shipper shipper = new Shipper();
+        shipper.setId(shipperDto.getId());
+        shipper.setOrderDetailList(shipperDto.getOrderDetailList());
+        return shipper;
     }
 }

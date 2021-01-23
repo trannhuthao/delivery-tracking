@@ -17,12 +17,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "package")
-public class Package {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
-
+public class Package extends BaseEntity {
 	@Column(name = "package_name")
 	private String packageName;
 
@@ -43,4 +38,8 @@ public class Package {
 
 	@OneToOne(mappedBy = "shippingPackage", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	private OrderDetail orderDetail;
+
+	public Package(Long id) {
+		super(id);
+	}
 }

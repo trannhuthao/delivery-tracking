@@ -15,12 +15,7 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "user")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
+public class User extends BaseEntity {
     @Column(name = "username")
     private String username;
 
@@ -53,4 +48,8 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private DeliveryAddress deliveryAddress;
+
+    public User(Long id) {
+        super(id);
+    }
 }

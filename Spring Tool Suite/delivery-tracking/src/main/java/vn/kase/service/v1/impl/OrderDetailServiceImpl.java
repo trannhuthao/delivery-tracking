@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.kase.domain.v1.OrderDetail;
 import vn.kase.domain.v1.Package;
+import vn.kase.domain.v1.Shipper;
+import vn.kase.domain.v1.User;
 import vn.kase.dto.v1.mapper.OrderDetailMapper;
 import vn.kase.dto.v1.mapper.PackageMapper;
 import vn.kase.dto.v1.model.OrderDetailDto;
@@ -47,10 +49,10 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     @Override
     public void update(OrderDetailDto orderDetailDto) {
         OrderDetail orderDetail = this.orderDetailRepository.findById(orderDetailDto.getId()).get();
-        orderDetail.setUser(orderDetailDto.getUser());
-        orderDetail.setShippingPackage(orderDetailDto.getShippingPackage());
+        orderDetail.setUser(new User(orderDetailDto.getUserId()));
+        orderDetail.setShippingPackage(new Package(orderDetailDto.getShippingPackageId()));
         orderDetail.setStatus(orderDetailDto.getStatus());
-        orderDetail.setShipper(orderDetailDto.getShipper());
+        orderDetail.setShipper(new Shipper(orderDetailDto.getShipperId()));
         this.orderDetailRepository.save(orderDetail);
     }
 

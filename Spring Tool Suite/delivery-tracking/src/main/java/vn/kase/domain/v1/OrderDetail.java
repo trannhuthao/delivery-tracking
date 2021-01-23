@@ -12,12 +12,7 @@ import javax.persistence.*;
 @ToString
 @Entity
 @Table(name = "order_detail")
-public class OrderDetail {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
+public class OrderDetail extends BaseEntity {
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
@@ -29,4 +24,8 @@ public class OrderDetail {
 
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private Shipper shipper;
+
+    public OrderDetail(Long id) {
+        super(id);
+    }
 }

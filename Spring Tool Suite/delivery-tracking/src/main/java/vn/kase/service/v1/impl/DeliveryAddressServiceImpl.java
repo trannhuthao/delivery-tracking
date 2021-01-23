@@ -3,6 +3,7 @@ package vn.kase.service.v1.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.kase.domain.v1.DeliveryAddress;
+import vn.kase.domain.v1.User;
 import vn.kase.dto.v1.mapper.DeliveryAddressMapper;
 import vn.kase.dto.v1.model.DeliveryAddressDto;
 import vn.kase.repository.v1.DeliveryAddressRepository;
@@ -44,7 +45,7 @@ public class DeliveryAddressServiceImpl implements DeliveryAddressService {
     @Override
     public void update(DeliveryAddressDto deliveryAddressDto) {
         DeliveryAddress deliveryAddress = this.deliveryAddressRepository.findById(deliveryAddressDto.getId()).get();
-        deliveryAddress.setUser(deliveryAddressDto.getUser());
+        deliveryAddress.setUser(new User(deliveryAddressDto.getUserId()));
         this.deliveryAddressRepository.save(deliveryAddress);
     }
 

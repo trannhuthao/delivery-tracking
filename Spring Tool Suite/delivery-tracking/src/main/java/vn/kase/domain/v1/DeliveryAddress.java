@@ -12,12 +12,11 @@ import javax.persistence.*;
 @ToString
 @Entity
 @Table(name = "delivery_address")
-public class DeliveryAddress {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
+public class DeliveryAddress extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     private User user;
+
+    public DeliveryAddress(Long id) {
+        super(id);
+    }
 }
