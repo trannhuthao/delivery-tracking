@@ -25,12 +25,12 @@ public class OpenApiConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "AB Express",
-                "AB Express Web Application and RESTful Web Services",
+                "ABC Express",
+                "ABC Express Web Application and RESTful Web Services",
                 "1.0",
                 "",
                 new Contact("Hao Nhut Tran, Cuong Quoc", "", ""),
-                "AB Express","", Collections.emptyList()
+                "ABC Express","", Collections.emptyList()
         );
     }
 }

@@ -46,6 +46,7 @@ public class RoleController {
         } catch (Exception exception) {
             exception.printStackTrace();
         }
+        model.addAttribute("errorMessage", "Add new role failed. Try again.");
         return "v1/role/add";
     }
 
