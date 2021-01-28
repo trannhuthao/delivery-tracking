@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(exclude = { "orderDetailList" })
+@EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "shipper")

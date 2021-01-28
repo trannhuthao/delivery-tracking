@@ -1,6 +1,7 @@
 package vn.kase.domain.v1;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(exclude = { "roles", "orderDetailList", "shippingPackages", "deliveryAddress" })
+@EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "user")
@@ -32,22 +33,20 @@ public class User extends BaseEntity {
     private String phoneNumber;
 
     @Column(name = "date_of_birth")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
     @Column(name = "address")
     private String address;
 
-    @ManyToMany(mappedBy = "users", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    private List<Role> roles = new ArrayList<Role>();
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private List<Package> shippingPackages = new ArrayList<Package>();
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    private DeliveryAddress deliveryAddress;
 
     public User(Long id) {
         super(id);

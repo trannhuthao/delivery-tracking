@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(exclude = { "user", "shippingPackage", "shipper" })
+@EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "order_detail")

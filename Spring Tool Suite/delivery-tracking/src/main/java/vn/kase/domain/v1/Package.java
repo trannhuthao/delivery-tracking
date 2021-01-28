@@ -13,7 +13,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(exclude = { "user", "orderDetail" })
+@EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "package")

@@ -3,6 +3,7 @@ package vn.kase.service.v1.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.kase.domain.v1.Package;
+import vn.kase.domain.v1.Role;
 import vn.kase.domain.v1.User;
 import vn.kase.dto.v1.mapper.PackageMapper;
 import vn.kase.dto.v1.mapper.UserMapper;
@@ -54,10 +55,9 @@ public class UserServiceImpl implements UserService {
         user.setPhoneNumber(userDto.getPhoneNumber());
         user.setDateOfBirth(userDto.getDateOfBirth());
         user.setAddress(userDto.getAddress());
-        user.setRoles(userDto.getRoles());
+        user.setRole(new Role(userDto.getRoleId()));
         user.setOrderDetailList(userDto.getOrderDetails());
         user.setShippingPackages(userDto.getShippingPackages());
-        user.setDeliveryAddress(userDto.getDeliveryAddress());
         this.userRepository.save(user);
     }
 

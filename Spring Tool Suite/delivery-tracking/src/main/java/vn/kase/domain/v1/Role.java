@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(exclude = { "users" })
+@EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "role")
@@ -21,7 +21,7 @@ public class Role extends BaseEntity {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "role", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private List<User> users = new ArrayList<User>();
 
     public Role(Long id) {

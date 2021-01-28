@@ -1,7 +1,7 @@
 package vn.kase.dto.v1.model;
 
 import lombok.*;
-import vn.kase.domain.v1.DeliveryAddress;
+import org.springframework.format.annotation.DateTimeFormat;
 import vn.kase.domain.v1.OrderDetail;
 import vn.kase.domain.v1.Package;
 import vn.kase.domain.v1.Role;
@@ -29,15 +29,16 @@ public class UserDto {
 
     private String phoneNumber;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
     private String address;
 
-    private List<Role> roles = new ArrayList<Role>();
+    private Long roleId;
+
+    private String roleDescription;
 
     private List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
 
     private List<Package> shippingPackages = new ArrayList<Package>();
-
-    private DeliveryAddress deliveryAddress;
 }

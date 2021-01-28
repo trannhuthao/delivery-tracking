@@ -1,6 +1,5 @@
 package vn.kase.service.v1;
 
-import vn.kase.dto.v1.model.DeliveryAddressDto;
 import vn.kase.dto.v1.model.OrderDetailDto;
 
 import java.util.List;

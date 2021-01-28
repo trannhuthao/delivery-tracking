@@ -1,5 +1,6 @@
 package vn.kase.dto.v1.mapper;
 
+import vn.kase.domain.v1.Role;
 import vn.kase.domain.v1.User;
 import vn.kase.dto.v1.model.UserDto;
 
@@ -14,10 +15,10 @@ public class UserMapper {
                 user.getPhoneNumber(),
                 user.getDateOfBirth(),
                 user.getAddress(),
-                user.getRoles(),
+                user.getRole().getId(),
+                user.getRole().getDescription(),
                 user.getOrderDetailList(),
-                user.getShippingPackages(),
-                user.getDeliveryAddress()
+                user.getShippingPackages()
         );
     }
 
@@ -31,6 +32,7 @@ public class UserMapper {
         user.setPhoneNumber(userDto.getPhoneNumber());
         user.setDateOfBirth(userDto.getDateOfBirth());
         user.setAddress(userDto.getAddress());
+        user.setRole(new Role(userDto.getRoleId()));
         return user;
     }
 }
