@@ -1,6 +1,7 @@
 package vn.kase.domain.v1;
 
 import lombok.*;
+import vn.kase.domain.v1.shipping_package.Package;
 
 import javax.persistence.*;
 

@@ -1,7 +1,7 @@
 package vn.kase.dto.v1.mapper;
 
 import vn.kase.domain.v1.OrderDetail;
-import vn.kase.domain.v1.Package;
+import vn.kase.domain.v1.shipping_package.Package;
 import vn.kase.domain.v1.Shipper;
 import vn.kase.domain.v1.User;
 import vn.kase.dto.v1.model.OrderDetailDto;
@@ -19,9 +19,17 @@ public class OrderDetailMapper {
                 orderDetail.getShippingPackage().getId(),
                 orderDetail.getShippingPackage().getPackageName(),
                 orderDetail.getShippingPackage().getImage(),
-                orderDetail.getShippingPackage().getWeight(),
-                orderDetail.getShippingPackage().getBoxSize(),
+                orderDetail.getShippingPackage().getWeight().getId(),
+                orderDetail.getShippingPackage().getWeight().getWeightRange(),
+                orderDetail.getShippingPackage().getBoxSize().getId(),
+                orderDetail.getShippingPackage().getBoxSize().getBoxSize(),
                 orderDetail.getShippingPackage().getDescription(),
+                orderDetail.getShippingPackage().getUser().getId(),
+                orderDetail.getShippingPackage().getUser().getUsername(),
+                orderDetail.getShippingPackage().getUser().getFullName(),
+                orderDetail.getShippingPackage().getUser().getEmail(),
+                orderDetail.getShippingPackage().getUser().getPhoneNumber(),
+                orderDetail.getShippingPackage().getUser().getAddress(),
                 orderDetail.getStatus(),
                 orderDetail.getShipper().getId()
         );

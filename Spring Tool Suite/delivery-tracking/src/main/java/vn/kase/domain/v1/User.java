@@ -2,6 +2,7 @@ package vn.kase.domain.v1;
 
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import vn.kase.domain.v1.shipping_package.Package;
 
 import javax.persistence.*;
 import java.util.ArrayList;

@@ -50,6 +50,7 @@ public class UserController {
         } catch (Exception exception) {
             exception.printStackTrace();
         }
+        model.addAttribute("errorMessage", "Updating user failed. Try again.");
         return "v1/user/add";
     }
 

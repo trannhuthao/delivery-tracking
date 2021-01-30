@@ -1,9 +1,11 @@
-package vn.kase.dto.v1.mapper;
+package vn.kase.dto.v1.mapper.shipping_package;
 
 import vn.kase.domain.v1.OrderDetail;
-import vn.kase.domain.v1.Package;
+import vn.kase.domain.v1.shipping_package.BoxSize;
+import vn.kase.domain.v1.shipping_package.Package;
 import vn.kase.domain.v1.User;
-import vn.kase.dto.v1.model.PackageDto;
+import vn.kase.domain.v1.shipping_package.Weight;
+import vn.kase.dto.v1.model.shipping_package.PackageDto;
 
 public class PackageMapper {
     public static PackageDto toDto(Package shippingPackage) {
@@ -11,8 +13,10 @@ public class PackageMapper {
                 shippingPackage.getId(),
                 shippingPackage.getPackageName(),
                 shippingPackage.getImage(),
-                shippingPackage.getWeight(),
-                shippingPackage.getBoxSize(),
+                shippingPackage.getWeight().getId(),
+                shippingPackage.getWeight().getWeightRange(),
+                shippingPackage.getBoxSize().getId(),
+                shippingPackage.getBoxSize().getBoxSize(),
                 shippingPackage.getDescription(),
                 shippingPackage.getUser().getId(),
                 shippingPackage.getUser().getUsername(),
@@ -31,8 +35,8 @@ public class PackageMapper {
         shippingPackage.setId(shippingPackageDto.getId());
         shippingPackage.setPackageName(shippingPackageDto.getPackageName());
         shippingPackage.setImage(shippingPackageDto.getImage());
-        shippingPackage.setWeight(shippingPackageDto.getWeight());
-        shippingPackage.setBoxSize(shippingPackageDto.getBoxSize());
+        shippingPackage.setWeight(new Weight(shippingPackageDto.getWeightId()));
+        shippingPackage.setBoxSize(new BoxSize(shippingPackageDto.getBoxSizeId()));
         shippingPackage.setDescription(shippingPackageDto.getDescription());
         shippingPackage.setUser(new User(shippingPackageDto.getUserId()));
         shippingPackage.setOrderDetail(new OrderDetail(shippingPackageDto.getOrderDetailId()));

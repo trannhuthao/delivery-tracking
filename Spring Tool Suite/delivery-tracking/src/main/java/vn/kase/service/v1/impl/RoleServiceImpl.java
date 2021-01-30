@@ -2,11 +2,8 @@ package vn.kase.service.v1.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vn.kase.domain.v1.Package;
 import vn.kase.domain.v1.Role;
-import vn.kase.dto.v1.mapper.PackageMapper;
 import vn.kase.dto.v1.mapper.RoleMapper;
-import vn.kase.dto.v1.model.PackageDto;
 import vn.kase.dto.v1.model.RoleDto;
 import vn.kase.repository.v1.RoleRepository;
 import vn.kase.service.v1.RoleService;

@@ -16,26 +16,43 @@
 		<table class="table table-bordered">
 			<thead class="thead-light">
 				<tr>
-					<th>Id</th>
-					<th>Name</th>
-					<th>Phone Number</th>
-					<th>Email</th>
-					<th>from-to</th>
-					<th>Price</th>
+					<th>Order ID</th>
+					<th>User</th>
+					<th>User's Username</th>
+					<th>User's Email</th>
+					<th>User's Phone Number</th>
+					<th>Address</th>
+					<th>Package ID</th>
+					<th>Package Name</th>
+					<th>Weight</th>
+					<th>Box Size</th>
+					<th>Description</th>
 					<th>Status</th>
-					<th>function</th>
+					<th>Shipper ID</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>01</td>
-					<td>Cuong</td>
-					<td>0123456789</td>
-					<td>quoccuong@gmail.com</td>
-					<td>quận1 - quận2</td>
-					<td>20 000VND</td>
-					<td>đang giao</td>
-					<td><a href="">Update</a>|<a href="">Detail</a>|<a href="">Delete</a></td>
+				<tr th:if="${orderDetailList.empty}">
+					<td colspan="13">No orders exist.</td>
+				</tr>
+				<tr th:each="orderDetail : ${orderDetailList}">
+					<td th:text="${orderDetail.id}"></td>
+					<td th:text="${orderDetail.userFullname}"></td>
+					<td th:text="${orderDetail.username}"></td>
+					<td th:text="${orderDetail.userEmail}"></td>
+					<td th:text="${orderDetail.userPhoneNumber}"></td>
+					<td th:text="${orderDetail.userAddress}"></td>
+					<td th:text="${orderDetail.shippingPackageId}"></td>
+					<td th:text="${orderDetail.packageImage}"></td>
+					<td th:text="${orderDetail.packageWeight}"></td>
+					<td th:text="${orderDetail.packageBoxSize}"></td>
+					<td th:text="${orderDetail.packageDescription}"></td>
+					<td th:text="${orderDetail.status}"></td>
+					<td th:text="${orderDetail.shipperId}"></td>
+					<td>
+						<a th:href="@{/orders-detail/update(id=${orderDetail.id})}" class="btn btn-success">Update</a>
+						<a th:href="@{/orders-detail/delete/{id}(id=${orderDetail.id})}" class="btn btn-danger">Remove</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>

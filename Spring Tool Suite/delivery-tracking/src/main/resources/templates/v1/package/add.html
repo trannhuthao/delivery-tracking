@@ -1,10 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Delivery Tracking</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </head>
 <body>
-
+    <div class="container">
+        <h1 class="text-center display-1">ADD SHIPPING PACKAGE</h1>
+        <p th:text="${errorMessage}"></p>
+        <form th:action="@{/shipping-packages/add}" method="post" th:object="${shippingPackageDto}">
+            <div class="mb-3">
+                <label for="packageName" class="form-label">Package name:</label>
+                <input th:field="*{packageName}" type="text" class="form-control" id="packageName">
+                <span class="text-danger" th:if="${#fields.hasErrors('packageName')}" th:errors="*{packageName}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image:</label>
+                <input th:field="*{image}" type="file" class="form-control" id="image">
+                <span class="text-danger" th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="weight" class="form-label">Weight:</label>
+                <input th:field="*{weight}" type="text" class="form-control" id="weight">
+                <span class="text-danger" th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="boxSize" class="form-label">Box size:</label>
+                <input th:field="*{boxSize}" type="text" class="form-control" id="boxSize">
+                <span class="text-danger" th:if="${#fields.hasErrors('boxSize')}" th:errors="*{boxSize}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <input th:field="*{description}" type="text" class="form-control" id="description">
+                <span class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="user" class="form-label">User:</label>
+                <select th:field="*{userId}" class="form-control" id="user">
+                    <option th:each="user : ${users}"
+                            th:value="${user.id}"
+                            th:text="${user.fullName}">
+                    </option>
+                </select>
+                <span class="text-danger" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="order" class="form-label">Order:</label>
+                <select th:field="*{orderDetailId}" class="form-control" id="order">
+                    <option th:each="order : ${orders}"
+                            th:value="${order.id}"
+                            th:text="${order.userFullname}">
+                    </option>
+                </select>
+                <span class="text-danger" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></span>
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary">Save</button>
+            <a th:href="@{/shipping-package}" class="btn btn-lg  btn-warning">Back</a>
+        </form>
+    </div>
 </body>
 </html>

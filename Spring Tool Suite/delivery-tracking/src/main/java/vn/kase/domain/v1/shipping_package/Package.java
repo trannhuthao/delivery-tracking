@@ -1,4 +1,4 @@
-package vn.kase.domain.v1;
+package vn.kase.domain.v1.shipping_package;
 
 import javax.persistence.*;
 
@@ -8,6 +8,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import vn.kase.domain.v1.BaseEntity;
+import vn.kase.domain.v1.OrderDetail;
+import vn.kase.domain.v1.User;
 
 @Getter
 @Setter
@@ -24,11 +27,11 @@ public class Package extends BaseEntity {
 	@Column(name = "image")
 	private byte image;
 
-	@Column(name = "weight")
-	private int weight;
+	@OneToOne(mappedBy = "shippingPackage", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	private Weight weight;
 
-	@Column(name = "box_size")
-	private String boxSize;
+	@OneToOne(mappedBy = "shippingPackage", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	private BoxSize boxSize;
 
 	@Column(name = "description")
 	private String description;

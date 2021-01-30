@@ -5,17 +5,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import vn.kase.dto.v1.model.PackageDto;
+import vn.kase.dto.v1.model.shipping_package.PackageDto;
+import vn.kase.service.v1.OrderDetailService;
 import vn.kase.service.v1.PackageService;
+import vn.kase.service.v1.UserService;
 
 @Controller
 @RequestMapping("/shipping-packages")
 public class PackageController {
     private final PackageService packageService;
+    private final UserService userService;
+    private final OrderDetailService orderDetailService;
 
     @Autowired
-    public PackageController(PackageService packageService) {
+    public PackageController(PackageService packageService, UserService userService, OrderDetailService orderDetailService) {
         this.packageService = packageService;
+        this.userService = userService;
+        this.orderDetailService = orderDetailService;
     }
 
     @GetMapping
@@ -27,6 +33,8 @@ public class PackageController {
     @GetMapping("/add")
     public String addPackage(Model model) {
         model.addAttribute("shippingPackageDto", new PackageDto());
+        model.addAttribute("users", this.userService.findAll());
+        model.addAttribute("orders", this.orderDetailService.findAll());
         return "v1/package/add";
     }
 
@@ -46,12 +54,15 @@ public class PackageController {
         } catch (Exception exception) {
             exception.printStackTrace();
         }
+        model.addAttribute("errorMessage", "Updating user failed. Try again.");
         return "v1/package/add";
     }
 
     @GetMapping("/update")
     public String updatePackage(@RequestParam("id") Long id, Model model) {
         model.addAttribute("shippingPackageDto", this.packageService.findById(id));
+        model.addAttribute("users", this.userService.findAll());
+        model.addAttribute("orders", this.orderDetailService.findAll());
         return "v1/package/update";
     }
 

@@ -3,10 +3,12 @@ package vn.kase.service.v1.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.kase.domain.v1.OrderDetail;
-import vn.kase.domain.v1.Package;
+import vn.kase.domain.v1.shipping_package.BoxSize;
+import vn.kase.domain.v1.shipping_package.Package;
 import vn.kase.domain.v1.User;
-import vn.kase.dto.v1.mapper.PackageMapper;
-import vn.kase.dto.v1.model.PackageDto;
+import vn.kase.domain.v1.shipping_package.Weight;
+import vn.kase.dto.v1.mapper.shipping_package.PackageMapper;
+import vn.kase.dto.v1.model.shipping_package.PackageDto;
 import vn.kase.repository.v1.PackageRepository;
 import vn.kase.service.v1.PackageService;
 
@@ -48,8 +50,8 @@ public class PackageServiceImpl implements PackageService {
         Package shippingPackage = this.packageRepository.findById(packageDto.getId()).get();
         shippingPackage.setPackageName(packageDto.getPackageName());
         shippingPackage.setImage(packageDto.getImage());
-        shippingPackage.setWeight(packageDto.getWeight());
-        shippingPackage.setBoxSize(packageDto.getBoxSize());
+        shippingPackage.setWeight(new Weight(packageDto.getWeightId()));
+        shippingPackage.setBoxSize(new BoxSize(packageDto.getBoxSizeId()));
         shippingPackage.setDescription(packageDto.getDescription());
         shippingPackage.setUser(new User(packageDto.getUserId()));
         shippingPackage.setOrderDetail(new OrderDetail(packageDto.getOrderDetailId()));

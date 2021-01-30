@@ -1,4 +1,4 @@
-package vn.kase.dto.v1.model;
+package vn.kase.dto.v1.model.shipping_package;
 
 import lombok.*;
 import vn.kase.domain.v1.OrderDetail;
@@ -17,7 +17,11 @@ public class PackageDto {
 
     private byte image;
 
-    private int weight;
+    private Long weightId;
+
+    private String weightRange;
+
+    private Long boxSizeId;
 
     private String boxSize;
 

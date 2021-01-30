@@ -1,9 +1,6 @@
 package vn.kase.dto.v1.model;
 
 import lombok.*;
-import vn.kase.domain.v1.Package;
-import vn.kase.domain.v1.Shipper;
-import vn.kase.domain.v1.User;
 
 @Getter
 @Setter
@@ -32,11 +29,27 @@ public class OrderDetailDto {
 
     private byte packageImage;
 
-    private int packageWeight;
+    private Long weightId;
 
-    private String packageBoxSize;
+    private String weightRange;
+
+    private Long boxSizeId;
+
+    private String boxSize;
 
     private String packageDescription;
+
+    private Long recipientId;
+
+    private String recipientUsername;
+
+    private String recipientFullname;
+
+    private String recipientEmail;
+
+    private String recipientPhoneNumber;
+
+    private String recipientAddress;
 
     private String status;
 

@@ -3,8 +3,7 @@ package vn.kase.dto.v1.model;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import vn.kase.domain.v1.OrderDetail;
-import vn.kase.domain.v1.Package;
-import vn.kase.domain.v1.Role;
+import vn.kase.domain.v1.shipping_package.Package;
 
 import java.util.ArrayList;
 import java.util.Date;

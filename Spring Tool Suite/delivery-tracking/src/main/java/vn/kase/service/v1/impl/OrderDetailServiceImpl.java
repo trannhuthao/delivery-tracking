@@ -3,13 +3,11 @@ package vn.kase.service.v1.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.kase.domain.v1.OrderDetail;
-import vn.kase.domain.v1.Package;
+import vn.kase.domain.v1.shipping_package.Package;
 import vn.kase.domain.v1.Shipper;
 import vn.kase.domain.v1.User;
 import vn.kase.dto.v1.mapper.OrderDetailMapper;
-import vn.kase.dto.v1.mapper.PackageMapper;
 import vn.kase.dto.v1.model.OrderDetailDto;
-import vn.kase.dto.v1.model.PackageDto;
 import vn.kase.repository.v1.OrderDetailRepository;
 import vn.kase.service.v1.OrderDetailService;
 
