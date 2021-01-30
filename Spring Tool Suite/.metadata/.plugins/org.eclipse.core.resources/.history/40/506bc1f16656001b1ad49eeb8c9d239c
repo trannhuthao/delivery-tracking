@@ -1,9 +1,0 @@
-package vn.kase.model;
-
-import java.util.UUID;
-
-public class Package {
-	private UUID id;
-	
-	
-}
