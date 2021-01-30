@@ -1,4 +1,4 @@
-package vn.kase.service.v1;
+package vn.kase.service.v1.shipping_package;
 
 import vn.kase.dto.v1.model.shipping_package.PackageDto;
 

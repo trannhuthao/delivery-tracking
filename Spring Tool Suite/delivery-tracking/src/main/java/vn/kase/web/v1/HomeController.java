@@ -16,4 +16,14 @@ public class HomeController {
     public String swagger() {
         return "redirect:/swagger-ui.html";
     }
+
+    @GetMapping("/about")
+    public String about() {
+        return "v1/home/about";
+    }
+
+    @GetMapping("/contact")
+    public String contact() {
+        return "v1/home/contact";
+    }
 }

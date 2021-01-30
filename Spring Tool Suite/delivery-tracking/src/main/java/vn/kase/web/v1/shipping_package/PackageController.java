@@ -1,4 +1,4 @@
-package vn.kase.web.v1;
+package vn.kase.web.v1.shipping_package;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,7 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import vn.kase.dto.v1.model.shipping_package.PackageDto;
 import vn.kase.service.v1.OrderDetailService;
-import vn.kase.service.v1.PackageService;
+import vn.kase.service.v1.shipping_package.PackageService;
 import vn.kase.service.v1.UserService;
 
 @Controller

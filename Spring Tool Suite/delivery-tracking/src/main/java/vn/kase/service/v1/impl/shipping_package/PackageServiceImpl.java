@@ -1,4 +1,4 @@
-package vn.kase.service.v1.impl;
+package vn.kase.service.v1.impl.shipping_package;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,8 +9,8 @@ import vn.kase.domain.v1.User;
 import vn.kase.domain.v1.shipping_package.Weight;
 import vn.kase.dto.v1.mapper.shipping_package.PackageMapper;
 import vn.kase.dto.v1.model.shipping_package.PackageDto;
-import vn.kase.repository.v1.PackageRepository;
-import vn.kase.service.v1.PackageService;
+import vn.kase.repository.v1.shipping_package.PackageRepository;
+import vn.kase.service.v1.shipping_package.PackageService;
 
 import java.util.ArrayList;
 import java.util.List;
