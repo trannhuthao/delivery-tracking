@@ -1,7 +1,10 @@
-package vn.kase.domain.v1;
+package vn.kase.domain.v1.user;
 
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import vn.kase.domain.v1.BaseEntity;
+import vn.kase.domain.v1.OrderDetail;
+import vn.kase.domain.v1.Role;
 import vn.kase.domain.v1.shipping_package.Package;
 
 import javax.persistence.*;
@@ -37,8 +40,8 @@ public class User extends BaseEntity {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
-    @Column(name = "address")
-    private String address;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    private Address address;
 
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private Role role;

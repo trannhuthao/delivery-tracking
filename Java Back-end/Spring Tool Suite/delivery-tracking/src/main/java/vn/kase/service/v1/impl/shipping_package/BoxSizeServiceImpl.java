@@ -3,7 +3,6 @@ package vn.kase.service.v1.impl.shipping_package;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.kase.domain.v1.shipping_package.BoxSize;
-import vn.kase.domain.v1.shipping_package.Package;
 import vn.kase.dto.v1.mapper.shipping_package.BoxSizeMapper;
 import vn.kase.dto.v1.model.shipping_package.BoxSizeDto;
 import vn.kase.repository.v1.shipping_package.BoxSizeRepository;
@@ -45,7 +44,6 @@ public class BoxSizeServiceImpl implements BoxSizeService {
     @Override
     public void update(BoxSizeDto boxSizeDto) {
         BoxSize boxSize = this.boxSizeRepository.findById(boxSizeDto.getId()).get();
-        boxSize.setShippingPackage(new Package(boxSizeDto.getShippingPackageId()));
         boxSize.setBoxSize(boxSizeDto.getBoxSize());
         this.boxSizeRepository.save(boxSize);
     }

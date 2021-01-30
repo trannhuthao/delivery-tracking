@@ -18,6 +18,8 @@ public class Shipper extends BaseEntity {
     @OneToMany(mappedBy = "shipper", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>();
 
+    private String fullName;
+
     public Shipper(Long id) {
         super(id);
     }

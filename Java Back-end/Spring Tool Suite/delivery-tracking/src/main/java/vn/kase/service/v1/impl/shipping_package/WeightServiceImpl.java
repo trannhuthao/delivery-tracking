@@ -45,7 +45,6 @@ public class WeightServiceImpl implements WeightService {
     @Override
     public void update(WeightDto weightDto) {
         Weight weight = this.weightRepository.findById(weightDto.getId()).get();
-        weight.setShippingPackage(new Package(weightDto.getPackageId()));
         weight.setWeightRange(weightDto.getWeightRange());
         this.weightRepository.save(weight);
     }

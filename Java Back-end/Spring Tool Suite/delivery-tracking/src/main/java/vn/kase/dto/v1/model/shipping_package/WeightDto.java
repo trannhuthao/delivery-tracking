@@ -13,35 +13,5 @@ import java.util.Date;
 public class WeightDto {
     private Long id;
 
-    private Long packageId;
-
-    private String packageName;
-
-    private byte packageImage;
-
     private String weightRange;
-
-    private Long boxSizeId;
-
-    private String boxSize;
-
-    private String description;
-
-    private Long userId;
-
-    private String userFullname;
-
-    private String username;
-
-    private String userEmail;
-
-    private String userPhoneNumber;
-
-    private Date userDateOfBirth;
-
-    private String userAddress;
-
-    private Long userRoleId;
-
-    private String userRoleName;
 }

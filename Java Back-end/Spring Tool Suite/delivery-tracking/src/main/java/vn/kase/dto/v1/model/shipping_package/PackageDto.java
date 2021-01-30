@@ -1,8 +1,6 @@
 package vn.kase.dto.v1.model.shipping_package;
 
 import lombok.*;
-import vn.kase.domain.v1.OrderDetail;
-import vn.kase.domain.v1.User;
 
 @Getter
 @Setter

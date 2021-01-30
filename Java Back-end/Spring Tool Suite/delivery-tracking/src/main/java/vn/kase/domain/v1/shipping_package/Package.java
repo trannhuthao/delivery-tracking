@@ -10,7 +10,7 @@ import lombok.Setter;
 import lombok.ToString;
 import vn.kase.domain.v1.BaseEntity;
 import vn.kase.domain.v1.OrderDetail;
-import vn.kase.domain.v1.User;
+import vn.kase.domain.v1.user.User;
 
 @Getter
 @Setter

@@ -15,5 +15,7 @@ import java.util.List;
 public class ShipperDto {
     private Long id;
 
+    private String fullName;
+
     private List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>();
 }

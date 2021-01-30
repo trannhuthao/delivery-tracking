@@ -3,7 +3,7 @@ package vn.kase.dto.v1.mapper;
 import vn.kase.domain.v1.OrderDetail;
 import vn.kase.domain.v1.shipping_package.Package;
 import vn.kase.domain.v1.Shipper;
-import vn.kase.domain.v1.User;
+import vn.kase.domain.v1.user.User;
 import vn.kase.dto.v1.model.OrderDetailDto;
 
 public class OrderDetailMapper {

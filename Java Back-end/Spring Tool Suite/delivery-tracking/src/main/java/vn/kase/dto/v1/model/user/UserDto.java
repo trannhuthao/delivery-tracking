@@ -1,4 +1,4 @@
-package vn.kase.dto.v1.model;
+package vn.kase.dto.v1.model.user;
 
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -30,6 +30,8 @@ public class UserDto {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
+
+    private Long addressId;
 
     private String address;
 

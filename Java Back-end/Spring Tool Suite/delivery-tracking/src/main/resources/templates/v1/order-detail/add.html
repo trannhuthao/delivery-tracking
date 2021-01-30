@@ -45,33 +45,46 @@
                                 <input th:field="*{packageName}" type="text" class="form-control" placeholder="Package Name">
                             </div>
                             <div class="form-group  pl-4 pr-4">
-                                <h5>Box Size:</h5>
                                 <div class="form-check">
-                                    <label th:field="*{packageBoxSize}" type="text" class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="optradio">15cm x 15cm</label>
+                                    <label for="boxSize" type="text" class="form-check-label">
+                                        <h5>Select Box Size:</h5>
+                                    </label>
+                                    <select th:field="*{boxSizeId}" class="form-check-input" id="boxSize">
+                                        <option th:each="boxSize : ${boxSizes}"
+                                                th:value="${boxSize.id}"
+                                                th:text="${boxSize.boxSize}">
+                                        </option>
+                                    </select>
                                 </div>
+                                <span class="text-danger" th:if="${#fields.hasErrors('boxSizeId')}" th:errors="*{boxSizeId}"></span>
                             </div>
-                            <div class="form-group pl-4 pr-4">
-                                <h5 for="sel1">Select weight:</h5>
-                                <select class="form-control" id="sel1">
-                                    <option>0kg--2kg</option>
-                                    <option>2kg--4kg</option>
-                                    <option>4kg--8kg</option>
-                                    <option>8kg--12kg</option>
-                                </select>
+                            <div class="form-group  pl-4 pr-4">
+                                <div class="form-check">
+                                    <label for="weight" type="text" class="form-check-label">
+                                        <h5>Select Weight:</h5>
+                                    </label>
+                                    <select th:field="*{weightId}" class="form-check-input" id="weight">
+                                        <option th:each="weight : ${weights}"
+                                                th:value="${weight.id}"
+                                                th:text="${weight.weightRange}">
+                                        </option>
+                                    </select>
+                                </div>
+                                <span class="text-danger" th:if="${#fields.hasErrors('weightId')}" th:errors="*{weightId}"></span>
                             </div>
                             <div class="form-group  pl-4 pr-4">
                                 <h5>Image:</h5>
                                 <div class="form-group">
-                                    <input type="file" id="myFile" name="filename">
+                                    <input type="file" id="image" name="imageName">
                                 </div>
                             </div>
                             <div class="form-group  pl-4 pr-4">
-                                <h5 for="Description">Description:</h5>
-                                <textarea class="form-control" rows="5" id="Description"></textarea>
+                                <h5>Description:</h5>
+                                <textarea th:field="@{packageDescription}" class="form-control" rows="5" id="Description"></textarea>
                             </div>
-                            <div class="form-group  pl-4 pr-4">
-                                <h5>From:</h5> <select class="form-control" id="sel1">
+                            <div class="form-group pl-4 pr-4">
+                                <h5>From:</h5>
+                                <select class="form-control">
                                 <option>ABExpress</option>
                             </select>
                             </div>

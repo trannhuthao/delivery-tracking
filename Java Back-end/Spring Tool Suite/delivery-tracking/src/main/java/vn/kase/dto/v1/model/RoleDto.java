@@ -1,7 +1,7 @@
 package vn.kase.dto.v1.model;
 
 import lombok.*;
-import vn.kase.domain.v1.User;
+import vn.kase.domain.v1.user.User;
 
 import java.util.ArrayList;
 import java.util.List;

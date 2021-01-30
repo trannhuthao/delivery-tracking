@@ -14,9 +14,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "weight")
 public class Weight extends BaseEntity {
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    private Package shippingPackage;
-
     private String weightRange;
 
     public Weight(Long id) {

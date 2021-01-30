@@ -14,9 +14,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "box_size")
 public class BoxSize extends BaseEntity {
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    private Package shippingPackage;
-
     private String boxSize;
 
     public BoxSize(Long id) {
