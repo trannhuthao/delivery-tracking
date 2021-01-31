@@ -1,4 +1,4 @@
-package vn.kase.web.v1;
+package vn.kase.web.v1.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,7 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import vn.kase.dto.v1.model.user.UserDto;
 import vn.kase.service.v1.RoleService;
-import vn.kase.service.v1.UserService;
+import vn.kase.service.v1.user.UserService;
 
 @Controller
 @RequestMapping("/users")

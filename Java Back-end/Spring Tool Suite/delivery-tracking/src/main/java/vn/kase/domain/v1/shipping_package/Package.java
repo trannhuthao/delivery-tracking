@@ -27,10 +27,10 @@ public class Package extends BaseEntity {
 	@Column(name = "image")
 	private byte image;
 
-	@OneToOne(mappedBy = "shippingPackage", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	private Weight weight;
 
-	@OneToOne(mappedBy = "shippingPackage", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	private BoxSize boxSize;
 
 	@Column(name = "description")

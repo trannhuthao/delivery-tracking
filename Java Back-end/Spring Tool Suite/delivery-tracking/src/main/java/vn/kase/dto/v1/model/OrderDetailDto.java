@@ -21,6 +21,8 @@ public class OrderDetailDto {
 
     private String userPhoneNumber;
 
+    private Long userAddressId;
+
     private String userAddress;
 
     private Long shippingPackageId;
@@ -48,6 +50,8 @@ public class OrderDetailDto {
     private String recipientEmail;
 
     private String recipientPhoneNumber;
+
+    private Long recipientAddressId;
 
     private String recipientAddress;
 

@@ -10,7 +10,7 @@ import vn.kase.service.v1.OrderDetailService;
 import vn.kase.service.v1.ShipperService;
 import vn.kase.service.v1.shipping_package.BoxSizeService;
 import vn.kase.service.v1.shipping_package.PackageService;
-import vn.kase.service.v1.UserService;
+import vn.kase.service.v1.user.UserService;
 import vn.kase.service.v1.shipping_package.WeightService;
 
 @Controller
@@ -82,7 +82,8 @@ public class OrderDetailController {
 
         try {
             this.orderDetailService.add(orderDetailDto);
-            return "redirect:/orders-detail";
+            model.addAttribute("orderId", orderDetailDto.getId());
+            return "v1/order-detail/add-order-success";
         } catch (Exception exception) {
             exception.printStackTrace();
         }

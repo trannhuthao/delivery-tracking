@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import vn.kase.dto.v1.model.shipping_package.PackageDto;
 import vn.kase.service.v1.OrderDetailService;
 import vn.kase.service.v1.shipping_package.PackageService;
-import vn.kase.service.v1.UserService;
+import vn.kase.service.v1.user.UserService;
 
 @Controller
 @RequestMapping("/shipping-packages")

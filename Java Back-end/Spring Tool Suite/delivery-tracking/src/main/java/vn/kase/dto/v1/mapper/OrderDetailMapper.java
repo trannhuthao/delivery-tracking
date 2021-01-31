@@ -15,7 +15,8 @@ public class OrderDetailMapper {
                 orderDetail.getUser().getFullName(),
                 orderDetail.getUser().getEmail(),
                 orderDetail.getUser().getPhoneNumber(),
-                orderDetail.getUser().getAddress(),
+                orderDetail.getUser().getAddress().getId(),
+                orderDetail.getUser().getAddress().getAddress(),
                 orderDetail.getShippingPackage().getId(),
                 orderDetail.getShippingPackage().getPackageName(),
                 orderDetail.getShippingPackage().getImage(),
@@ -29,7 +30,8 @@ public class OrderDetailMapper {
                 orderDetail.getShippingPackage().getUser().getFullName(),
                 orderDetail.getShippingPackage().getUser().getEmail(),
                 orderDetail.getShippingPackage().getUser().getPhoneNumber(),
-                orderDetail.getShippingPackage().getUser().getAddress(),
+                orderDetail.getShippingPackage().getUser().getAddress().getId(),
+                orderDetail.getShippingPackage().getUser().getAddress().getAddress(),
                 orderDetail.getStatus(),
                 orderDetail.getShipper().getId()
         );

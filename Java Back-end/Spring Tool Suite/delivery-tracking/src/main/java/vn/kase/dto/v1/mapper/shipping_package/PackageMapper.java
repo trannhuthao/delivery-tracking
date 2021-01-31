@@ -23,7 +23,7 @@ public class PackageMapper {
                 shippingPackage.getUser().getFullName(),
                 shippingPackage.getUser().getEmail(),
                 shippingPackage.getUser().getPhoneNumber(),
-                shippingPackage.getUser().getAddress(),
+                shippingPackage.getUser().getAddress().getAddress(),
                 shippingPackage.getOrderDetail().getId(),
                 shippingPackage.getOrderDetail().getStatus(),
                 shippingPackage.getOrderDetail().getShipper().getId()

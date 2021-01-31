@@ -1,4 +1,4 @@
-package vn.kase.service.v1;
+package vn.kase.service.v1.user;
 
 import vn.kase.dto.v1.model.user.UserDto;
 

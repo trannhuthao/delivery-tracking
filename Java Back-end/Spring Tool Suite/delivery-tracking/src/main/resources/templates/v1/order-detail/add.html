@@ -21,7 +21,7 @@
                     <form th:action="@{/orders-detail/add}" method="post" th:object="${orderDetailDto}">
                         <div class="form-group pl-4 pr-4">
                             <h5>Name:</h5>
-                            <input th:field="*{username}" type="text" class="form-control" placeholder="userFullname" required="required">
+                            <input th:field="*{userFullname}" type="text" class="form-control" placeholder="Full name" required="required">
                         </div>
                         <div class="form-group  pl-4 pr-4">
                             <h5>Phone Number:</h5>
@@ -29,7 +29,7 @@
                         </div>
                         <div class="form-group pl-4 pr-4">
                             <h5>Email:</h5>
-                            <input th:field="*{userEmail}" type="email" class="form-control" placeholder="Email..." required="required">
+                            <input th:field="*{userEmail}" type="email" class="form-control" placeholder="Email" required="required">
                         </div>
                         <div class="form-group pl-4 pr-4">
                             <h5>Recipient's Name:</h5>
@@ -78,10 +78,10 @@
                                     <input type="file" id="image" name="imageName">
                                 </div>
                             </div>
-                            <div class="form-group  pl-4 pr-4">
-                                <h5>Description:</h5>
-                                <textarea th:field="@{packageDescription}" class="form-control" rows="5" id="Description"></textarea>
-                            </div>
+<!--                            <div class="form-group  pl-4 pr-4">-->
+<!--                                <h5>Description:</h5>-->
+<!--                                <textarea th:field="@{packageDescription}" class="form-control" rows="5" id="Description"></textarea>-->
+<!--                            </div>-->
                             <div class="form-group pl-4 pr-4">
                                 <h5>From:</h5>
                                 <select class="form-control">
@@ -89,7 +89,7 @@
                             </select>
                             </div>
                             <div class="form-group  pl-4 pr-4">
-                                <h5 for="sel1">Select District:</h5>
+                                <h5 for="sel1">To:</h5>
                                 <select class="form-control" id="sel1">
                                     <option>District 1</option>
                                     <option>District 2</option>
@@ -112,9 +112,6 @@
                                     <option>District BINH THANH</option>
                                     <option>District BINH CHANH</option>
                                 </select>
-                            </div>
-                            <div class="form-group pl-4 pr-4">
-                                <h5>To:</h5> <input class="form-control" placeholder="From to">
                             </div>
                         </div>
                     </form>

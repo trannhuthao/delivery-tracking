@@ -1,4 +1,4 @@
-package vn.kase.service.v1.impl;
+package vn.kase.service.v1.impl.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,8 +7,8 @@ import vn.kase.domain.v1.user.Address;
 import vn.kase.domain.v1.user.User;
 import vn.kase.dto.v1.mapper.user.UserMapper;
 import vn.kase.dto.v1.model.user.UserDto;
-import vn.kase.repository.v1.UserRepository;
-import vn.kase.service.v1.UserService;
+import vn.kase.repository.v1.user.UserRepository;
+import vn.kase.service.v1.user.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
