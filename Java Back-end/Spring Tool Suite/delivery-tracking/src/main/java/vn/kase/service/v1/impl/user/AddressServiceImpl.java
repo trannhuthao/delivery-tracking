@@ -49,7 +49,7 @@ public class AddressServiceImpl implements AddressService {
     public void update(AddressDto addressDto) {
         Address address = addressRepository.findById(addressDto.getId()).get();
         address.setAddress(addressDto.getAddress());
-        address.setUser(address.getUser());
+        address.setUsers(addressDto.getUsers());
         this.addressRepository.save(address);
     }
 

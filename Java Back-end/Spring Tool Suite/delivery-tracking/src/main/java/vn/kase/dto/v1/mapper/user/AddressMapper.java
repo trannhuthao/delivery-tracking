@@ -9,14 +9,7 @@ public class AddressMapper {
         AddressDto addressDto = new AddressDto();
         addressDto.setId(address.getId());
         addressDto.setAddress(address.getAddress());
-        addressDto.setUserId(address.getUser().getId());
-        addressDto.setUserFullname(address.getUser().getFullName());
-        addressDto.setUsername(address.getUser().getUsername());
-        addressDto.setUserPhoneNumber(address.getUser().getPhoneNumber());
-        addressDto.setUserEmail(address.getUser().getEmail());
-        addressDto.setUserDateOfBirth(address.getUser().getDateOfBirth());
-        addressDto.setUserRoleId(address.getUser().getRole().getId());
-        addressDto.setUserRoleName(address.getUser().getRole().getRoleName());
+        addressDto.setUsers(address.getUsers());
         return addressDto;
     }
 
@@ -24,7 +17,7 @@ public class AddressMapper {
         Address address = new Address();
         address.setId(addressDto.getId());
         address.setAddress(addressDto.getAddress());
-        address.setUser(new User(addressDto.getUserId()));
+        address.setUsers(addressDto.getUsers());
         return address;
     }
 }

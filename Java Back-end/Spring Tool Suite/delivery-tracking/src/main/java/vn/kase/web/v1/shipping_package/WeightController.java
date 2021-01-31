@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import vn.kase.domain.v1.shipping_package.Weight;
+import vn.kase.dto.v1.model.RoleDto;
 import vn.kase.dto.v1.model.shipping_package.WeightDto;
 import vn.kase.service.v1.shipping_package.WeightService;
 
@@ -20,25 +21,25 @@ public class WeightController {
     }
 
     @GetMapping
-    public String getWeights(Model model) {
+    public String getWeightRanges(Model model) {
         model.addAttribute("weights", this.weightService.findAll());
-        return "v1/packages/weights/index";
+        return "v1/package/weights/index";
     }
 
     @GetMapping("/add")
-    public String addWeights(Model model) {
-        model.addAttribute("weightDto", new Weight());
-        return "v1/packages/weights/add";
+    public String addWeight(Model model) {
+        model.addAttribute("weightDto", new WeightDto());
+        return "v1/package/weights/add";
     }
 
     @PostMapping("/add")
-    public String addWeights(
+    public String addWeightRange(
             Model model,
             @ModelAttribute("weightDto") WeightDto weightDto,
             BindingResult bindingResult
     ) {
         if (bindingResult.hasErrors()) {
-            return "v1/packages/weights/add";
+            return "v1/package/weights/add";
         }
 
         try {
@@ -47,14 +48,14 @@ public class WeightController {
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-        model.addAttribute("errorMessage", "Adding weight failed. Try again.");
-        return "v1/packages/weights/add";
+        model.addAttribute("errorMessage", "Add new weight range failed. Try again.");
+        return "v1/package/weights/add";
     }
 
     @GetMapping("/update")
     public String updateWeight(@RequestParam("id") Long id, Model model) {
-        model.addAttribute("weight", this.weightService.findById(id));
-        return "v1/packages/weights/update";
+        model.addAttribute("weightDto", this.weightService.findById(id));
+        return "v1/package/weights/update";
     }
 
     @PostMapping("/update")
@@ -64,7 +65,7 @@ public class WeightController {
             BindingResult bindingResult
     ) {
         if (bindingResult.hasErrors()) {
-            return "v1/packages/weights/update";
+            return "v1/package/weights/update";
         }
 
         try {
@@ -74,7 +75,7 @@ public class WeightController {
             exception.printStackTrace();
         }
         model.addAttribute("errorMessage", "Updating weight failed. Try again.");
-        return "v1/packages/weights/update";
+        return "v1/package/weights/update";
     }
 
     @GetMapping("/delete/{id}")

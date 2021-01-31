@@ -44,9 +44,14 @@
                 <span class="text-danger" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></span>
             </div>
             <div class="mb-3">
-                <label for="address" class="form-label">Address:</label>
-                <input th:field="*{address}" type="text" class="form-control" id="address">
-                <span class="text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+                <label for="role" class="form-label">Address:</label>
+                <select th:field="*{addressId}" class="form-control" id="address">
+                    <option th:each="address : ${addresses}"
+                            th:value="${address.id}"
+                            th:text="${address.address}">
+                    </option>
+                </select>
+                <span class="text-danger" th:if="${#fields.hasErrors('addressId')}" th:errors="*{addressId}"></span>
             </div>
             <div class="mb-3">
                 <label for="role" class="form-label">Role:</label>

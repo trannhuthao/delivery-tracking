@@ -40,7 +40,7 @@ public class User extends BaseEntity {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private Address address;
 
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)

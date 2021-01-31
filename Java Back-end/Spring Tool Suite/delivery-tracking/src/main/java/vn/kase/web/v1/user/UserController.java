@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import vn.kase.dto.v1.model.user.UserDto;
 import vn.kase.service.v1.RoleService;
+import vn.kase.service.v1.user.AddressService;
 import vn.kase.service.v1.user.UserService;
 
 @Controller
@@ -14,11 +15,13 @@ import vn.kase.service.v1.user.UserService;
 public class UserController {
     private final UserService userService;
     private final RoleService roleService;
+    private final AddressService addressService;
 
     @Autowired
-    public UserController(UserService userService, RoleService roleService) {
+    public UserController(UserService userService, RoleService roleService, AddressService addressService) {
         this.userService = userService;
         this.roleService = roleService;
+        this.addressService = addressService;
     }
 
     @GetMapping
@@ -31,6 +34,7 @@ public class UserController {
     public String addUser(Model model) {
         model.addAttribute("userDto", new UserDto());
         model.addAttribute("roles", this.roleService.findAll());
+        model.addAttribute("addresses", this.addressService.findAll());
         return "v1/user/add";
     }
 
@@ -58,6 +62,7 @@ public class UserController {
     public String updateUser(@RequestParam("id") Long id, Model model) {
         model.addAttribute("userDto", this.userService.findById(id));
         model.addAttribute("roles", this.roleService.findAll());
+        model.addAttribute("addresses", this.addressService.findAll());
         return "v1/user/update";
     }
 

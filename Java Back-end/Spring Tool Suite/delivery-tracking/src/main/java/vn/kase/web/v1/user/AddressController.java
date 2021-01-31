@@ -7,15 +7,18 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import vn.kase.dto.v1.model.user.AddressDto;
 import vn.kase.service.v1.user.AddressService;
+import vn.kase.service.v1.user.UserService;
 
 @Controller
 @RequestMapping("/addresses")
 public class AddressController {
     private final AddressService addressService;
+    private final UserService userService;
 
     @Autowired
-    public AddressController(AddressService addressService) {
+    public AddressController(AddressService addressService, UserService userService) {
         this.addressService = addressService;
+        this.userService = userService;
     }
 
     @GetMapping
@@ -27,6 +30,7 @@ public class AddressController {
     @GetMapping("/add")
     public String addAddress(Model model) {
         model.addAttribute("addressDto", new AddressDto());
+        model.addAttribute("users", this.userService.findAll());
         return "v1/address/add";
     }
 
@@ -53,6 +57,7 @@ public class AddressController {
     @GetMapping("/update")
     public String updateAddress(@RequestParam("id") Long id, Model model) {
         model.addAttribute("addressDto", this.addressService.findById(id));
+        model.addAttribute("users", this.userService.findAll());
         return "v1/address/update";
     }
 

@@ -21,13 +21,13 @@ public class BoxSizeController {
     @GetMapping
     public String getBoxSizes(Model model) {
         model.addAttribute("boxSizes", this.boxSizeService.findAll());
-        return "v1/packages/box-sizes/index";
+        return "v1/package/box-sizes/index";
     }
 
     @GetMapping("/add")
     public String addBoxSize(Model model) {
         model.addAttribute("boxSizeDto", new BoxSizeDto());
-        return "v1/packages/box-sizes/add";
+        return "v1/package/box-sizes/add";
     }
 
     @PostMapping("/add")
@@ -37,7 +37,7 @@ public class BoxSizeController {
             BindingResult bindingResult
     ) {
         if (bindingResult.hasErrors()) {
-            return "v1/packages/box-sizes/add";
+            return "v1/package/box-sizes/add";
         }
 
         try {
@@ -47,13 +47,13 @@ public class BoxSizeController {
             exception.printStackTrace();
         }
         model.addAttribute("errorMessage", "Adding box size failed. Try again.");
-        return "v1/packages/box-sizes/add";
+        return "v1/package/box-sizes/add";
     }
 
     @GetMapping("/update")
     public String updateBoxSize(@RequestParam("id") Long id, Model model) {
         model.addAttribute("boxSizeDto", this.boxSizeService.findById(id));
-        return "v1/packages/box-sizes/update";
+        return "v1/package/box-sizes/update";
     }
 
     @PostMapping("/update")
@@ -63,7 +63,7 @@ public class BoxSizeController {
             BindingResult bindingResult
     ) {
         if (bindingResult.hasErrors()) {
-            return "v1/packages/box-sizes/update";
+            return "v1/package/box-sizes/update";
         }
 
         try {
@@ -73,7 +73,7 @@ public class BoxSizeController {
             exception.printStackTrace();
         }
         model.addAttribute("errorMessage", "Updating box size failed. Try again.");
-        return "v1/packages/box-sizes/update";
+        return "v1/package/box-sizes/update";
     }
 
     @GetMapping("/delete/{id}")

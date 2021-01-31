@@ -10,28 +10,28 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="display-1 text-center">WEIGHT RANGES</h1>
+        <h1 class="display-1 text-center">ADDRESSES</h1>
         <table class="table table-responsive table-bordered table-striped table-dark table-striped table-hover text-center">
             <thead>
             <tr class="text-warning">
-                <th>WEIGHT RANGE</th>
+                <th>ADDRESS</th>
                 <th>ACTION</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:if="${weights.empty}">
-                <td colspan="2">No weight ranges exist.</td>
+            <tr th:if="${addresses.empty}">
+                <td colspan="3">No addresses exist.</td>
             </tr>
-            <tr th:each="weight : ${weights}">
-                <td th:text="${weight.weightRange}">ABC Express</td>
+            <tr th:each="address : ${addresses}">
+                <td th:text="${address.address}"></td>
                 <td>
-                    <a th:href="@{/weights/update(id=${weight.id})}" class="btn btn-success">Update</a>
-                    <a th:href="@{/weights/delete/{id}(id=${weight.id})}" class="btn btn-danger">Remove</a>
+                    <a th:href="@{/addresses/update(id=${address.id})}" class="btn btn-success">Update</a>
+                    <a th:href="@{/addresses/delete/{id}(id=${address.id})}" class="btn btn-danger">Remove</a>
                 </td>
             </tr>
             </tbody>
         </table>
-        <a th:href="@{/weights/add}" class="btn btn-lg btn-primary">Add Weight Range</a>
+        <a th:href="@{/addresses/add}" class="btn btn-lg btn-primary">Add Address</a>
         <a th:href="@{/}" class="btn btn-lg btn-warning">Back</a>
     </div>
 </body>
