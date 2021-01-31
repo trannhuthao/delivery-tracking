@@ -10,6 +10,7 @@ import vn.kase.service.v1.OrderDetailService;
 import vn.kase.service.v1.ShipperService;
 import vn.kase.service.v1.shipping_package.BoxSizeService;
 import vn.kase.service.v1.shipping_package.PackageService;
+import vn.kase.service.v1.user.AddressService;
 import vn.kase.service.v1.user.UserService;
 import vn.kase.service.v1.shipping_package.WeightService;
 
@@ -22,6 +23,7 @@ public class OrderDetailController {
     private WeightService weightService;
     private BoxSizeService boxSizeService;
     private ShipperService shipperService;
+    private AddressService addressService;
 
     @Autowired
     public void setOrderDetailService(OrderDetailService orderDetailService) {
@@ -53,6 +55,11 @@ public class OrderDetailController {
         this.shipperService = shipperService;
     }
 
+    @Autowired
+    public void setAddressService(AddressService addressService) {
+        this.addressService = addressService;
+    }
+
     @GetMapping
     public String getOrderDetailList(Model model) {
         model.addAttribute("orderDetailList", this.orderDetailService.findAll());
@@ -66,6 +73,7 @@ public class OrderDetailController {
         model.addAttribute("packages", this.packageService.findAll());
         model.addAttribute("weights", this.weightService.findAll());
         model.addAttribute("boxSizes", this.boxSizeService.findAll());
+        model.addAttribute("addresses", this.addressService.findAll());
         model.addAttribute("shippers", this.shipperService.findAll());
         return "v1/order-detail/add";
     }
@@ -98,6 +106,7 @@ public class OrderDetailController {
         model.addAttribute("packages", this.packageService.findAll());
         model.addAttribute("weights", this.weightService.findAll());
         model.addAttribute("boxSizes", this.boxSizeService.findAll());
+        model.addAttribute("addresses", this.addressService.findAll());
         model.addAttribute("shippers", this.shipperService.findAll());
         return "v1/order-detail/update";
     }

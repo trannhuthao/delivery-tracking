@@ -24,14 +24,24 @@
                 <span class="text-danger" th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></span>
             </div>
             <div class="mb-3">
-                <label for="weight" class="form-label">Weight:</label>
-                <input th:field="*{weight}" type="text" class="form-control" id="weight">
-                <span class="text-danger" th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}"></span>
+                <label for="weight" class="form-label">Weight range:</label>
+                <select th:field="*{weightId}" class="form-control" id="weight">
+                    <option th:each="weight : ${weights}"
+                            th:value="${weight.id}"
+                            th:text="${weight.weightRange}">
+                    </option>
+                </select>
+                <span class="text-danger" th:if="${#fields.hasErrors('weightId')}" th:errors="*{weightId}"></span>
             </div>
             <div class="mb-3">
                 <label for="boxSize" class="form-label">Box size:</label>
-                <input th:field="*{boxSize}" type="text" class="form-control" id="boxSize">
-                <span class="text-danger" th:if="${#fields.hasErrors('boxSize')}" th:errors="*{boxSize}"></span>
+                <select th:field="*{boxSizeId}" class="form-control" id="boxSize">
+                    <option th:each="boxSize : ${boxSizes}"
+                            th:value="${boxSize.id}"
+                            th:text="${boxSize.boxSize}">
+                    </option>
+                </select>
+                <span class="text-danger" th:if="${#fields.hasErrors('boxSizeId')}" th:errors="*{boxSizeId}"></span>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description:</label>

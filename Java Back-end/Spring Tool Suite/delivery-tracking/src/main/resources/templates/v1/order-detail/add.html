@@ -20,24 +20,32 @@
                     <p th:text="${errorMessage}"></p>
                     <form th:action="@{/orders-detail/add}" method="post" th:object="${orderDetailDto}">
                         <div class="form-group pl-4 pr-4">
-                            <h5>Name:</h5>
-                            <input th:field="*{userFullname}" type="text" class="form-control" placeholder="Full name" required="required">
-                        </div>
-                        <div class="form-group  pl-4 pr-4">
-                            <h5>Phone Number:</h5>
-                            <input th:field="*{userPhoneNumber}" type="text" class="form-control" placeholder="Phone Number" required="required">
-                        </div>
-                        <div class="form-group pl-4 pr-4">
-                            <h5>Email:</h5>
-                            <input th:field="*{userEmail}" type="email" class="form-control" placeholder="Email" required="required">
-                        </div>
-                        <div class="form-group pl-4 pr-4">
-                            <h5>Recipient's Name:</h5>
-                            <input th:field="*{recipientFullname}" type="text" class="form-control" placeholder="Recipient's Name" required="required">
+                            <h5>User:</h5>
+                            <div class="form-check">
+                                <label for="sender" type="text" class="form-check-label">
+                                </label>
+                                <select th:field="*{userId}" class="form-check-input" id="sender">
+                                    <option th:each="user : ${users}"
+                                            th:value="${user.id}"
+                                            th:text="${user.fullName}">
+                                    </option>
+                                </select>
+                            </div>
+                            <span class="text-danger" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></span>
                         </div>
                         <div class="form-group pl-4 pr-4">
-                            <h5>Recipient's Phone:</h5>
-                            <input th:field="*{recipientPhoneNumber}" type="text" class="form-control" placeholder="Recipient's Phone" required="required">
+                            <h5>Recipient:</h5>
+                            <div class="form-check">
+                                <label for="recipient" type="text" class="form-check-label">
+                                </label>
+                                <select th:field="*{recipientId}" class="form-check-input" id="recipient">
+                                    <option th:each="recipientId : ${users}"
+                                            th:value="${recipientId.id}"
+                                            th:text="${recipientId.fullName}">
+                                    </option>
+                                </select>
+                            </div>
+                            <span class="text-danger" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></span>
                         </div>
                         <div class="card bg-light">
                             <div class="form-group  pl-4 pr-4">
@@ -78,10 +86,6 @@
                                     <input type="file" id="image" name="imageName">
                                 </div>
                             </div>
-<!--                            <div class="form-group  pl-4 pr-4">-->
-<!--                                <h5>Description:</h5>-->
-<!--                                <textarea th:field="@{packageDescription}" class="form-control" rows="5" id="Description"></textarea>-->
-<!--                            </div>-->
                             <div class="form-group pl-4 pr-4">
                                 <h5>From:</h5>
                                 <select class="form-control">
@@ -89,34 +93,23 @@
                             </select>
                             </div>
                             <div class="form-group  pl-4 pr-4">
-                                <h5 for="sel1">To:</h5>
-                                <select class="form-control" id="sel1">
-                                    <option>District 1</option>
-                                    <option>District 2</option>
-                                    <option>District 3</option>
-                                    <option>District 4</option>
-                                    <option>District 5</option>
-                                    <option>District 6</option>
-                                    <option>District 7</option>
-                                    <option>District 8</option>
-                                    <option>District 9</option>
-                                    <option>District 10</option>
-                                    <option>District 11</option>
-                                    <option>District 12</option>
-                                    <option>District GO VAP</option>
-                                    <option>District TAN BINH</option>
-                                    <option>District TAN PHU</option>
-                                    <option>District THU DUC</option>
-                                    <option>District BINH TAN</option>
-                                    <option>District PHU NHUAN</option>
-                                    <option>District BINH THANH</option>
-                                    <option>District BINH CHANH</option>
-                                </select>
+                                <div class="form-check">
+                                    <label for="recipientAddress" type="text" class="form-check-label">
+                                        <h5>Select Address:</h5>
+                                    </label>
+                                    <select th:field="*{recipientAddressId}" class="form-check-input" id="recipientAddress">
+                                        <option th:each="address : ${addresses}"
+                                                th:value="${address.id}"
+                                                th:text="${address.address}">
+                                        </option>
+                                    </select>
+                                </div>
+                                <span class="text-danger" th:if="${#fields.hasErrors('recipientAddressId')}" th:errors="*{recipientAddressId}"></span>
                             </div>
                         </div>
+                        <button type="submit" class="btn btn-primary" style="margin-top: 10px">Add Order</button>
                     </form>
                 </div>
-                <button type="" class="btn btn-primary" style="margin-top: 10px">Add Order</button>
             </div>
             <div class="col-sm-3"></div>
         </div>
