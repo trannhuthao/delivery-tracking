@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import vn.kase.dto.v1.model.OrderDetailDto;
+import vn.kase.dto.v1.model.shipping_package.PackageDto;
+import vn.kase.dto.v1.model.user.UserDto;
 import vn.kase.service.v1.OrderDetailService;
 import vn.kase.service.v1.ShipperService;
 import vn.kase.service.v1.shipping_package.BoxSizeService;
@@ -69,7 +71,9 @@ public class OrderDetailController {
     @GetMapping("/add")
     public String addOrder(Model model) {
         model.addAttribute("orderDetailDto", new OrderDetailDto());
+        model.addAttribute("newUser", new UserDto());
         model.addAttribute("users", this.userService.findAll());
+        model.addAttribute("newPackage", new PackageDto());
         model.addAttribute("packages", this.packageService.findAll());
         model.addAttribute("weights", this.weightService.findAll());
         model.addAttribute("boxSizes", this.boxSizeService.findAll());

@@ -5,100 +5,81 @@
         <title>Delivery Tracking</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+<!--        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>-->
+<!--        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     </head>
     <body>
         <div th:replace="./v1/fragments/navbar"></div>
-        <div class="row w3-padding-64">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
-                <div class="card bg-warning">
-                    <h1 style="color: blue; font-size: 70px;" class="text-center">ADD ORDER</h1>
-                    <p th:text="${errorMessage}"></p>
-                    <form th:action="@{/orders/add}" method="post" th:object="${orderDetailDto}">
-                        <div class="form-group pl-4 pr-4">
-                            <h5>Existing User?</h5>
-                            <div class="form-check">
-                                <label for="sender" type="text" class="form-check-label">
-                                </label>
-                                <select th:field="*{userId}" class="form-check-input" id="sender">
-                                    <option th:each="user : ${users}"
-                                            th:value="${user.id}"
-                                            th:text="${user.fullName}">
-                                    </option>
-                                </select>
-                            </div>
-                            <span class="text-danger" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></span>
-                        </div>
-                        <div class="form-group pl-4 pr-4">
-                            <h5>Recipient:</h5>
-                            <div class="form-check">
-                                <label for="recipient" type="text" class="form-check-label">
-                                </label>
-                                <select th:field="*{recipientId}" class="form-check-input" id="recipient">
-                                    <option th:each="recipientId : ${users}"
-                                            th:value="${recipientId.id}"
-                                            th:text="${recipientId.fullName}">
-                                    </option>
-                                </select>
-                            </div>
-                            <span class="text-danger" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></span>
-                        </div>
-                        <div class="card bg-light">
-                            <div class="form-group  pl-4 pr-4">
-                                <div class="form-check">
-                                    <label for="boxSize" type="text" class="form-check-label">
-                                        <h5>Select Box Size:</h5>
-                                    </label>
-                                    <select th:field="*{boxSizeId}" class="form-check-input" id="boxSize">
-                                        <option th:each="boxSize : ${boxSizes}"
-                                                th:value="${boxSize.id}"
-                                                th:text="${boxSize.boxSize}">
-                                        </option>
-                                    </select>
-                                </div>
-                                <span class="text-danger" th:if="${#fields.hasErrors('boxSizeId')}" th:errors="*{boxSizeId}"></span>
-                            </div>
-                            <div class="form-group  pl-4 pr-4">
-                                <div class="form-check">
-                                    <label for="weight" type="text" class="form-check-label">
-                                        <h5>Select Weight:</h5>
-                                    </label>
-                                    <select th:field="*{weightId}" class="form-check-input" id="weight">
-                                        <option th:each="weight : ${weights}"
-                                                th:value="${weight.id}"
-                                                th:text="${weight.weightRange}">
-                                        </option>
-                                    </select>
-                                </div>
-                                <span class="text-danger" th:if="${#fields.hasErrors('weightId')}" th:errors="*{weightId}"></span>
-                            </div>
-                            <div class="form-group pl-4 pr-4">
-                                <h5>From: ABC Express</h5>
-                            </div>
-                            <div class="form-group  pl-4 pr-4">
-                                <div class="form-check">
-                                    <label for="recipientAddress" type="text" class="form-check-label">
-                                        <h5>Select Address:</h5>
-                                    </label>
-                                    <select th:field="*{recipientAddressId}" class="form-check-input" id="recipientAddress">
-                                        <option th:each="address : ${addresses}"
-                                                th:value="${address.id}"
-                                                th:text="${address.address}">
-                                        </option>
-                                    </select>
-                                </div>
-                                <span class="text-danger" th:if="${#fields.hasErrors('recipientAddressId')}" th:errors="*{recipientAddressId}"></span>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="margin-top: 10px">Add Order</button>
-                    </form>
+        <div class="container mt-5">
+            <h1 class="text-center display-1">ADD ORDER</h1>
+            <p th:text="${errorMessage}"></p>
+            <form th:action="@{/orders/add}" method="post" th:object="${orderDetailDto}">
+                <div class="mb-3">
+                    <label for="sender" class="form-label"><h5>Existing user?</h5></label>
+                    <select th:field="*{userId}" class="form-control" id="sender">
+                        <option th:each="user : ${users}"
+                                th:value="${user.id}"
+                                th:text="${user.fullName}">
+                        </option>
+                    </select>
+                    <span class="text-danger" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></span>
                 </div>
-            </div>
-            <div class="col-sm-3"></div>
+                <div class="mb-3">
+                    <label for="sender" class="form-label"><h5>New user?</h5></label>
+                    <a th:href="@{/users/add}" class="btn btn-warning ml-2">Create New Account</a>
+                </div>
+                <div class="mb-3">
+                    <label for="recipient" class="form-label"><h5>Is the recipient an existing user?</h5></label>
+                    <select th:field="*{recipientId}" class="form-control" id="recipient">
+                        <option th:each="recipient : ${users}"
+                                th:value="${recipient.id}"
+                                th:text="${recipient.fullName}">
+                        </option>
+                    </select>
+                    <span class="text-danger" th:if="${#fields.hasErrors('recipientId')}" th:errors="*{recipientId}"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="sender" class="form-label"><h5>New user?</h5></label>
+                    <a th:href="@{/users/add}" class="btn btn-warning ml-2">Create New Account</a>
+                </div>
+                <div class="mb-3">
+                    <label for="boxSize" class="form-label"><h5>Select box size:</h5></label>
+                    <select th:field="*{boxSizeId}" class="form-control" id="boxSize">
+                        <option th:each="boxSize : ${boxSizes}"
+                                th:value="${boxSize.id}"
+                                th:text="${boxSize.boxSize}">
+                        </option>
+                    </select>
+                    <span class="text-danger" th:if="${#fields.hasErrors('boxSizeId')}" th:errors="*{boxSizeId}"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="weight" class="form-label"><h5>Select weight range:</h5></label>
+                    <select th:field="*{weightId}" class="form-control" id="weight">
+                        <option th:each="weight : ${weights}"
+                                th:value="${weight.id}"
+                                th:text="${weight.weightRange}">
+                        </option>
+                    </select>
+                    <span class="text-danger" th:if="${#fields.hasErrors('weightId')}" th:errors="*{weightId}"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label"><h5>From ABC Express to:</h5></label>
+                    <select th:field="*{recipientAddressId}" class="form-control" id="address">
+                        <option th:each="recipientAddressId : ${addresses}"
+                                th:value="${recipientAddressId.id}"
+                                th:text="${recipientAddressId.address}">
+                        </option>
+                    </select>
+                    <span class="text-danger" th:if="${#fields.hasErrors('recipientAddressId')}" th:errors="*{recipientAddressId}"></span>
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary mt-2 mb-4">Add Order</button>
+            </form>
         </div>
         <div th:replace="./v1/fragments/footer"></div>
     </body>

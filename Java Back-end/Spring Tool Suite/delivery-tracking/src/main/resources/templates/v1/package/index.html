@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div th:replace="./v1/fragments/navbar"></div>
     <div class="container">
         <h1 class="display-1 text-center">PACKAGES</h1>
         <table class="table table-responsive table-bordered table-striped table-dark table-striped table-hover text-center">
@@ -19,6 +20,7 @@
                     <th>WEIGHT</th>
                     <th>BOX SIZE</th>
                     <th>DESCRIPTION</th>
+                    <th>STATUS</th>
                     <th>USER</th>
                     <th>USER'S USERNAME</th>
                     <th>USER'S EMAIL</th>
@@ -37,14 +39,15 @@
                     <td th:text="${shippingPackage.weightRange}">abc@abcexpress.com</td>
                     <td th:text="${shippingPackage.boxSize}">+84123456789</td>
                     <td th:text="${shippingPackage.description}">01/01/2021</td>
+                    <td th:text="${shippingPackage.status}">01/01/2021</td>
                     <td th:text="${shippingPackage.userFullname}">Hoe Chứa Mưa City</td>
                     <td th:text="${shippingPackage.username}">Hoe Chứa Mưa City</td>
                     <td th:text="${shippingPackage.userEmail}">Software Programmer</td>
                     <td th:text="${shippingPackage.userPhoneNumber}">Software Programmer</td>
                     <td th:text="${shippingPackage.userAddress}">Software Programmer</td>
                     <td>
-                        <a th:href="@{/shipping-packages/update(id=${shippingPackage.id})}" class="btn btn-success m-2">Update</a>
-                        <a th:href="@{/shipping-packages/delete/{id}(id=${shippingPackage.id})}" class="btn btn-danger m-2">Remove</a>
+                        <a th:href="@{/shipping-packages/update(id=${shippingPackage.id})}" class="btn btn-success m-1">Update</a>
+                        <a th:href="@{/shipping-packages/delete/{id}(id=${shippingPackage.id})}" class="btn btn-danger m-1">Remove</a>
                     </td>
                 </tr>
             </tbody>

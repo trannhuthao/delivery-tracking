@@ -5,27 +5,27 @@
 <title>Delivery Tracking</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-	<div class="w3-top">
-		<div class="w3-bar w3-light-blue w3-padding w3-card"
-			style="letter-spacing: 4px;">
-			<a href="/" class="w3-hover-text-red"
-				style="color: yellow; font-size: 25px; text-decoration: none;">ABC EXPRESS</a>
+	<nav class="navbar navbar-light w3-light-blue" style="background-color: #e3f2fd;">
+			<a href="/" class="w3-hover-text-white"
+				style="color: blue; font-size: 25px; text-decoration: none;">ABC EXPRESS</a>
 			<div class="w3-right w3-hide-small">
+				<a th:href="@{/orders}" class="w3-bar-item w3-button" style="text-decoration: none;">Orders</a>
+				<a th:href="@{/shipping-packages}" class="w3-bar-item w3-button" style="text-decoration: none;">Packages</a>
+				<a th:href="@{/shippers}" class="w3-bar-item w3-button" style="text-decoration: none;">Shippers</a>
+				<a th:href="@{/users}" class="w3-bar-item w3-button" style="text-decoration: none;">Users</a>
+				<a th:href="@{/roles}" class="w3-bar-item w3-button" style="text-decoration: none;">Roles</a>
+				<a th:href="@{/search}" class="w3-bar-item w3-button" style="text-decoration: none;">Search</a>
+				<a th:href="@{/login}" class="w3-bar-item w3-button" style="text-decoration: none;">Login</a>
 				<a th:href="@{/about}" class="w3-bar-item w3-button" style="text-decoration: none;">About</a>
 				<a th:href="@{/contact}" class="w3-bar-item w3-button" style="text-decoration: none;">Contact</a>
-			</div>
 		</div>
-	</div>
+	</nav>
 </body>
 </html>

@@ -36,7 +36,7 @@ public class PackageMapper {
         shippingPackage.setWeight(new Weight(shippingPackageDto.getWeightId()));
         shippingPackage.setBoxSize(new BoxSize(shippingPackageDto.getBoxSizeId()));
         shippingPackage.setDescription(shippingPackageDto.getDescription());
-        shippingPackage.setStatus(shippingPackage.getStatus());
+        shippingPackage.setStatus(shippingPackageDto.getStatus());
         shippingPackage.setUser(new User(shippingPackageDto.getUserId()));
         return shippingPackage;
     }
