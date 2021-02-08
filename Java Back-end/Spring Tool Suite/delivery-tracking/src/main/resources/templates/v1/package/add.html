@@ -18,11 +18,11 @@
                 <input th:field="*{packageName}" type="text" class="form-control" id="packageName">
                 <span class="text-danger" th:if="${#fields.hasErrors('packageName')}" th:errors="*{packageName}"></span>
             </div>
-            <div class="mb-3">
-                <label for="image" class="form-label">Image:</label>
-                <input th:field="*{image}" type="file" class="form-control" id="image">
-                <span class="text-danger" th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></span>
-            </div>
+<!--            <div class="mb-3">-->
+<!--                <label for="image" class="form-label">Image:</label>-->
+<!--                <input th:field="*{image}" type="file" class="form-control" id="image">-->
+<!--                <span class="text-danger" th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></span>-->
+<!--            </div>-->
             <div class="mb-3">
                 <label for="weight" class="form-label">Weight range:</label>
                 <select th:field="*{weightId}" class="form-control" id="weight">
@@ -49,21 +49,17 @@
                 <span class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
             </div>
             <div class="mb-3">
+                <label for="status" class="form-label">Status:</label>
+                <select th:field="*{status}" class="form-select text-center" id="status">
+                    <option th:each="status : ${T(vn.kase.domain.v1.shipping_package.Status).values()}" th:value="${status}" th:text="${status.getStatus}">DELIVERED</option>
+                </select>
+            </div>
+            <div class="mb-3">
                 <label for="user" class="form-label">User:</label>
                 <select th:field="*{userId}" class="form-control" id="user">
                     <option th:each="user : ${users}"
                             th:value="${user.id}"
                             th:text="${user.fullName}">
-                    </option>
-                </select>
-                <span class="text-danger" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></span>
-            </div>
-            <div class="mb-3">
-                <label for="order" class="form-label">Order:</label>
-                <select th:field="*{orderDetailId}" class="form-control" id="order">
-                    <option th:each="order : ${orders}"
-                            th:value="${order.id}"
-                            th:text="${order.userFullname}">
                     </option>
                 </select>
                 <span class="text-danger" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></span>

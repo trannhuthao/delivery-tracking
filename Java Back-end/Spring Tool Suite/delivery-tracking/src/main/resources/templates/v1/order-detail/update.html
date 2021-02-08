@@ -12,7 +12,7 @@
 <div class="container">
     <h1 class="text-center display-1">ADD ORDER</h1>
     <p th:text="${errorMessage}"></p>
-    <form th:action="@{/orders-detail/update}" method="post" th:object="${orderDetailDto}">
+    <form th:action="@{/orders/update}" method="post" th:object="${orderDetailDto}">
         <input type="hidden" th:field="*{id}"/>
         <div class="mb-3">
             <label for="user" class="form-label">User:</label>

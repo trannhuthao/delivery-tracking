@@ -43,15 +43,15 @@
 					<td th:text="${orderDetail.userPhoneNumber}"></td>
 					<td th:text="${orderDetail.userAddress}"></td>
 					<td th:text="${orderDetail.shippingPackageId}"></td>
-					<td th:text="${orderDetail.packageImage}"></td>
-					<td th:text="${orderDetail.packageWeight}"></td>
-					<td th:text="${orderDetail.packageBoxSize}"></td>
+<!--					<td th:text="${orderDetail.packageImage}"></td>-->
+					<td th:text="${orderDetail.weightRange}"></td>
+					<td th:text="${orderDetail.boxSize}"></td>
 					<td th:text="${orderDetail.packageDescription}"></td>
 					<td th:text="${orderDetail.status}"></td>
 					<td th:text="${orderDetail.shipperId}"></td>
 					<td>
-						<a th:href="@{/orders-detail/update(id=${orderDetail.id})}" class="btn btn-success">Update</a>
-						<a th:href="@{/orders-detail/delete/{id}(id=${orderDetail.id})}" class="btn btn-danger">Remove</a>
+						<a th:href="@{/orders/update(id=${orderDetail.id})}" class="btn btn-success">Update</a>
+						<a th:href="@{/orders/delete/{id}(id=${orderDetail.id})}" class="btn btn-danger">Remove</a>
 					</td>
 				</tr>
 			</tbody>

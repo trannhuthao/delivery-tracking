@@ -15,16 +15,18 @@ public class OrderDetailMapper {
                 orderDetail.getUser().getFullName(),
                 orderDetail.getUser().getEmail(),
                 orderDetail.getUser().getPhoneNumber(),
+                orderDetail.getUser().getDateOfBirth(),
                 orderDetail.getUser().getAddress().getId(),
                 orderDetail.getUser().getAddress().getAddress(),
                 orderDetail.getShippingPackage().getId(),
                 orderDetail.getShippingPackage().getPackageName(),
-                orderDetail.getShippingPackage().getImage(),
+//                orderDetail.getShippingPackage().getImage(),
                 orderDetail.getShippingPackage().getWeight().getId(),
                 orderDetail.getShippingPackage().getWeight().getWeightRange(),
                 orderDetail.getShippingPackage().getBoxSize().getId(),
                 orderDetail.getShippingPackage().getBoxSize().getBoxSize(),
                 orderDetail.getShippingPackage().getDescription(),
+                orderDetail.getShippingPackage().getStatus(),
                 orderDetail.getShippingPackage().getUser().getId(),
                 orderDetail.getShippingPackage().getUser().getUsername(),
                 orderDetail.getShippingPackage().getUser().getFullName(),
@@ -32,7 +34,6 @@ public class OrderDetailMapper {
                 orderDetail.getShippingPackage().getUser().getPhoneNumber(),
                 orderDetail.getShippingPackage().getUser().getAddress().getId(),
                 orderDetail.getShippingPackage().getUser().getAddress().getAddress(),
-                orderDetail.getStatus(),
                 orderDetail.getShipper().getId()
         );
     }
@@ -42,7 +43,6 @@ public class OrderDetailMapper {
         orderDetail.setId(orderDetailDto.getId());
         orderDetail.setUser(new User(orderDetailDto.getUserId()));
         orderDetail.setShippingPackage(new Package(orderDetailDto.getShippingPackageId()));
-        orderDetail.setStatus(orderDetailDto.getStatus());
         orderDetail.setShipper(new Shipper(orderDetailDto.getShipperId()));
         return orderDetail;
     }

@@ -15,7 +15,7 @@ import vn.kase.service.v1.user.UserService;
 import vn.kase.service.v1.shipping_package.WeightService;
 
 @Controller
-@RequestMapping("/orders-detail")
+@RequestMapping("/orders")
 public class OrderDetailController {
     private OrderDetailService orderDetailService;
     private UserService userService;
@@ -61,13 +61,13 @@ public class OrderDetailController {
     }
 
     @GetMapping
-    public String getOrderDetailList(Model model) {
+    public String getOrders(Model model) {
         model.addAttribute("orderDetailList", this.orderDetailService.findAll());
         return "v1/order-detail/index";
     }
 
     @GetMapping("/add")
-    public String addOrderDetail(Model model) {
+    public String addOrder(Model model) {
         model.addAttribute("orderDetailDto", new OrderDetailDto());
         model.addAttribute("users", this.userService.findAll());
         model.addAttribute("packages", this.packageService.findAll());
@@ -79,7 +79,7 @@ public class OrderDetailController {
     }
 
     @PostMapping("/add")
-    public String addOrderDetail(
+    public String addOrder(
             Model model,
             @ModelAttribute("orderDetailDto") OrderDetailDto orderDetailDto,
             BindingResult bindingResult
@@ -95,12 +95,12 @@ public class OrderDetailController {
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-        model.addAttribute("errorMessage", "Adding order detail failed. Try again.");
+        model.addAttribute("errorMessage", "Adding order failed. Try again.");
         return "v1/order-detail/add";
     }
 
     @GetMapping("/update")
-    public String updateOrderDetail(@RequestParam("id") Long id, Model model) {
+    public String updateOrder(@RequestParam("id") Long id, Model model) {
         model.addAttribute("orderDetailDto", this.orderDetailService.findById(id));
         model.addAttribute("users", this.userService.findAll());
         model.addAttribute("packages", this.packageService.findAll());
@@ -112,7 +112,7 @@ public class OrderDetailController {
     }
 
     @PostMapping("/update")
-    public String updateOrderDetail(
+    public String updateOrder(
             Model model,
             @ModelAttribute("orderDetailDto") OrderDetailDto orderDetailDto,
             BindingResult bindingResult
@@ -123,7 +123,7 @@ public class OrderDetailController {
 
         try {
             this.orderDetailService.update(orderDetailDto);
-            return "redirect:/orders-detail";
+            return "redirect:/orders";
         } catch (Exception exception) {
             exception.printStackTrace();
         }
@@ -134,6 +134,6 @@ public class OrderDetailController {
     @GetMapping("/delete/{id}")
     public String deleteOrderDetail(@PathVariable("id") Long id) {
         this.orderDetailService.delete(id);
-        return "redirect:/orders-detail";
+        return "redirect:/orders";
     }
 }

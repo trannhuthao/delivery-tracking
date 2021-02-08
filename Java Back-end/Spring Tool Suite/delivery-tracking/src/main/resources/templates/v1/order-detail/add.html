@@ -18,9 +18,9 @@
                 <div class="card bg-warning">
                     <h1 style="color: blue; font-size: 70px;" class="text-center">ADD ORDER</h1>
                     <p th:text="${errorMessage}"></p>
-                    <form th:action="@{/orders-detail/add}" method="post" th:object="${orderDetailDto}">
+                    <form th:action="@{/orders/add}" method="post" th:object="${orderDetailDto}">
                         <div class="form-group pl-4 pr-4">
-                            <h5>User:</h5>
+                            <h5>Existing User?</h5>
                             <div class="form-check">
                                 <label for="sender" type="text" class="form-check-label">
                                 </label>
@@ -49,10 +49,6 @@
                         </div>
                         <div class="card bg-light">
                             <div class="form-group  pl-4 pr-4">
-                                <h5>Package Name:</h5>
-                                <input th:field="*{packageName}" type="text" class="form-control" placeholder="Package Name">
-                            </div>
-                            <div class="form-group  pl-4 pr-4">
                                 <div class="form-check">
                                     <label for="boxSize" type="text" class="form-check-label">
                                         <h5>Select Box Size:</h5>
@@ -80,17 +76,8 @@
                                 </div>
                                 <span class="text-danger" th:if="${#fields.hasErrors('weightId')}" th:errors="*{weightId}"></span>
                             </div>
-                            <div class="form-group  pl-4 pr-4">
-                                <h5>Image:</h5>
-                                <div class="form-group">
-                                    <input type="file" id="image" name="imageName">
-                                </div>
-                            </div>
                             <div class="form-group pl-4 pr-4">
-                                <h5>From:</h5>
-                                <select class="form-control">
-                                <option>ABExpress</option>
-                            </select>
+                                <h5>From: ABC Express</h5>
                             </div>
                             <div class="form-group  pl-4 pr-4">
                                 <div class="form-check">

@@ -12,21 +12,19 @@ public class PackageMapper {
         return new PackageDto(
                 shippingPackage.getId(),
                 shippingPackage.getPackageName(),
-                shippingPackage.getImage(),
+//                shippingPackage.getImage(),
                 shippingPackage.getWeight().getId(),
                 shippingPackage.getWeight().getWeightRange(),
                 shippingPackage.getBoxSize().getId(),
                 shippingPackage.getBoxSize().getBoxSize(),
                 shippingPackage.getDescription(),
+                shippingPackage.getStatus(),
                 shippingPackage.getUser().getId(),
                 shippingPackage.getUser().getUsername(),
                 shippingPackage.getUser().getFullName(),
                 shippingPackage.getUser().getEmail(),
                 shippingPackage.getUser().getPhoneNumber(),
-                shippingPackage.getUser().getAddress().getAddress(),
-                shippingPackage.getOrderDetail().getId(),
-                shippingPackage.getOrderDetail().getStatus(),
-                shippingPackage.getOrderDetail().getShipper().getId()
+                shippingPackage.getUser().getAddress().getAddress()
         );
     }
 
@@ -34,12 +32,12 @@ public class PackageMapper {
         Package shippingPackage = new Package();
         shippingPackage.setId(shippingPackageDto.getId());
         shippingPackage.setPackageName(shippingPackageDto.getPackageName());
-        shippingPackage.setImage(shippingPackageDto.getImage());
+//        shippingPackage.setImage(shippingPackageDto.getImage());
         shippingPackage.setWeight(new Weight(shippingPackageDto.getWeightId()));
         shippingPackage.setBoxSize(new BoxSize(shippingPackageDto.getBoxSizeId()));
         shippingPackage.setDescription(shippingPackageDto.getDescription());
+        shippingPackage.setStatus(shippingPackage.getStatus());
         shippingPackage.setUser(new User(shippingPackageDto.getUserId()));
-        shippingPackage.setOrderDetail(new OrderDetail(shippingPackageDto.getOrderDetailId()));
         return shippingPackage;
     }
 }

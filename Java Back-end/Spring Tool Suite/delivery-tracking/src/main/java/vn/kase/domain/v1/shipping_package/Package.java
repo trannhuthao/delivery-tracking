@@ -24,8 +24,8 @@ public class Package extends BaseEntity {
 	@Column(name = "package_name")
 	private String packageName;
 
-	@Column(name = "image")
-	private byte image;
+//	@Column(name = "image")
+//	private byte image;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	private Weight weight;
@@ -36,11 +36,11 @@ public class Package extends BaseEntity {
 	@Column(name = "description")
 	private String description;
 
+	@Column(name = "status")
+	private Status status;
+
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	private User user;
-
-	@OneToOne(mappedBy = "shippingPackage", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-	private OrderDetail orderDetail;
 
 	public Package(Long id) {
 		super(id);

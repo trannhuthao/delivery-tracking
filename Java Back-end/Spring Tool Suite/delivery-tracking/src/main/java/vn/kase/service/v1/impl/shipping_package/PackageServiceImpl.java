@@ -49,12 +49,12 @@ public class PackageServiceImpl implements PackageService {
     public void update(PackageDto packageDto) {
         Package shippingPackage = this.packageRepository.findById(packageDto.getId()).get();
         shippingPackage.setPackageName(packageDto.getPackageName());
-        shippingPackage.setImage(packageDto.getImage());
+//        shippingPackage.setImage(packageDto.getImage());
         shippingPackage.setWeight(new Weight(packageDto.getWeightId()));
         shippingPackage.setBoxSize(new BoxSize(packageDto.getBoxSizeId()));
         shippingPackage.setDescription(packageDto.getDescription());
+        shippingPackage.setStatus(packageDto.getStatus());
         shippingPackage.setUser(new User(packageDto.getUserId()));
-        shippingPackage.setOrderDetail(new OrderDetail(packageDto.getOrderDetailId()));
         this.packageRepository.save(shippingPackage);
     }
 

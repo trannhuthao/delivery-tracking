@@ -19,12 +19,10 @@ public class OrderDetail extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Package shippingPackage;
 
-    private String status;
-
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Shipper shipper;
 
     public OrderDetail(Long id) {

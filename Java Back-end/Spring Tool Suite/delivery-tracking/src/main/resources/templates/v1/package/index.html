@@ -15,7 +15,7 @@
             <thead>
                 <tr class="text-warning">
                     <th>PACKAGE NAME</th>
-                    <th>IMAGE</th>
+<!--                    <th>IMAGE</th>-->
                     <th>WEIGHT</th>
                     <th>BOX SIZE</th>
                     <th>DESCRIPTION</th>
@@ -24,8 +24,6 @@
                     <th>USER'S EMAIL</th>
                     <th>USER'S PHONE NUMBER</th>
                     <th>USER'S ADDRESS</th>
-                    <th>ORDER ID</th>
-                    <th>ORDER STATUS</th>
                     <th>ACTION</th>
                 </tr>
             </thead>
@@ -35,8 +33,8 @@
                 </tr>
                 <tr th:each="shippingPackage : ${shippingPackages}">
                     <td th:text="${shippingPackage.packageName}">ABC Express</td>
-                    <td th:text="${shippingPackage.image}">abcexpress</td>
-                    <td th:text="${shippingPackage.weight}">abc@abcexpress.com</td>
+<!--                    <td th:text="${shippingPackage.image}">abcexpress</td>-->
+                    <td th:text="${shippingPackage.weightRange}">abc@abcexpress.com</td>
                     <td th:text="${shippingPackage.boxSize}">+84123456789</td>
                     <td th:text="${shippingPackage.description}">01/01/2021</td>
                     <td th:text="${shippingPackage.userFullname}">Hoe Chứa Mưa City</td>
@@ -44,11 +42,9 @@
                     <td th:text="${shippingPackage.userEmail}">Software Programmer</td>
                     <td th:text="${shippingPackage.userPhoneNumber}">Software Programmer</td>
                     <td th:text="${shippingPackage.userAddress}">Software Programmer</td>
-                    <td th:text="${shippingPackage.orderDetailStatus}">Software Programmer</td>
-                    <td th:text="${shippingPackage.shipperId}">Software Programmer</td>
                     <td>
-                        <a th:href="@{/shipping-packages/update(id=${shippingPackage.id})}" class="btn btn-success">Update</a>
-                        <a th:href="@{/shipping-packages/delete/{id}(id=${shippingPackage.id})}" class="btn btn-danger">Remove</a>
+                        <a th:href="@{/shipping-packages/update(id=${shippingPackage.id})}" class="btn btn-success m-2">Update</a>
+                        <a th:href="@{/shipping-packages/delete/{id}(id=${shippingPackage.id})}" class="btn btn-danger m-2">Remove</a>
                     </td>
                 </tr>
             </tbody>

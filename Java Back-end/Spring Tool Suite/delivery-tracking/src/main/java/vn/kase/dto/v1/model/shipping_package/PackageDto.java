@@ -1,6 +1,7 @@
 package vn.kase.dto.v1.model.shipping_package;
 
 import lombok.*;
+import vn.kase.domain.v1.shipping_package.Status;
 
 @Getter
 @Setter
@@ -13,7 +14,7 @@ public class PackageDto {
 
     private String packageName;
 
-    private byte image;
+//    private byte image;
 
     private Long weightId;
 
@@ -24,6 +25,8 @@ public class PackageDto {
     private String boxSize;
 
     private String description;
+
+    private Status status;
 
     private Long userId;
 
@@ -36,10 +39,4 @@ public class PackageDto {
     private String userPhoneNumber;
 
     private String userAddress;
-
-    private Long orderDetailId;
-
-    private String orderDetailStatus;
-
-    private Long shipperId;
 }

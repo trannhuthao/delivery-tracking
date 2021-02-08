@@ -115,6 +115,6 @@ public class PackageController {
     @GetMapping("/delete/{id}")
     public String deletePackage(@PathVariable("id") Long id) {
         this.packageService.delete(id);
-        return "redirect:/packages";
+        return "redirect:/shipping-packages";
     }
 }
