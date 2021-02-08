@@ -19,7 +19,7 @@ public class OrderDetail extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Package shippingPackage;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

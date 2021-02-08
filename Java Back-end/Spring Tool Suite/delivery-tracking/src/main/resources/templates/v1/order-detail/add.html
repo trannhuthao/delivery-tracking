@@ -21,7 +21,7 @@
             <p th:text="${errorMessage}"></p>
             <form th:action="@{/orders/add}" method="post" th:object="${orderDetailDto}">
                 <div class="mb-3">
-                    <label for="sender" class="form-label"><h5>Existing user?</h5></label>
+                    <label for="sender" class="form-label"><h5>Choose the sender:</h5></label>
                     <select th:field="*{userId}" class="form-control" id="sender">
                         <option th:each="user : ${users}"
                                 th:value="${user.id}"
@@ -31,11 +31,11 @@
                     <span class="text-danger" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></span>
                 </div>
                 <div class="mb-3">
-                    <label for="sender" class="form-label"><h5>New user?</h5></label>
+                    <label class="form-label"><h5>New user?</h5></label>
                     <a th:href="@{/users/add}" class="btn btn-warning ml-2">Create New Account</a>
                 </div>
                 <div class="mb-3">
-                    <label for="recipient" class="form-label"><h5>Is the recipient an existing user?</h5></label>
+                    <label for="recipient" class="form-label"><h5>Choose the recipient:</h5></label>
                     <select th:field="*{recipientId}" class="form-control" id="recipient">
                         <option th:each="recipient : ${users}"
                                 th:value="${recipient.id}"
@@ -49,27 +49,21 @@
                     <a th:href="@{/users/add}" class="btn btn-warning ml-2">Create New Account</a>
                 </div>
                 <div class="mb-3">
-                    <label for="boxSize" class="form-label"><h5>Select box size:</h5></label>
-                    <select th:field="*{boxSizeId}" class="form-control" id="boxSize">
-                        <option th:each="boxSize : ${boxSizes}"
-                                th:value="${boxSize.id}"
-                                th:text="${boxSize.boxSize}">
+                    <label for="package" class="form-label"><h5>Choose package:</h5></label>
+                    <select th:field="*{shippingPackageId}" class="form-control" id="package">
+                        <option th:each="package : ${packages}"
+                                th:value="${package.id}"
+                                th:text="${package.packageName}">
                         </option>
                     </select>
-                    <span class="text-danger" th:if="${#fields.hasErrors('boxSizeId')}" th:errors="*{boxSizeId}"></span>
+                    <span class="text-danger" th:if="${#fields.hasErrors('shippingPackageId')}" th:errors="*{shippingPackageId}"></span>
                 </div>
                 <div class="mb-3">
-                    <label for="weight" class="form-label"><h5>Select weight range:</h5></label>
-                    <select th:field="*{weightId}" class="form-control" id="weight">
-                        <option th:each="weight : ${weights}"
-                                th:value="${weight.id}"
-                                th:text="${weight.weightRange}">
-                        </option>
-                    </select>
-                    <span class="text-danger" th:if="${#fields.hasErrors('weightId')}" th:errors="*{weightId}"></span>
+                    <label class="form-label"><h5>Package doesn't exist?</h5></label>
+                    <a th:href="@{/shipping-packages/add}" class="btn btn-warning ml-2">Create New Package</a>
                 </div>
                 <div class="mb-3">
-                    <label for="address" class="form-label"><h5>From ABC Express to:</h5></label>
+                    <label for="address" class="form-label"><h5>From <b>ABC Express</b> to:</h5></label>
                     <select th:field="*{recipientAddressId}" class="form-control" id="address">
                         <option th:each="recipientAddressId : ${addresses}"
                                 th:value="${recipientAddressId.id}"
