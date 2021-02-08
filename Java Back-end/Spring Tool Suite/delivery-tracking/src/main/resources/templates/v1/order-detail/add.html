@@ -62,17 +62,20 @@
                     <label class="form-label"><h5>Package doesn't exist?</h5></label>
                     <a th:href="@{/shipping-packages/add}" class="btn btn-warning ml-2">Create New Package</a>
                 </div>
+<!--                <div class="mb-3">-->
+<!--                    <label for="address" class="form-label"><h5>From <b>ABC Express</b> to:</h5></label>-->
+<!--                    <select th:field="*{recipientAddressId}" class="form-control" id="address">-->
+<!--                        <option th:each="recipientAddressId : ${addresses}"-->
+<!--                                th:value="${recipientAddressId.id}"-->
+<!--                                th:text="${recipientAddressId.address}">-->
+<!--                        </option>-->
+<!--                    </select>-->
+<!--                    <span class="text-danger" th:if="${#fields.hasErrors('recipientAddressId')}" th:errors="*{recipientAddressId}"></span>-->
+<!--                </div>-->
                 <div class="mb-3">
-                    <label for="address" class="form-label"><h5>From <b>ABC Express</b> to:</h5></label>
-                    <select th:field="*{recipientAddressId}" class="form-control" id="address">
-                        <option th:each="recipientAddressId : ${addresses}"
-                                th:value="${recipientAddressId.id}"
-                                th:text="${recipientAddressId.address}">
-                        </option>
-                    </select>
-                    <span class="text-danger" th:if="${#fields.hasErrors('recipientAddressId')}" th:errors="*{recipientAddressId}"></span>
+                    <button type="submit" class="btn btn-lg btn-primary">Add Order</button>
+                    <a th:href="@{/orders}" class="btn btn-lg btn-warning">Back</a>
                 </div>
-                <button type="submit" class="btn btn-lg btn-primary mt-2 mb-4">Add Order</button>
             </form>
         </div>
         <div th:replace="./v1/fragments/footer"></div>

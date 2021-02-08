@@ -2,6 +2,7 @@ package vn.kase.service.v1.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vn.kase.domain.v1.Shipper;
 import vn.kase.dto.v1.mapper.ShipperMapper;
 import vn.kase.dto.v1.model.ShipperDto;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class ShipperServiceImpl implements ShipperService {
     private final ShipperRepository shipperRepository;
 

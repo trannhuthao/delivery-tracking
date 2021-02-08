@@ -2,9 +2,11 @@ package vn.kase.service.v1.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vn.kase.domain.v1.OrderDetail;
 import vn.kase.domain.v1.shipping_package.Package;
 import vn.kase.domain.v1.Shipper;
+import vn.kase.domain.v1.user.Address;
 import vn.kase.domain.v1.user.User;
 import vn.kase.dto.v1.mapper.OrderDetailMapper;
 import vn.kase.dto.v1.model.OrderDetailDto;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class OrderDetailServiceImpl implements OrderDetailService {
     private final OrderDetailRepository orderDetailRepository;
 
@@ -50,6 +53,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
         orderDetail.setUser(new User(orderDetailDto.getUserId()));
         orderDetail.setShippingPackage(new Package(orderDetailDto.getShippingPackageId()));
         orderDetail.setShipper(new Shipper(orderDetailDto.getShipperId()));
+        orderDetail.setUser(new User(orderDetailDto.getUserId()));
         this.orderDetailRepository.save(orderDetail);
     }
 

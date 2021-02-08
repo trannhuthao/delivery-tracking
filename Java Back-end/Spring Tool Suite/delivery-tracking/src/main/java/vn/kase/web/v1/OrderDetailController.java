@@ -93,8 +93,8 @@ public class OrderDetailController {
         }
 
         try {
-            this.orderDetailService.add(orderDetailDto);
             model.addAttribute("orderId", orderDetailDto.getId());
+            this.orderDetailService.add(orderDetailDto);
             return "v1/order-detail/add-order-success";
         } catch (Exception exception) {
             exception.printStackTrace();

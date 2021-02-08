@@ -2,6 +2,7 @@ package vn.kase.service.v1.impl.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vn.kase.domain.v1.Role;
 import vn.kase.domain.v1.user.Address;
 import vn.kase.domain.v1.user.User;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 

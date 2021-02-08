@@ -18,7 +18,7 @@ public class OrderDetailDto {
 
     private String username;
 
-    private String userFullname;
+    private String userFullName;
 
     private String userEmail;
 
@@ -29,6 +29,10 @@ public class OrderDetailDto {
     private Long userAddressId;
 
     private String userAddress;
+
+    private Long userRoleId;
+
+    private String userRoleDescription;
 
     private Long shippingPackageId;
 
@@ -48,19 +52,47 @@ public class OrderDetailDto {
 
     private Status status;
 
+    private Long packageOwnerId;
+
+    private String packageOwnerUsername;
+
+    private String packageOwnerFullname;
+
+    private String packageOwnerEmail;
+
+    private String packageOwnerPhoneNumber;
+
+    private Date packageOwnerDateOfBirth;
+
+    private Long packageOwnerAddressId;
+
+    private String packageOwnerAddress;
+
+    private Long packageOwnerRoleId;
+
+    private String packageOwnerRoleDescription;
+
+    private Long shipperId;
+
+    private String shipperFullName;
+
     private Long recipientId;
 
     private String recipientUsername;
 
-    private String recipientFullname;
+    private String recipientFullName;
 
     private String recipientEmail;
 
     private String recipientPhoneNumber;
 
+    private Date recipientDateOfBirth;
+
     private Long recipientAddressId;
 
     private String recipientAddress;
 
-    private Long shipperId;
+    private Long recipientRoleId;
+
+    private String recipientRoleDescription;
 }

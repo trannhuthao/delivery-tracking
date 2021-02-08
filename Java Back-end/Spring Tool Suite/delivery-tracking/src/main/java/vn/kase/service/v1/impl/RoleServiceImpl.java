@@ -2,6 +2,7 @@ package vn.kase.service.v1.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vn.kase.domain.v1.Role;
 import vn.kase.dto.v1.mapper.RoleMapper;
 import vn.kase.dto.v1.model.RoleDto;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class RoleServiceImpl implements RoleService {
     private final RoleRepository roleRepository;
 

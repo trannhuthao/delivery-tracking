@@ -2,6 +2,7 @@ package vn.kase.service.v1.impl.shipping_package;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vn.kase.domain.v1.OrderDetail;
 import vn.kase.domain.v1.shipping_package.BoxSize;
 import vn.kase.domain.v1.shipping_package.Package;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class PackageServiceImpl implements PackageService {
     private final PackageRepository packageRepository;
 

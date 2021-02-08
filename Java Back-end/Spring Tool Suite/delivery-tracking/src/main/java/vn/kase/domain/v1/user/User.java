@@ -20,7 +20,7 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "user")
-public class User extends BaseEntity {
+public class        User extends BaseEntity {
     @Column(name = "username")
     private String username;
 
@@ -46,7 +46,7 @@ public class User extends BaseEntity {
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private Role role;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
