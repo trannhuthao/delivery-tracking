@@ -35,7 +35,7 @@
                     <a th:href="@{/users/add}" class="btn btn-warning ml-2">Create New Account</a>
                 </div>
                 <div class="mb-3">
-                    <label for="recipient" class="form-label"><h5>Choose the recipient:</h5></label>
+                    <label for="recipient" class="form-label"><h5>Choose the recipient (recipient has to be another user other than the sender):</h5></label>
                     <select th:field="*{recipientId}" class="form-control" id="recipient">
                         <option th:each="recipient : ${users}"
                                 th:value="${recipient.id}"
@@ -62,16 +62,6 @@
                     <label class="form-label"><h5>Package doesn't exist?</h5></label>
                     <a th:href="@{/shipping-packages/add}" class="btn btn-warning ml-2">Create New Package</a>
                 </div>
-<!--                <div class="mb-3">-->
-<!--                    <label for="address" class="form-label"><h5>From <b>ABC Express</b> to:</h5></label>-->
-<!--                    <select th:field="*{recipientAddressId}" class="form-control" id="address">-->
-<!--                        <option th:each="recipientAddressId : ${addresses}"-->
-<!--                                th:value="${recipientAddressId.id}"-->
-<!--                                th:text="${recipientAddressId.address}">-->
-<!--                        </option>-->
-<!--                    </select>-->
-<!--                    <span class="text-danger" th:if="${#fields.hasErrors('recipientAddressId')}" th:errors="*{recipientAddressId}"></span>-->
-<!--                </div>-->
                 <div class="mb-3">
                     <button type="submit" class="btn btn-lg btn-primary">Add Order</button>
                     <a th:href="@{/orders}" class="btn btn-lg btn-warning">Back</a>

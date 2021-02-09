@@ -10,5 +10,65 @@
 </head>
 <body>
     <div th:replace="./v1/fragments/navbar"></div>
+    <div class="container">
+        <h1 class="text-center display-1">UPDATE PACKAGE</h1>
+        <p th:text="${errorMessage}"></p>
+        <form th:action="@{/shipping-packages/update}" method="post" th:object="${shippingPackageDto}">
+            <input type="hidden" th:field="*{id}"/>
+            <div class="mb-3">
+                <label for="packageName" class="form-label">Package name:</label>
+                <input th:field="*{packageName}" type="text" class="form-control" id="packageName">
+                <span class="text-danger" th:if="${#fields.hasErrors('packageName')}" th:errors="*{packageName}"></span>
+            </div>
+            <!--            <div class="mb-3">-->
+            <!--                <label for="image" class="form-label">Image:</label>-->
+            <!--                <input th:field="*{image}" type="file" class="form-control" id="image">-->
+            <!--                <span class="text-danger" th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></span>-->
+            <!--            </div>-->
+            <div class="mb-3">
+                <label for="weight" class="form-label">Weight range:</label>
+                <select th:field="*{weightId}" class="form-control" id="weight">
+                    <option th:each="weight : ${weights}"
+                            th:value="${weight.id}"
+                            th:text="${weight.weightRange}">
+                    </option>
+                </select>
+                <span class="text-danger" th:if="${#fields.hasErrors('weightId')}" th:errors="*{weightId}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="boxSize" class="form-label">Box size:</label>
+                <select th:field="*{boxSizeId}" class="form-control" id="boxSize">
+                    <option th:each="boxSize : ${boxSizes}"
+                            th:value="${boxSize.id}"
+                            th:text="${boxSize.boxSize}">
+                    </option>
+                </select>
+                <span class="text-danger" th:if="${#fields.hasErrors('boxSizeId')}" th:errors="*{boxSizeId}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <input th:field="*{description}" type="text" class="form-control" id="description">
+                <span class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="status" class="form-label">Status:</label>
+                <select th:field="*{status}" class="form-select text-center" id="status">
+                    <option th:each="status : ${T(vn.kase.domain.v1.shipping_package.Status).values()}" th:value="${status}" th:text="${status.getStatus}">DELIVERED</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="user" class="form-label">User:</label>
+                <select th:field="*{userId}" class="form-control" id="user" disabled>
+                    <option th:each="user : ${users}"
+                            th:value="${user.id}"
+                            th:text="${user.fullName}">
+                    </option>
+                </select>
+                <span class="text-danger" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></span>
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary">Save</button>
+            <a th:href="@{/shipping-packages}" class="btn btn-lg  btn-warning">Back</a>
+        </form>
+    </div>
 </body>
 </html>

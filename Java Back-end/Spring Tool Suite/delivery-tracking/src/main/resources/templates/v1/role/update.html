@@ -11,7 +11,7 @@
 <body>
     <div th:replace="./v1/fragments/navbar"></div>
     <div class="container">
-        <h1 class="text-center display-1">ADD ROLE</h1>
+        <h1 class="text-center display-1">UPDATE ROLE</h1>
         <p th:text="${errorMessage}"></p>
         <form th:action="@{/roles/update}" method="post" th:object="${roleDto}">
             <input type="hidden" th:field="*{id}"/>
