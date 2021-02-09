@@ -24,6 +24,7 @@ public class PackageMapper {
                 shippingPackage.getUser().getFullName(),
                 shippingPackage.getUser().getEmail(),
                 shippingPackage.getUser().getPhoneNumber(),
+                shippingPackage.getUser().getAddress().getId(),
                 shippingPackage.getUser().getAddress().getAddress()
         );
     }

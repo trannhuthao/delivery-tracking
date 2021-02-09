@@ -7,21 +7,36 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import vn.kase.dto.v1.model.user.UserDto;
 import vn.kase.service.v1.RoleService;
+import vn.kase.service.v1.shipping_package.PackageService;
 import vn.kase.service.v1.user.AddressService;
 import vn.kase.service.v1.user.UserService;
 
 @Controller
 @RequestMapping("/users")
 public class UserController {
-    private final UserService userService;
-    private final RoleService roleService;
-    private final AddressService addressService;
+    private UserService userService;
+    private RoleService roleService;
+    private AddressService addressService;
+    private PackageService packageService;
 
     @Autowired
-    public UserController(UserService userService, RoleService roleService, AddressService addressService) {
+    public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    @Autowired
+    public void setRoleService(RoleService roleService) {
         this.roleService = roleService;
+    }
+
+    @Autowired
+    public void setAddressService(AddressService addressService) {
         this.addressService = addressService;
+    }
+
+    @Autowired
+    public void setPackageService(PackageService packageService) {
+        this.packageService = packageService;
     }
 
     @GetMapping
@@ -35,6 +50,7 @@ public class UserController {
         model.addAttribute("userDto", new UserDto());
         model.addAttribute("roles", this.roleService.findAll());
         model.addAttribute("addresses", this.addressService.findAll());
+        model.addAttribute("shippingPackages", this.packageService.findAll());
         return "v1/user/add";
     }
 
@@ -63,6 +79,7 @@ public class UserController {
         model.addAttribute("userDto", this.userService.findById(id));
         model.addAttribute("roles", this.roleService.findAll());
         model.addAttribute("addresses", this.addressService.findAll());
+        model.addAttribute("shippingPackages", this.packageService.findAll());
         return "v1/user/update";
     }
 

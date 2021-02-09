@@ -38,5 +38,7 @@ public class PackageDto {
 
     private String userPhoneNumber;
 
+    private Long userAddressId;
+
     private String userAddress;
 }

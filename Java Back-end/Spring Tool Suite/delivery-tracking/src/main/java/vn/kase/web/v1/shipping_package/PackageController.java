@@ -10,6 +10,7 @@ import vn.kase.service.v1.OrderDetailService;
 import vn.kase.service.v1.shipping_package.BoxSizeService;
 import vn.kase.service.v1.shipping_package.PackageService;
 import vn.kase.service.v1.shipping_package.WeightService;
+import vn.kase.service.v1.user.AddressService;
 import vn.kase.service.v1.user.UserService;
 
 @Controller
@@ -17,6 +18,7 @@ import vn.kase.service.v1.user.UserService;
 public class PackageController {
     private PackageService packageService;
     private UserService userService;
+    private AddressService addressService;
     private OrderDetailService orderDetailService;
     private WeightService weightService;
     private BoxSizeService boxSizeService;
@@ -29,6 +31,11 @@ public class PackageController {
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    @Autowired
+    public void setAddressService(AddressService addressService) {
+        this.addressService = addressService;
     }
 
     @Autowired
@@ -56,6 +63,7 @@ public class PackageController {
     public String addPackage(Model model) {
         model.addAttribute("shippingPackageDto", new PackageDto());
         model.addAttribute("users", this.userService.findAll());
+        model.addAttribute("addresses", this.addressService.findAll());
         model.addAttribute("orders", this.orderDetailService.findAll());
         model.addAttribute("weights", this.weightService.findAll());
         model.addAttribute("boxSizes", this.boxSizeService.findAll());
@@ -86,6 +94,7 @@ public class PackageController {
     public String updatePackage(@RequestParam("id") Long id, Model model) {
         model.addAttribute("shippingPackageDto", this.packageService.findById(id));
         model.addAttribute("users", this.userService.findAll());
+        model.addAttribute("addresses", this.addressService.findAll());
         model.addAttribute("orders", this.orderDetailService.findAll());
         model.addAttribute("weights", this.weightService.findAll());
         model.addAttribute("boxSizes", this.boxSizeService.findAll());

@@ -39,7 +39,7 @@ public class Package extends BaseEntity {
 	@Column(name = "status")
 	private Status status;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private User user;
 
 	public Package(Long id) {

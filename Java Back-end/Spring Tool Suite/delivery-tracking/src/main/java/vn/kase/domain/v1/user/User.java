@@ -20,7 +20,7 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "user")
-public class        User extends BaseEntity {
+public class User extends BaseEntity {
     @Column(name = "username")
     private String username;
 
