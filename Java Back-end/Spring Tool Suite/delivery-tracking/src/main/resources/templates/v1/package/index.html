@@ -39,7 +39,7 @@
                     <td th:text="${shippingPackage.weightRange}">abc@abcexpress.com</td>
                     <td th:text="${shippingPackage.boxSize}">+84123456789</td>
                     <td th:text="${shippingPackage.description}">01/01/2021</td>
-                    <td th:text="${shippingPackage.status}">01/01/2021</td>
+                    <td th:text="${shippingPackage.status.getStatus()}">01/01/2021</td>
                     <td th:text="${shippingPackage.userFullname}">Hoe Chứa Mưa City</td>
                     <td th:text="${shippingPackage.username}">Hoe Chứa Mưa City</td>
                     <td th:text="${shippingPackage.userEmail}">Software Programmer</td>
@@ -52,8 +52,8 @@
                 </tr>
             </tbody>
         </table>
-        <a th:href="@{/shipping-packages/add}" class="btn btn-lg btn-primary">Add Shipping Package</a>
-        <a th:href="@{/}" class="btn btn-lg btn-warning">Back</a>
+        <a th:href="@{/shipping-packages/add}" class="btn btn-lg btn-primary mb-3">Add Shipping Package</a>
+        <a th:href="@{/}" class="btn btn-lg btn-warning mb-3">Back</a>
     </div>
     <div th:replace="./v1/fragments/footer"></div>
 </body>

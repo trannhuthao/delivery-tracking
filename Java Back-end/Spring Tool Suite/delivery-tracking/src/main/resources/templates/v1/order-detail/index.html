@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Table Order</title>
+	<title>Delivery Tracking</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -51,7 +51,7 @@
 					<td th:text="${orderDetail.weightRange}"></td>
 					<td th:text="${orderDetail.boxSize}"></td>
 					<td th:text="${orderDetail.packageDescription}"></td>
-					<td th:text="${orderDetail.status}"></td>
+					<td th:text="${orderDetail.status.getStatus()}"></td>
 					<td th:text="${orderDetail.shipperId}"></td>
 					<td th:text="${orderDetail.recipientFullName}"></td>
 					<td th:text="${orderDetail.recipientUsername}"></td>
