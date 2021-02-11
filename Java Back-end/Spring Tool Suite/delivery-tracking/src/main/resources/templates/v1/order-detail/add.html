@@ -16,7 +16,7 @@
     </head>
     <body>
         <div th:replace="./v1/fragments/navbar"></div>
-        <div class="container mt-5">
+        <div class="container mt-4">
             <h1 class="text-center display-1">ADD ORDER</h1>
             <p th:text="${errorMessage}"></p>
             <form th:action="@{/orders/add}" method="post" th:object="${orderDetailDto}">
