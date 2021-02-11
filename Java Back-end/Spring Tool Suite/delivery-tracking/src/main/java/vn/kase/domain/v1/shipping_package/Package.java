@@ -16,8 +16,8 @@ import vn.kase.domain.v1.user.User;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
-@ToString
+//@EqualsAndHashCode
+//@ToString
 @Entity
 @Table(name = "package")
 public class Package extends BaseEntity {
@@ -39,7 +39,7 @@ public class Package extends BaseEntity {
 	@Column(name = "status")
 	private Status status;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	private User user;
 
 	public Package(Long id) {

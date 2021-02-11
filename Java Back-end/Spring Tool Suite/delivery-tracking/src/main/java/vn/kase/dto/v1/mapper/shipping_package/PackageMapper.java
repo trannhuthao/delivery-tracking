@@ -1,6 +1,5 @@
 package vn.kase.dto.v1.mapper.shipping_package;
 
-import vn.kase.domain.v1.OrderDetail;
 import vn.kase.domain.v1.shipping_package.BoxSize;
 import vn.kase.domain.v1.shipping_package.Package;
 import vn.kase.domain.v1.user.User;
@@ -9,24 +8,23 @@ import vn.kase.dto.v1.model.shipping_package.PackageDto;
 
 public class PackageMapper {
     public static PackageDto toDto(Package shippingPackage) {
-        return new PackageDto(
-                shippingPackage.getId(),
-                shippingPackage.getPackageName(),
-//                shippingPackage.getImage(),
-                shippingPackage.getWeight().getId(),
-                shippingPackage.getWeight().getWeightRange(),
-                shippingPackage.getBoxSize().getId(),
-                shippingPackage.getBoxSize().getBoxSize(),
-                shippingPackage.getDescription(),
-                shippingPackage.getStatus(),
-                shippingPackage.getUser().getId(),
-                shippingPackage.getUser().getUsername(),
-                shippingPackage.getUser().getFullName(),
-                shippingPackage.getUser().getEmail(),
-                shippingPackage.getUser().getPhoneNumber(),
-                shippingPackage.getUser().getAddress().getId(),
-                shippingPackage.getUser().getAddress().getAddress()
-        );
+        PackageDto packageDto = new PackageDto();
+        packageDto.setId(shippingPackage.getId());
+        packageDto.setPackageName(shippingPackage.getPackageName());
+        packageDto.setWeightId(shippingPackage.getWeight().getId());
+        packageDto.setWeightRange(shippingPackage.getWeight().getWeightRange());
+        packageDto.setBoxSizeId(shippingPackage.getBoxSize().getId());
+        packageDto.setBoxSize(shippingPackage.getBoxSize().getBoxSize());
+        packageDto.setDescription(shippingPackage.getDescription());
+        packageDto.setStatus(shippingPackage.getStatus());
+        packageDto.setUserId(shippingPackage.getUser().getId());
+        packageDto.setUsername(shippingPackage.getUser().getUsername());
+        packageDto.setUserFullname(shippingPackage.getUser().getFullName());
+        packageDto.setUserEmail(shippingPackage.getUser().getEmail());
+        packageDto.setUserPhoneNumber(shippingPackage.getUser().getPhoneNumber());
+        packageDto.setUserAddressId(shippingPackage.getUser().getAddress().getId());
+        packageDto.setUserAddress(shippingPackage.getUser().getAddress().getAddress());
+        return packageDto;
     }
 
     public static Package toEntity(PackageDto shippingPackageDto) {

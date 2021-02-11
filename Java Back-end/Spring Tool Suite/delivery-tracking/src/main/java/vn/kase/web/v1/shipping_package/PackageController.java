@@ -24,43 +24,43 @@ public class PackageController {
     private BoxSizeService boxSizeService;
 
     @Autowired
-    public void setPackageService(PackageService packageService) {
+    public void setPackageService(final PackageService packageService) {
         this.packageService = packageService;
     }
 
     @Autowired
-    public void setUserService(UserService userService) {
+    public void setUserService(final UserService userService) {
         this.userService = userService;
     }
 
     @Autowired
-    public void setAddressService(AddressService addressService) {
+    public void setAddressService(final AddressService addressService) {
         this.addressService = addressService;
     }
 
     @Autowired
-    public void setOrderDetailService(OrderDetailService orderDetailService) {
+    public void setOrderDetailService(final OrderDetailService orderDetailService) {
         this.orderDetailService = orderDetailService;
     }
 
     @Autowired
-    public void setWeightService(WeightService weightService) {
+    public void setWeightService(final WeightService weightService) {
         this.weightService = weightService;
     }
 
     @Autowired
-    public void setBoxSizeService(BoxSizeService boxSizeService) {
+    public void setBoxSizeService(final BoxSizeService boxSizeService) {
         this.boxSizeService = boxSizeService;
     }
 
     @GetMapping
-    public String getPackages(Model model) {
+    public String getPackages(final Model model) {
         model.addAttribute("shippingPackages", this.packageService.findAll());
         return "v1/package/index";
     }
 
     @GetMapping("/add")
-    public String addPackage(Model model) {
+    public String addPackage(final Model model) {
         model.addAttribute("shippingPackageDto", new PackageDto());
         model.addAttribute("users", this.userService.findAll());
         model.addAttribute("addresses", this.addressService.findAll());
@@ -72,9 +72,9 @@ public class PackageController {
 
     @PostMapping("/add")
     public String addPackage(
-            Model model,
-            @ModelAttribute("shippingPackageDto") PackageDto packageDto,
-            BindingResult bindingResult
+            final Model model,
+            final @ModelAttribute("shippingPackageDto") PackageDto packageDto,
+            final BindingResult bindingResult
     ) {
         if (bindingResult.hasErrors()) {
             return "v1/package/add";
@@ -91,7 +91,7 @@ public class PackageController {
     }
 
     @GetMapping("/update")
-    public String updatePackage(@RequestParam("id") Long id, Model model) {
+    public String updatePackage(final @RequestParam("id") Long id, final Model model) {
         model.addAttribute("shippingPackageDto", this.packageService.findById(id));
         model.addAttribute("users", this.userService.findAll());
         model.addAttribute("addresses", this.addressService.findAll());
@@ -103,9 +103,9 @@ public class PackageController {
 
     @PostMapping("/update")
     public String updatePackage(
-            Model model,
-            @ModelAttribute("shippingPackageDto") PackageDto packageDto,
-            BindingResult bindingResult
+            final Model model,
+            final @ModelAttribute("shippingPackageDto") PackageDto packageDto,
+            final BindingResult bindingResult
     ) {
         if (bindingResult.hasErrors()) {
             return "v1/package/update";
@@ -122,7 +122,7 @@ public class PackageController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deletePackage(@PathVariable("id") Long id) {
+    public String deletePackage(final @PathVariable("id") Long id) {
         this.packageService.delete(id);
         return "redirect:/shipping-packages";
     }

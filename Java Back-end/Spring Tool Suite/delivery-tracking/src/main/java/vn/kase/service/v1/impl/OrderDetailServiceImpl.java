@@ -53,7 +53,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
         orderDetail.setUser(new User(orderDetailDto.getUserId()));
         orderDetail.setShippingPackage(new Package(orderDetailDto.getShippingPackageId()));
         orderDetail.setShipper(new Shipper(orderDetailDto.getShipperId()));
-        orderDetail.setUser(new User(orderDetailDto.getUserId()));
+        orderDetail.setRecipient(new User(orderDetailDto.getRecipientId()));
         this.orderDetailRepository.save(orderDetail);
     }
 
