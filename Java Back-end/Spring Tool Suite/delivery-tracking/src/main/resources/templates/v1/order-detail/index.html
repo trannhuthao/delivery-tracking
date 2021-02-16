@@ -60,7 +60,7 @@
 						<td th:text="${orderDetail.recipientEmail}"></td>
 						<td th:text="${orderDetail.recipientPhoneNumber}"></td>
 						<td th:text="${orderDetail.recipientAddress}"></td>
-						<td th:text="${orderDetail.total}"></td>
+						<td th:text="${orderDetail.total + '₫'}"></td>
 						<td>
 							<a th:href="@{/orders/detail(id=${orderDetail.id})}" class="btn btn-info m-1">View</a>
 							<a th:href="@{/orders/update(id=${orderDetail.id})}" class="btn btn-success m-1">Update</a>
