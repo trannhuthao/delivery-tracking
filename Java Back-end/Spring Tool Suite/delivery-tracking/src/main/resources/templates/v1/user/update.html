@@ -27,7 +27,7 @@
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password:</label>
-                <input th:field="*{password}" type="password" class="form-control" id="password">
+                <input th:field="*{password}" th:value="${userDto.password}" th:type="password" class="form-control" id="password">
                 <span class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
             </div>
             <div class="mb-3">
@@ -65,8 +65,8 @@
                 </select>
                 <span class="text-danger" th:if="${#fields.hasErrors('roleId')}" th:errors="*{roleId}"></span>
             </div>
-            <button type="submit" class="btn btn-lg btn-primary">Save</button>
-            <a th:href="@{/users}" class="btn btn-lg  btn-warning">Back</a>
+            <button type="submit" class="btn btn-lg btn-primary mb-3">Save</button>
+            <a th:href="@{/users}" class="btn btn-lg btn-warning mb-3">Back</a>
         </form>
     </div>
     <div th:replace="./v1/fragments/footer"></div>

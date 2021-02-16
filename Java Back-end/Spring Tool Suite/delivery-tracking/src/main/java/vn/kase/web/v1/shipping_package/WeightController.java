@@ -26,6 +26,12 @@ public class WeightController {
         return "v1/package/weights/index";
     }
 
+    @GetMapping("/detail")
+    public String getWeightRangeById(final Model model, final @RequestParam("id") Long id) {
+        model.addAttribute("weightDto", this.weightService.findById(id));
+        return "v1/package/weights/detail";
+    }
+
     @GetMapping("/add")
     public String addWeight(Model model) {
         model.addAttribute("weightDto", new WeightDto());

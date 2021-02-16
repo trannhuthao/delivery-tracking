@@ -27,6 +27,12 @@ public class AddressController {
         return "v1/address/index";
     }
 
+    @GetMapping("/detail")
+    public String getAddressById(final Model model, final @RequestParam("id") Long id) {
+        model.addAttribute("addressDto", this.addressService.findById(id));
+        return "v1/address/detail";
+    }
+
     @GetMapping("/add")
     public String addAddress(Model model) {
         model.addAttribute("addressDto", new AddressDto());

@@ -95,4 +95,6 @@ public class OrderDetailDto {
     private Long recipientRoleId;
 
     private String recipientRoleDescription;
+
+    private double total;
 }

@@ -22,6 +22,7 @@
             <tr th:each="address : ${addresses}">
                 <td th:text="${address.address}"></td>
                 <td>
+                    <a th:href="@{/addresses/detail(id=${address.id})}" class="btn btn-info m-1">View</a>
                     <a th:href="@{/addresses/update(id=${address.id})}" class="btn btn-success m-1">Update</a>
                     <a th:href="@{/addresses/delete/{id}(id=${address.id})}" class="btn btn-danger m-1">Remove</a>
                 </td>

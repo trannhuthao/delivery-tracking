@@ -75,6 +75,20 @@ public class OrderDetailController {
         return "v1/order-detail/index";
     }
 
+    @GetMapping("/detail")
+    public String getOrderById(final Model model, final @RequestParam("id") Long id) {
+        model.addAttribute("orderDetailDto", this.orderDetailService.findById(id));
+        model.addAttribute("newUser", new UserDto());
+        model.addAttribute("users", this.userService.findAll());
+        model.addAttribute("newPackage", new PackageDto());
+        model.addAttribute("packages", this.packageService.findAll());
+        model.addAttribute("weights", this.weightService.findAll());
+        model.addAttribute("boxSizes", this.boxSizeService.findAll());
+        model.addAttribute("addresses", this.addressService.findAll());
+        model.addAttribute("shippers", this.shipperService.findAll());
+        return "v1/order-detail/detail";
+    }
+
     @GetMapping("/add")
     public String addOrder(Model model) {
         model.addAttribute("orderDetailDto", new OrderDetailDto());

@@ -38,6 +38,7 @@
                     <td th:text="${user.address}">Hoe Chứa Mưa City</td>
                     <td th:text="${user.roleDescription}">Software Programmer</td>
                     <td>
+                        <a th:href="@{/users/detail(id=${user.id})}" class="btn btn-info m-1">View</a>
                         <a th:href="@{/users/update(id=${user.id})}" class="btn btn-success m-1">Update</a>
                         <a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-danger m-1">Remove</a>
                     </td>

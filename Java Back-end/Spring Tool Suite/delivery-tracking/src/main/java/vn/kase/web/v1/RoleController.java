@@ -24,6 +24,12 @@ public class RoleController {
         return "v1/role/index";
     }
 
+    @GetMapping("/detail")
+    public String getRoleById(final Model model, final @RequestParam("id") Long id) {
+        model.addAttribute("roleDto", this.roleService.findById(id));
+        return "v1/role/detail";
+    }
+
     @GetMapping("/add")
     public String addRole(Model model) {
         model.addAttribute("roleDto", new RoleDto());

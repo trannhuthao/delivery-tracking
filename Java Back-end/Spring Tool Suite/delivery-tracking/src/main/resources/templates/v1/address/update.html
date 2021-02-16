@@ -16,8 +16,8 @@
                 <input th:field="*{address}" type="text" class="form-control" id="address">
                 <span class="text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
             </div>
-            <button type="submit" class="btn btn-lg btn-primary">Save</button>
-            <a th:href="@{/addresses}" class="btn btn-lg  btn-warning">Back</a>
+            <button type="submit" class="btn btn-lg btn-primary mb-3">Save</button>
+            <a th:href="@{/addresses}" class="btn btn-lg btn-warning mb-3">Back</a>
         </form>
     </div>
     <div th:replace="./v1/fragments/footer"></div>

@@ -46,6 +46,7 @@
                     <td th:text="${shippingPackage.userPhoneNumber}">Software Programmer</td>
                     <td th:text="${shippingPackage.userAddress}">Software Programmer</td>
                     <td>
+                        <a th:href="@{/shipping-packages/detail(id=${shippingPackage.id})}" class="btn btn-info m-1">View</a>
                         <a th:href="@{/shipping-packages/update(id=${shippingPackage.id})}" class="btn btn-success m-1">Update</a>
                         <a th:href="@{/shipping-packages/delete/{id}(id=${shippingPackage.id})}" class="btn btn-danger m-1">Remove</a>
                     </td>

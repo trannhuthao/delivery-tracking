@@ -22,10 +22,11 @@
 				</tr>
 				<tr th:each="boxSize : ${boxSizes}">
 					<td th:text="${boxSize.boxSize}">ABC Express</td>
-					<td><a th:href="@{/box-sizes/update(id=${boxSize.id})}"
-						class="btn btn-success m-1">Update</a> <a
-						th:href="@{/box-sizes/delete/{id}(id=${boxSize.id})}"
-						class="btn btn-danger m-1">Remove</a></td>
+					<td>
+						<a th:href="@{/box-sizes/detail(id=${boxSize.id})}" class="btn btn-info m-1">View</a>
+						<a th:href="@{/box-sizes/update(id=${boxSize.id})}" class="btn btn-success m-1">Update</a>
+						<a th:href="@{/box-sizes/delete/{id}(id=${boxSize.id})}" class="btn btn-danger m-1">Remove</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>

@@ -24,6 +24,7 @@
                     <td th:text="${role.roleName}">ADMINISTRATOR</td>
                     <td th:text="${role.description}">Administrator</td>
                     <td>
+                        <a th:href="@{/roles/detail(id=${role.id})}" class="btn btn-info m-1">View</a>
                         <a th:href="@{/roles/update(id=${role.id})}" class="btn btn-success m-1">Update</a>
                         <a th:href="@{/roles/delete/{id}(id=${role.id})}" class="btn btn-danger m-1">Remove</a>
                     </td>

@@ -21,10 +21,11 @@
 				</tr>
 				<tr th:each="weight : ${weights}">
 					<td th:text="${weight.weightRange}">ABC Express</td>
-					<td><a th:href="@{/weights/update(id=${weight.id})}"
-						class="btn btn-success m-1">Update</a> <a
-						th:href="@{/weights/delete/{id}(id=${weight.id})}"
-						class="btn btn-danger m-1">Remove</a></td>
+					<td>
+						<a th:href="@{/weights/detail(id=${weight.id})}" class="btn btn-info m-1">View</a>
+						<a th:href="@{/weights/update(id=${weight.id})}" class="btn btn-success m-1">Update</a>
+						<a th:href="@{/weights/delete/{id}(id=${weight.id})}" class="btn btn-danger m-1">Remove</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>

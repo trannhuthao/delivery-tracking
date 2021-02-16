@@ -14,4 +14,6 @@ public interface OrderDetailService {
     void update(OrderDetailDto orderDetailDto);
 
     void delete(Long id);
+
+    void checkout(OrderDetailDto orderDetailDto);
 }

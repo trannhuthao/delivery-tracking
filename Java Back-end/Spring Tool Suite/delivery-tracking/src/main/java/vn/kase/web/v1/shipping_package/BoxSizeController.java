@@ -24,6 +24,12 @@ public class BoxSizeController {
         return "v1/package/box-sizes/index";
     }
 
+    @GetMapping("/detail")
+    public String getBoxSizeById(final Model model, final @RequestParam("id") Long id) {
+        model.addAttribute("boxSizeDto", this.boxSizeService.findById(id));
+        return "v1/package/box-sizes/detail";
+    }
+
     @GetMapping("/add")
     public String addBoxSize(Model model) {
         model.addAttribute("boxSizeDto", new BoxSizeDto());

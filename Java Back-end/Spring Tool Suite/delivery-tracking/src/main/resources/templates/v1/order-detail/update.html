@@ -16,7 +16,7 @@
         <form th:action="@{/orders/update}" method="post" th:object="${orderDetailDto}">
             <input type="hidden" th:field="*{id}"/>
             <div class="mb-3">
-                <label for="sender" class="form-label"><h5>Choose the sender:/</h5></label>
+                <label for="sender" class="form-label"><h5>Choose the sender:</h5></label>
                 <select th:field="*{userId}" class="form-control" id="sender">
                     <option th:each="user : ${users}"
                             th:value="${user.id}"
@@ -57,8 +57,8 @@
                 <label class="form-label"><h5>Package doesn't exist?</h5></label>
                 <a th:href="@{/shipping-packages/add}" class="btn btn-warning ml-2">Create New Package</a>
             </div>
-            <button type="submit" class="btn btn-lg btn-primary">Save</button>
-            <a th:href="@{/orders}" class="btn btn-lg  btn-warning">Back</a>
+            <button type="submit" class="btn btn-lg btn-primary mb-3">Save</button>
+            <a th:href="@{/orders}" class="btn btn-lg btn-warning mb-3">Back</a>
         </form>
     </div>
     <div th:replace="./v1/fragments/footer"></div>

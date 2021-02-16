@@ -45,6 +45,15 @@ public class UserController {
         return "v1/user/index";
     }
 
+    @GetMapping("/detail")
+    public String getUserById(final Model model, final @RequestParam("id") Long id) {
+        model.addAttribute("userDto", this.userService.findById(id));
+        model.addAttribute("roles", this.roleService.findAll());
+        model.addAttribute("addresses", this.addressService.findAll());
+        model.addAttribute("shippingPackages", this.packageService.findAll());
+        return "v1/user/detail";
+    }
+
     @GetMapping("/add")
     public String addUser(Model model) {
         model.addAttribute("userDto", new UserDto());

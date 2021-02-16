@@ -1,73 +1,77 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<title>Delivery Tracking</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
-<body>
-	<div th:replace="./v1/fragments/navbar"></div>
-	<div class="container">
-		<h2 class="display-1 text-center">ORDERS</h2>
-		<table class="table table-responsive table-bordered table-striped table-striped table-hover text-center">
-			<thead>
-				<tr class="text-bold">
-					<th>Order ID</th>
-					<th>User</th>
-					<th>User's Username</th>
-					<th>User's Email</th>
-					<th>User's Phone Number</th>
-					<th>Package ID</th>
-					<th>Package Name</th>
-					<th>Weight</th>
-					<th>Box Size</th>
-					<th>Description</th>
-					<th>Status</th>
-					<th>Shipper ID</th>
-					<th>Recipient</th>
-					<th>Recipient's Username</th>
-					<th>Recipient's Email</th>
-					<th>Recipient's Phone Number</th>
-					<th>Address</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:if="${orderDetailList.empty}">
-					<td colspan="17">No orders exist.</td>
-				</tr>
-				<tr th:each="orderDetail : ${orderDetailList}">
-					<td th:text="${orderDetail.id}"></td>
-					<td th:text="${orderDetail.getUserFullName}"></td>
-					<td th:text="${orderDetail.username}"></td>
-					<td th:text="${orderDetail.userEmail}"></td>
-					<td th:text="${orderDetail.userPhoneNumber}"></td>
-					<td th:text="${orderDetail.shippingPackageId}"></td>
-					<td th:text="${orderDetail.packageName}"></td>
-<!--					<td th:text="${orderDetail.packageImage}"></td>-->
-					<td th:text="${orderDetail.weightRange}"></td>
-					<td th:text="${orderDetail.boxSize}"></td>
-					<td th:text="${orderDetail.packageDescription}"></td>
-					<td th:text="${orderDetail.status.getStatus()}"></td>
-					<td th:text="${orderDetail.shipperId}"></td>
-					<td th:text="${orderDetail.recipientFullName}"></td>
-					<td th:text="${orderDetail.recipientUsername}"></td>
-					<td th:text="${orderDetail.recipientEmail}"></td>
-					<td th:text="${orderDetail.recipientPhoneNumber}"></td>
-					<td th:text="${orderDetail.recipientAddress}"></td>
-					<td>
-						<a th:href="@{/orders/update(id=${orderDetail.id})}" class="btn btn-success m-1">Update</a>
-						<a th:href="@{/orders/delete/{id}(id=${orderDetail.id})}" class="btn btn-danger m-1">Remove</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<a th:href="@{/orders/add}" class="btn btn-lg btn-primary mb-3">Add Order</a>
-		<a th:href="@{/}" class="btn btn-lg btn-warning mb-3">Back</a>
-	</div>
-	<div th:replace="./v1/fragments/footer"></div>
-</body>
+	<head>
+		<title>Delivery Tracking</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div th:replace="./v1/fragments/navbar"></div>
+		<div class="container">
+			<h2 class="display-1 text-center">ORDERS</h2>
+			<table class="table table-responsive table-bordered table-striped table-striped table-hover text-center">
+				<thead>
+					<tr class="text-bold">
+						<th>Order ID</th>
+						<th>User</th>
+						<th>User's Username</th>
+						<th>User's Email</th>
+						<th>User's Phone Number</th>
+						<th>Package ID</th>
+						<th>Package Name</th>
+						<th>Weight</th>
+						<th>Box Size</th>
+						<th>Description</th>
+						<th>Status</th>
+						<th>Shipper ID</th>
+						<th>Recipient</th>
+						<th>Recipient's Username</th>
+						<th>Recipient's Email</th>
+						<th>Recipient's Phone Number</th>
+						<th>Address</th>
+						<th>Total</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${orderDetailList.empty}">
+						<td colspan="18">No orders exist.</td>
+					</tr>
+					<tr th:each="orderDetail : ${orderDetailList}">
+						<td th:text="${orderDetail.id}"></td>
+						<td th:text="${orderDetail.getUserFullName}"></td>
+						<td th:text="${orderDetail.username}"></td>
+						<td th:text="${orderDetail.userEmail}"></td>
+						<td th:text="${orderDetail.userPhoneNumber}"></td>
+						<td th:text="${orderDetail.shippingPackageId}"></td>
+						<td th:text="${orderDetail.packageName}"></td>
+	<!--					<td th:text="${orderDetail.packageImage}"></td>-->
+						<td th:text="${orderDetail.weightRange}"></td>
+						<td th:text="${orderDetail.boxSize}"></td>
+						<td th:text="${orderDetail.packageDescription}"></td>
+						<td th:text="${orderDetail.status.getStatus()}"></td>
+						<td th:text="${orderDetail.shipperId}"></td>
+						<td th:text="${orderDetail.recipientFullName}"></td>
+						<td th:text="${orderDetail.recipientUsername}"></td>
+						<td th:text="${orderDetail.recipientEmail}"></td>
+						<td th:text="${orderDetail.recipientPhoneNumber}"></td>
+						<td th:text="${orderDetail.recipientAddress}"></td>
+						<td th:text="${orderDetail.total}"></td>
+						<td>
+							<a th:href="@{/orders/detail(id=${orderDetail.id})}" class="btn btn-info m-1">View</a>
+							<a th:href="@{/orders/update(id=${orderDetail.id})}" class="btn btn-success m-1">Update</a>
+							<a th:href="@{/orders/delete/{id}(id=${orderDetail.id})}" class="btn btn-danger m-1">Remove</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<a th:href="@{/orders/add}" class="btn btn-lg btn-primary mb-3">Add Order</a>
+			<a th:href="@{/}" class="btn btn-lg btn-warning mb-3">Back</a>
+		</div>
+		<div th:replace="./v1/fragments/footer"></div>
+	</body>
 </html>

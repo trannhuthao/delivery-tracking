@@ -59,6 +59,17 @@ public class PackageController {
         return "v1/package/index";
     }
 
+    @GetMapping("/detail")
+    public String getPackageById(final Model model, final @RequestParam("id") Long id) {
+        model.addAttribute("shippingPackageDto", this.packageService.findById(id));
+        model.addAttribute("users", this.userService.findAll());
+        model.addAttribute("addresses", this.addressService.findAll());
+        model.addAttribute("orders", this.orderDetailService.findAll());
+        model.addAttribute("weights", this.weightService.findAll());
+        model.addAttribute("boxSizes", this.boxSizeService.findAll());
+        return "v1/package/detail";
+    }
+
     @GetMapping("/add")
     public String addPackage(final Model model) {
         model.addAttribute("shippingPackageDto", new PackageDto());
