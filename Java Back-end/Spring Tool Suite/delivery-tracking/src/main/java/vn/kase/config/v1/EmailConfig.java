@@ -1,9 +1,10 @@
-package vn.kase.util.email;
+package vn.kase.config.v1;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import vn.kase.util.email.EmailConstants;
 
 import java.util.Properties;
 
