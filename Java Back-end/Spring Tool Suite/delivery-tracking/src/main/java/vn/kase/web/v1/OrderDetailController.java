@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import vn.kase.dto.v1.model.OrderDetailDto;
 import vn.kase.dto.v1.model.shipping_package.PackageDto;
 import vn.kase.dto.v1.model.user.UserDto;
+import vn.kase.service.v1.EmailService;
 import vn.kase.service.v1.OrderDetailService;
 import vn.kase.service.v1.ShipperService;
 import vn.kase.service.v1.shipping_package.BoxSizeService;
@@ -26,6 +27,7 @@ public class OrderDetailController {
     private BoxSizeService boxSizeService;
     private ShipperService shipperService;
     private AddressService addressService;
+    private EmailService emailService;
 
     @Autowired
     public void setOrderDetailService(OrderDetailService orderDetailService) {
@@ -62,6 +64,11 @@ public class OrderDetailController {
         this.addressService = addressService;
     }
 
+    @Autowired
+    public void setEmailService(EmailService emailService) {
+        this.emailService = emailService;
+    }
+
     @GetMapping
     public String getOrders(Model model) {
         model.addAttribute("orderDetailList", this.orderDetailService.findAll());
@@ -95,6 +102,7 @@ public class OrderDetailController {
         try {
             model.addAttribute("orderId", orderDetailDto.getId());
             this.orderDetailService.add(orderDetailDto);
+            this.emailService.sendEmailWithHtmlContent();
             return "v1/order-detail/add-order-success";
         } catch (Exception exception) {
             exception.printStackTrace();
