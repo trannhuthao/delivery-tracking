@@ -31,8 +31,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/**").hasRole("PROGRAMMER")
-                .antMatchers("/shipping-packages").hasRole("USER")
-                .and().formLogin();
+                .antMatchers("/shipping-packages/*").hasRole("USER")
+                .and().formLogin()
+                .and().exceptionHandling().accessDeniedPage("/403");
     }
 
     @Bean

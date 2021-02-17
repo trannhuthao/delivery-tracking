@@ -26,4 +26,14 @@ public class HomeController {
     public String contact() {
         return "v1/home/contact";
     }
+
+    @GetMapping("/404")
+    public String http404NotFound() {
+        return "v1/error-pages/404";
+    }
+
+    @GetMapping("/403")
+    public String http403Forbidden() {
+        return "v1/error-pages/403";
+    }
 }
