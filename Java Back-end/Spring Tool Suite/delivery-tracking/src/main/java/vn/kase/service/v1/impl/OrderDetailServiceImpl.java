@@ -166,6 +166,36 @@ public class OrderDetailServiceImpl implements OrderDetailService {
         if (recipient.getAddress().getId() == 10) {
             total += 135000.0;
         }
+        if (recipient.getAddress().getId() == 11) {
+            total += 150000.0;
+        }
+        if (recipient.getAddress().getId() == 12) {
+            total += 165000.0;
+        }
+        if (recipient.getAddress().getId() == 13) {
+            total += 180000.0;
+        }
+        if (recipient.getAddress().getId() == 14) {
+            total += 195000.0;
+        }
+        if (recipient.getAddress().getId() == 15) {
+            total += 205000.0;
+        }
+        if (recipient.getAddress().getId() == 16) {
+            total += 220000.0;
+        }
+        if (recipient.getAddress().getId() == 17) {
+            total += 235000.0;
+        }
+        if (recipient.getAddress().getId() == 18) {
+            total += 250000.0;
+        }
+        if (recipient.getAddress().getId() == 19) {
+            total += 265000.0;
+        }
+        if (recipient.getAddress().getId() == 20) {
+            total += 285000.0;
+        }
 
         orderDetailDto.setTotal(total);
     }
