@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>ABC EXPRESS</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<title>ABC EXPRESS</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -18,16 +18,17 @@
 			<div class="w3-right w3-hide-small">
 				<a th:href="@{/orders}" class="w3-bar-item w3-button" style="text-decoration: none;">Orders</a>
 				<a th:href="@{/shipping-packages}" class="w3-bar-item w3-button" style="text-decoration: none;">Packages</a>
-				<a th:href="@{/weights}" class="w3-bar-item w3-button" style="text-decoration: none;">Package Weight Ranges</a>
-				<a th:href="@{/box-sizes}" class="w3-bar-item w3-button" style="text-decoration: none;">Package Box Sizes</a>
-				<a th:href="@{/shippers}" class="w3-bar-item w3-button" style="text-decoration: none;">Shippers</a>
+				<a th:href="@{/weights}" class="w3-bar-item w3-button" style="text-decoration: none;">Weight Ranges</a>
+				<a th:href="@{/box-sizes}" class="w3-bar-item w3-button" style="text-decoration: none;">Box Sizes</a>
+<!--				<a th:href="@{/shippers}" class="w3-bar-item w3-button" style="text-decoration: none;">Shippers</a>-->
 				<a th:href="@{/users}" class="w3-bar-item w3-button" style="text-decoration: none;">Users</a>
 				<a th:href="@{/addresses}" class="w3-bar-item w3-button" style="text-decoration: none;">Addresses</a>
 				<a th:href="@{/roles}" class="w3-bar-item w3-button" style="text-decoration: none;">Roles</a>
-				<a th:href="@{/search}" class="w3-bar-item w3-button" style="text-decoration: none;">Search</a>
-				<a th:href="@{/login}" class="w3-bar-item w3-button" style="text-decoration: none;">Login</a>
+<!--				<a th:href="@{/search}" class="w3-bar-item w3-button" style="text-decoration: none;">Search</a>-->
 				<a th:href="@{/about}" class="w3-bar-item w3-button" style="text-decoration: none;">About</a>
 				<a th:href="@{/contact}" class="w3-bar-item w3-button" style="text-decoration: none;">Contact</a>
+				<a th:href="@{/login}" class="w3-bar-item w3-button" style="text-decoration: none;">Log In</a>
+				<a th:href="@{/logout}" class="w3-bar-item w3-button" style="text-decoration: none;">Log Out</a>
 		</div>
 	</nav>
 </body>
