@@ -2,6 +2,7 @@ package vn.kase.config.v1;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,9 +19,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         authenticationManagerBuilder.inMemoryAuthentication()
                 .withUser("hieu").password("hieu").roles("PROGRAMMER")
                 .and()
+                .withUser("user").password("hieu").roles("USER")
+                .and()
                 .withUser("hao").password("hao").roles("PROGRAMMER")
                 .and()
                 .withUser("cuong").password("cuong").roles("USER");
+    }
+
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/**").hasRole("PROGRAMMER")
+                .antMatchers("/shipping-packages").hasRole("USER")
+                .and().formLogin();
     }
 
     @Bean
