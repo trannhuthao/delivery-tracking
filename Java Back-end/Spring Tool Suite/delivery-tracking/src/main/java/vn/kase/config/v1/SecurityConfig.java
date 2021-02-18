@@ -29,9 +29,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
-                .antMatchers("/", "/resources/**", "/static/**", "/css/**", "/js/**").permitAll()
+                .antMatchers("/", "/resources/**").permitAll()
+                .antMatchers("/shipping-packages", "/shipping-packages/add", "/shipping-packages/detail").hasAnyRole("PROGRAMMER", "USER")
                 .antMatchers("/**").hasRole("PROGRAMMER")
-                .antMatchers("/shipping-packages/*").hasRole("USER")
                 .and().formLogin()
                 .and().exceptionHandling().accessDeniedPage("/403");
     }
