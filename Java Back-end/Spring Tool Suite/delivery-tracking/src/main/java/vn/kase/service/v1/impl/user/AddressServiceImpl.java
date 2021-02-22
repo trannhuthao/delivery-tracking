@@ -43,7 +43,7 @@ public class AddressServiceImpl implements AddressService {
     
     @Override
 	public Page<AddressDto> findAllPaginated(int page, int size) {
-		Pageable pageable = PageRequest.of(page, size);
+		Pageable pageable = PageRequest.of(page - 1, size);
 		Page<Address> addressesPaginated = this.addressRepository.findAll(pageable);
 		Page<AddressDto> addressDtosPaginated = addressesPaginated.map(element -> AddressMapper.toDto(element));
 

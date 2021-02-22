@@ -1,6 +1,9 @@
 package vn.kase.web.v1.user;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,8 +44,24 @@ public class UserController {
 
     @GetMapping
     public String getUsers(Model model) {
-        model.addAttribute("users", this.userService.findAll());
-        return "v1/user/index";
+//        model.addAttribute("users", this.userService.findAll());
+//        return "v1/user/index";
+    	
+    	return this.getUsersPaginated(1, model);
+    }
+    
+    @GetMapping("/{page}")
+    public String getUsersPaginated(final @PathVariable("page") int page, Model model) {
+    	int size = 3;
+    	Page<UserDto> usersPaginated = this.userService.findAllPaginated(page, size);
+    	List<UserDto> users = usersPaginated.getContent();
+
+    	 model.addAttribute("currentPage", page);
+         model.addAttribute("totalPages", usersPaginated.getTotalPages());
+         model.addAttribute("totalElements", usersPaginated.getTotalElements());
+         model.addAttribute("users", users);
+         
+         return "v1/user/index";
     }
 
     @GetMapping("/detail")

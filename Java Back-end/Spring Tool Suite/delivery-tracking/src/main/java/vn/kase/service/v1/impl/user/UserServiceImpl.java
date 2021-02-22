@@ -1,6 +1,9 @@
 package vn.kase.service.v1.impl.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vn.kase.domain.v1.Role;
@@ -44,6 +47,15 @@ public class UserServiceImpl implements UserService {
     public UserDto findById(Long id) {
         return UserMapper.toDto(this.userRepository.findById(id).get());
     }
+    
+    @Override
+	public Page<UserDto> findAllPaginated(int page, int size) {
+		Pageable pageable = PageRequest.of(page - 1, size);
+		Page<User> usersPaginated = this.userRepository.findAll(pageable);
+		Page<UserDto> userDtosPaginated = usersPaginated.map(element -> UserMapper.toDto(element));
+
+		return userDtosPaginated;
+	}
 
     @Override
     public void update(UserDto userDto) {
