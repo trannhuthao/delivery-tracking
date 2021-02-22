@@ -7,5 +7,5 @@ public interface EmailService {
 
     String sendEmailWithAttachments(String recipientEmail) throws MessagingException;
 
-    String sendEmailWithHtmlContent(String recipientEmail) throws MessagingException;
+    String sendEmailWithHtmlContent(String recipientEmail, Long shippingPackageId) throws MessagingException;
 }

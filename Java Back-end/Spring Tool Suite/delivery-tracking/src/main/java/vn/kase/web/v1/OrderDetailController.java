@@ -116,9 +116,10 @@ public class OrderDetailController {
         }
 
         try {
-            model.addAttribute("shippingPackageId", orderDetailDto.getShippingPackageId());
+            Long shippingPackageId = orderDetailDto.getShippingPackageId();
+            model.addAttribute("shippingPackageId", shippingPackageId);
             this.orderDetailService.add(orderDetailDto);
-            this.emailService.sendEmailWithHtmlContent(UserMapper.toEntity(this.userService.findById(orderDetailDto.getRecipientId())).getEmail());
+            this.emailService.sendEmailWithHtmlContent(UserMapper.toEntity(this.userService.findById(orderDetailDto.getRecipientId())).getEmail(), shippingPackageId);
             return "v1/order-detail/add-order-success";
         } catch (Exception exception) {
             exception.printStackTrace();
