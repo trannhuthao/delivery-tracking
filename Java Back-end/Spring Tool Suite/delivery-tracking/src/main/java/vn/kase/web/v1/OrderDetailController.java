@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import vn.kase.domain.v1.user.User;
+import vn.kase.dto.v1.mapper.user.UserMapper;
 import vn.kase.dto.v1.model.OrderDetailDto;
 import vn.kase.dto.v1.model.shipping_package.PackageDto;
 import vn.kase.dto.v1.model.user.UserDto;
@@ -116,7 +118,9 @@ public class OrderDetailController {
         try {
             model.addAttribute("orderId", orderDetailDto.getId());
             this.orderDetailService.add(orderDetailDto);
-            this.emailService.sendEmailWithHtmlContent();
+//            System.err.println(orderDetailDto);
+            User recipient = UserMapper.toEntity(this.userService.findById(orderDetailDto.getRecipientId()));
+            this.emailService.sendEmailWithHtmlContent(recipient.getEmail());
             return "v1/order-detail/add-order-success";
         } catch (Exception exception) {
             exception.printStackTrace();
