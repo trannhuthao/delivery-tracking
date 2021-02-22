@@ -10,7 +10,7 @@ public interface RoleService {
     void add(RoleDto roleDto);
 
     List<RoleDto> findAll();
-    
+
     Page<RoleDto> findAllPaginated(int page, int size);
 
     RoleDto findById(Long id);

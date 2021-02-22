@@ -1,6 +1,9 @@
 package vn.kase.service.v1.impl.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vn.kase.domain.v1.user.Address;
@@ -37,6 +40,15 @@ public class AddressServiceImpl implements AddressService {
 
         return addressDtos;
     }
+    
+    @Override
+	public Page<AddressDto> findAllPaginated(int page, int size) {
+		Pageable pageable = PageRequest.of(page, size);
+		Page<Address> addressesPaginated = this.addressRepository.findAll(pageable);
+		Page<AddressDto> addressDtosPaginated = addressesPaginated.map(element -> AddressMapper.toDto(element));
+
+		return addressDtosPaginated;
+	}
 
     @Override
     public AddressDto findById(Long id) {

@@ -1,6 +1,9 @@
 package vn.kase.web.v1.user;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,7 +26,23 @@ public class AddressController {
 
     @GetMapping
     public String getAddresses(Model model) {
-        model.addAttribute("addresses", this.addressService.findAll());
+//        model.addAttribute("addresses", this.addressService.findAll());
+//        return "v1/address/index";
+    	
+    	return this.getAddressesPaginated(1, model);
+    }
+    
+    @GetMapping("/{page}")
+    public String getAddressesPaginated(@PathVariable("page") int page, Model model) {
+		int size = 5;
+    	Page<AddressDto> addressesPaginated = this.addressService.findAllPaginated(page, size);
+    	List<AddressDto> addresses = addressesPaginated.getContent();
+    	
+    	model.addAttribute("currentPage", page);
+    	model.addAttribute("totalPages", addressesPaginated.getTotalPages());
+        model.addAttribute("totalElements", addressesPaginated.getTotalElements());
+        model.addAttribute("addresses", addresses);
+
         return "v1/address/index";
     }
 
