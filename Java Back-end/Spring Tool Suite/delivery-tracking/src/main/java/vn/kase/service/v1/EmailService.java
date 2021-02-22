@@ -3,9 +3,9 @@ package vn.kase.service.v1;
 import javax.mail.MessagingException;
 
 public interface EmailService {
-    String sendEmail(String recepientEmail);
+    String sendEmail(String recipientEmail);
 
-    String sendEmailWithAttachments(String recepientEmail) throws MessagingException;
+    String sendEmailWithAttachments(String recipientEmail) throws MessagingException;
 
-    String sendEmailWithHtmlContent(String recepientEmail) throws MessagingException;
+    String sendEmailWithHtmlContent(String recipientEmail) throws MessagingException;
 }

@@ -118,9 +118,7 @@ public class OrderDetailController {
         try {
             model.addAttribute("orderId", orderDetailDto.getId());
             this.orderDetailService.add(orderDetailDto);
-//            System.err.println(orderDetailDto);
-            User recipient = UserMapper.toEntity(this.userService.findById(orderDetailDto.getRecipientId()));
-            this.emailService.sendEmailWithHtmlContent(recipient.getEmail());
+            this.emailService.sendEmailWithHtmlContent(UserMapper.toEntity(this.userService.findById(orderDetailDto.getRecipientId())).getEmail());
             return "v1/order-detail/add-order-success";
         } catch (Exception exception) {
             exception.printStackTrace();

@@ -23,9 +23,9 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
-    public String sendEmail(String recepientEmail) {
+    public String sendEmail(String recipientEmail) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-        simpleMailMessage.setTo(recepientEmail);
+        simpleMailMessage.setTo(recipientEmail);
         simpleMailMessage.setSubject("Order Placed.");
         simpleMailMessage.setText("Order Successfully Placed.");
 
@@ -38,12 +38,12 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
-    public String sendEmailWithAttachments(String recepientEmail) throws MessagingException {
+    public String sendEmailWithAttachments(String recipientEmail) throws MessagingException {
         MimeMessage mimeMessage = this.javaMailSender.createMimeMessage();
         boolean multiPart = true;
 
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, multiPart);
-        mimeMessageHelper.setTo(recepientEmail);
+        mimeMessageHelper.setTo(recipientEmail);
         mimeMessageHelper.setSubject("Order Placed.");
         mimeMessageHelper.setText("Order Successfully Placed.");
 
@@ -64,7 +64,7 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
-    public String sendEmailWithHtmlContent(String recepientEmail) throws MessagingException {
+    public String sendEmailWithHtmlContent(String recipientEmail) throws MessagingException {
         MimeMessage mimeMessage = this.javaMailSender.createMimeMessage();
         boolean multiPart = true;
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, multiPart, "utf-8");
@@ -72,7 +72,7 @@ public class EmailServiceImpl implements EmailService {
         String htmlMessage = "<h1 style=\"font-family: monospace; text-align: center;\">Order Successfully Placed.</h1>";
         mimeMessage.setContent(htmlMessage, "text/html");
 
-        mimeMessageHelper.setTo(recepientEmail);
+        mimeMessageHelper.setTo(recipientEmail);
         mimeMessageHelper.setSubject("Order Placed.");
 
         try {
