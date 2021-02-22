@@ -116,7 +116,7 @@ public class OrderDetailController {
         }
 
         try {
-            model.addAttribute("orderId", orderDetailDto.getId());
+            model.addAttribute("shippingPackageId", orderDetailDto.getShippingPackageId());
             this.orderDetailService.add(orderDetailDto);
             this.emailService.sendEmailWithHtmlContent(UserMapper.toEntity(this.userService.findById(orderDetailDto.getRecipientId())).getEmail());
             return "v1/order-detail/add-order-success";
