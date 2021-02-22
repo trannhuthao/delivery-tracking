@@ -3,13 +3,10 @@ package vn.kase.domain.v1.shipping_package;
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import vn.kase.domain.v1.BaseEntity;
-import vn.kase.domain.v1.OrderDetail;
 import vn.kase.domain.v1.user.User;
 
 @Getter

@@ -5,8 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import vn.kase.domain.v1.shipping_package.Weight;
-import vn.kase.dto.v1.model.RoleDto;
 import vn.kase.dto.v1.model.shipping_package.WeightDto;
 import vn.kase.service.v1.shipping_package.WeightService;
 

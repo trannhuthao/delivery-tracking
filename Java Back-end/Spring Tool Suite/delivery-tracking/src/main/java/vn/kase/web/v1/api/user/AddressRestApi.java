@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.kase.dto.v1.model.user.AddressDto;
-import vn.kase.dto.v1.model.user.UserDto;
 import vn.kase.service.v1.user.AddressService;
 
 import java.util.List;

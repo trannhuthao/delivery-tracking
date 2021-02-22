@@ -4,7 +4,6 @@ import lombok.*;
 import vn.kase.domain.v1.user.User;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Getter

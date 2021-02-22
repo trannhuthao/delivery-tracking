@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.kase.dto.v1.model.shipping_package.BoxSizeDto;
-import vn.kase.dto.v1.model.shipping_package.WeightDto;
 import vn.kase.service.v1.shipping_package.BoxSizeService;
 
 import java.util.List;

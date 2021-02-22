@@ -1,6 +1,5 @@
 package vn.kase.service.v1;
 
-import vn.kase.dto.v1.model.RoleDto;
 import vn.kase.dto.v1.model.ShipperDto;
 
 import java.util.List;

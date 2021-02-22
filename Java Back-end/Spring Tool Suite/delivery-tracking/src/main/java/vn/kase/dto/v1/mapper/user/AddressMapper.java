@@ -1,7 +1,6 @@
 package vn.kase.dto.v1.mapper.user;
 
 import vn.kase.domain.v1.user.Address;
-import vn.kase.domain.v1.user.User;
 import vn.kase.dto.v1.model.user.AddressDto;
 
 public class AddressMapper {

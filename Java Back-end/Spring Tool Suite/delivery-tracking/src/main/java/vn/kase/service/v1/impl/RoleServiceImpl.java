@@ -1,6 +1,9 @@
 package vn.kase.service.v1.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vn.kase.domain.v1.Role;
@@ -37,6 +40,15 @@ public class RoleServiceImpl implements RoleService {
 
         return roleDtos;
     }
+    
+    @Override
+	public Page<RoleDto> findAllPaginated(int page, int size) {
+		Pageable pageable = PageRequest.of(page - 1, size);
+		Page<Role> rolesPaginated = this.roleRepository.findAll(pageable);
+		Page<RoleDto> roleDtosPaginated = rolesPaginated.map(element -> RoleMapper.toDto(element));
+
+		return roleDtosPaginated;
+	}
 
     @Override
     public RoleDto findById(Long id) {

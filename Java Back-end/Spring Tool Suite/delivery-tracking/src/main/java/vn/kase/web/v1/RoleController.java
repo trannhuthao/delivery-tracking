@@ -1,6 +1,9 @@
 package vn.kase.web.v1;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,8 +22,24 @@ public class RoleController {
     }
 
     @GetMapping
-    public String getRoles(Model model) {
-        model.addAttribute("roles", this.roleService.findAll());
+    public String getRoles(final Model model) {
+//        model.addAttribute("roles", this.roleService.findAll());
+//        return "v1/role/index";
+    	
+    	return this.getRolesPaginated(1, model);
+    }
+    
+    @GetMapping("/{page}")
+    public String getRolesPaginated(final @PathVariable(value = "page") int page, final Model model) {
+    	int size = 5;
+    	Page<RoleDto> rolesPaginated = this.roleService.findAllPaginated(page, size);
+    	List<RoleDto> roles = rolesPaginated.getContent();
+    	
+    	model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", rolesPaginated.getTotalPages());
+        model.addAttribute("totalElements", rolesPaginated.getTotalElements());
+        model.addAttribute("roles", roles);
+
         return "v1/role/index";
     }
 

@@ -3,13 +3,9 @@ package vn.kase.service.v1.impl.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import vn.kase.domain.v1.Role;
 import vn.kase.domain.v1.user.Address;
-import vn.kase.domain.v1.user.User;
 import vn.kase.dto.v1.mapper.user.AddressMapper;
-import vn.kase.dto.v1.mapper.user.UserMapper;
 import vn.kase.dto.v1.model.user.AddressDto;
-import vn.kase.dto.v1.model.user.UserDto;
 import vn.kase.repository.v1.user.AddressRepository;
 import vn.kase.service.v1.user.AddressService;
 
