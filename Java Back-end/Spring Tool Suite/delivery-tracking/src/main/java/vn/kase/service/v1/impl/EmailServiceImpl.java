@@ -70,7 +70,7 @@ public class EmailServiceImpl implements EmailService {
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, multiPart, "utf-8");
 
         String htmlMessage = "<h1 style=\"font-family: monospace; text-align: center;\">Order Successfully Placed.</h1>" +
-                "<h2 style=\"font-family: monospace; text-align: center;\">Your package ID: " + shippingPackageId + "</h2>";
+                "<h2 style=\"font-family: monospace; text-align: center;\">Your package ID: " + shippingPackageId + ".</h2>";
         mimeMessage.setContent(htmlMessage, "text/html");
 
         mimeMessageHelper.setTo(recipientEmail);
