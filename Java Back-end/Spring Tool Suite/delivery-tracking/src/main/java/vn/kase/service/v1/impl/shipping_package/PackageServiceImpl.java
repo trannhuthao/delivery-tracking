@@ -1,6 +1,9 @@
 package vn.kase.service.v1.impl.shipping_package;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vn.kase.domain.v1.shipping_package.BoxSize;
@@ -40,6 +43,15 @@ public class PackageServiceImpl implements PackageService {
 
         return shippingPackageDtos;
     }
+
+    @Override
+	public Page<PackageDto> findAllPaginated(int page, int size) {
+		Pageable pageable = PageRequest.of(page - 1, size);
+		Page<Package> shippingPackages = this.packageRepository.findAll(pageable);
+		Page<PackageDto> shippingPackageDtos = shippingPackages.map(element -> PackageMapper.toDto(element));
+
+		return shippingPackageDtos;
+	}
 
     @Override
     public PackageDto findById(Long id) {

@@ -1,6 +1,9 @@
 package vn.kase.web.v1.shipping_package;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -55,8 +58,24 @@ public class PackageController {
 
     @GetMapping
     public String getPackages(final Model model) {
-        model.addAttribute("shippingPackages", this.packageService.findAll());
-        return "v1/package/index";
+//        model.addAttribute("shippingPackages", this.packageService.findAll());
+//        return "v1/package/index";
+    	
+    	return this.getPackagesPaginated(1, model);
+    }
+    
+    @GetMapping("/{page}")
+    public String getPackagesPaginated(final @PathVariable("page") int page, final Model model) {
+    	int size = 3;
+    	Page<PackageDto> packagesPaginated = this.packageService.findAllPaginated(page, size);
+    	List<PackageDto> shippingPackages = packagesPaginated.getContent();
+
+    	model.addAttribute("currentPage", page);
+    	model.addAttribute("totalPages", packagesPaginated.getTotalPages());
+    	model.addAttribute("totalElements", packagesPaginated.getTotalElements());
+    	model.addAttribute("shippingPackages", shippingPackages);
+
+    	return "v1/package/index";
     }
 
     @GetMapping("/detail")
