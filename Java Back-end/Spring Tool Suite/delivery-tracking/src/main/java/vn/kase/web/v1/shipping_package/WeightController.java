@@ -1,10 +1,14 @@
 package vn.kase.web.v1.shipping_package;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
 import vn.kase.dto.v1.model.shipping_package.WeightDto;
 import vn.kase.service.v1.shipping_package.WeightService;
 
@@ -20,8 +24,24 @@ public class WeightController {
 
     @GetMapping
     public String getWeightRanges(Model model) {
-        model.addAttribute("weights", this.weightService.findAll());
-        return "v1/package/weights/index";
+//        model.addAttribute("weights", this.weightService.findAll());
+//        return "v1/package/weights/index";
+    	
+    	return this.getWeightRangesPaginated(1, model);
+    }
+
+    @GetMapping("/{page}")
+    public String getWeightRangesPaginated(final @PathVariable("page") int page, final Model model) {
+    	int size = 5;
+    	Page<WeightDto> weightsPaginated = this.weightService.findAllPaginated(page, size);
+    	List<WeightDto> weights = weightsPaginated.getContent();
+
+    	model.addAttribute("currentPage", page);
+    	model.addAttribute("totalPages", weightsPaginated.getTotalPages());
+    	model.addAttribute("totalElements", weightsPaginated.getTotalElements());
+    	model.addAttribute("weights", weights);
+
+    	return "v1/package/weights/index";
     }
 
     @GetMapping("/detail")

@@ -1,6 +1,9 @@
 package vn.kase.service.v1.impl.shipping_package;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vn.kase.domain.v1.shipping_package.Weight;
@@ -37,6 +40,15 @@ public class WeightServiceImpl implements WeightService {
 
         return weightDtos;
     }
+
+    @Override
+	public Page<WeightDto> findAllPaginated(int page, int size) {
+		Pageable pageable = PageRequest.of(page - 1, size);
+		Page<Weight> weights = this.weightRepository.findAll(pageable);
+		Page<WeightDto> weightDtos = weights.map(element -> WeightMapper.toDto(element));
+
+		return weightDtos;
+	}
 
     @Override
     public WeightDto findById(Long id) {

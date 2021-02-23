@@ -29,6 +29,36 @@
 				</tr>
 			</tbody>
 		</table>
+		<nav>
+            <ul class="pagination">
+                <li class="page-item">
+                    <a th:if="${currentPage > 1}"
+                       th:href="@{'/weight-ranges/' + ${currentPage - 1}}"
+                       class="page-link"
+                       aria-label="Previous"
+                    >
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    <span th:unless="${currentPage != 1}" class="page-link text-body" aria-hidden="true">&laquo;</span>
+                </li>
+                <li th:each="index: ${#numbers.sequence(1, totalPages)}" class="page-item">
+                    <a th:if="${currentPage != index}"
+                       th:href="@{'/weight-ranges/' + ${index}}"
+                       class="page-link">[[${index}]]</a>
+                    <span th:unless="${currentPage != index}" class="page-link" aria-hidden="true">[[${index}]]</span>
+                </li>
+                <li class="page-item">
+                    <a th:if="${currentPage < totalPages}"
+                       th:href="@{'/weight-ranges/' + ${currentPage + 1}}"
+                       class="page-link"
+                       aria-label="Next"
+                    >
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    <span th:unless="${currentPage < totalPages}" class="page-link text-body" aria-hidden="true">&raquo;</span>
+                </li>
+            </ul>
+        </nav>
 		<a th:href="@{/weights/add}" class="btn btn-lg btn-primary mb-3">Add Weight Range</a>
 		<a th:href="@{/}" class="btn btn-lg btn-warning mb-3">Back</a>
 	</div>
