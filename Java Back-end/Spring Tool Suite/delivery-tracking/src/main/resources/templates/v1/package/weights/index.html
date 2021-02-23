@@ -33,7 +33,7 @@
             <ul class="pagination">
                 <li class="page-item">
                     <a th:if="${currentPage > 1}"
-                       th:href="@{'/weight-ranges/' + ${currentPage - 1}}"
+                       th:href="@{'/weights/' + ${currentPage - 1}}"
                        class="page-link"
                        aria-label="Previous"
                     >
@@ -43,13 +43,13 @@
                 </li>
                 <li th:each="index: ${#numbers.sequence(1, totalPages)}" class="page-item">
                     <a th:if="${currentPage != index}"
-                       th:href="@{'/weight-ranges/' + ${index}}"
+                       th:href="@{'/weights/' + ${index}}"
                        class="page-link">[[${index}]]</a>
                     <span th:unless="${currentPage != index}" class="page-link" aria-hidden="true">[[${index}]]</span>
                 </li>
                 <li class="page-item">
                     <a th:if="${currentPage < totalPages}"
-                       th:href="@{'/weight-ranges/' + ${currentPage + 1}}"
+                       th:href="@{'/weights/' + ${currentPage + 1}}"
                        class="page-link"
                        aria-label="Next"
                     >
