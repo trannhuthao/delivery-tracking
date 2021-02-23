@@ -4,10 +4,14 @@ import vn.kase.dto.v1.model.OrderDetailDto;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 public interface OrderDetailService {
     void add(OrderDetailDto orderDetailDto);
 
     List<OrderDetailDto> findAll();
+
+    Page<OrderDetailDto> findAllPaginated(int page, int size);
 
     OrderDetailDto findById(Long id);
 

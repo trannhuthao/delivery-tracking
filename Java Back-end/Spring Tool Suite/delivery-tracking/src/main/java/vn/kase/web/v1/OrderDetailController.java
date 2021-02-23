@@ -1,6 +1,9 @@
 package vn.kase.web.v1;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -72,8 +75,24 @@ public class OrderDetailController {
 
     @GetMapping
     public String getOrders(Model model) {
-        model.addAttribute("orderDetailList", this.orderDetailService.findAll());
-        return "v1/order-detail/index";
+//        model.addAttribute("orderDetailList", this.orderDetailService.findAll());
+//        return "v1/order-detail/index";
+    	
+    	return this.getOrdersPaginated(1, model);
+    }
+
+    @GetMapping("/{page}")
+    public String getOrdersPaginated(final @PathVariable("page")int page, final Model model) {
+    	int size = 3;
+    	Page<OrderDetailDto> ordersPaginated = this.orderDetailService.findAllPaginated(page, size);
+    	List<OrderDetailDto> orderDetailList = ordersPaginated.getContent();
+
+    	model.addAttribute("currentPage", page);
+    	model.addAttribute("totalPages", ordersPaginated.getTotalPages());
+    	model.addAttribute("totalElements", ordersPaginated.getTotalElements());
+    	model.addAttribute("orderDetailList", orderDetailList);
+
+    	return "v1/order-detail/index";
     }
 
     @GetMapping("/detail")

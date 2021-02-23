@@ -12,29 +12,29 @@
 	<body>
 		<div th:replace="./v1/fragments/navbar"></div>
 		<div class="container">
-			<h2 class="display-1 text-center">ORDERS</h2>
-			<table class="table table-responsive table-bordered table-striped table-striped table-hover text-center">
+			<h1 class="display-1 text-center">ORDERS</h1>
+			<table class="table table-responsive table-bordered table-striped table-dark table-striped table-hover text-center">
 				<thead>
-					<tr class="text-bold">
-						<th>Order ID</th>
-						<th>User</th>
-						<th>User's Username</th>
-						<th>User's Email</th>
-						<th>User's Phone Number</th>
-						<th>Package ID</th>
-						<th>Package Name</th>
-						<th>Weight</th>
-						<th>Box Size</th>
-						<th>Description</th>
-						<th>Status</th>
-						<th>Shipper ID</th>
-						<th>Recipient</th>
-						<th>Recipient's Username</th>
-						<th>Recipient's Email</th>
-						<th>Recipient's Phone Number</th>
-						<th>Address</th>
-						<th>Total</th>
-						<th>Actions</th>
+					<tr class="text-warning">
+						<th>ORDER ID</th>
+						<th>USER</th>
+						<th>USER'S USERNAME</th>
+						<th>USER'S EMAIL</th>
+						<th>USER'S PHONE NUMBER</th>
+						<th>PACKAGE ID</th>
+						<th>PACKAGE NAME</th>
+						<th>WEIGHT</th>
+						<th>BOX SIZE</th>
+						<th>DESCRIPTION</th>
+						<th>STATUS</th>
+						<th>SHIPPER ID</th>
+						<th>RECIPIENT</th>
+						<th>RECIPIENT'S USERNAME</th>
+						<th>RECIPIENT'S EMAIL</th>
+						<th>RECIPIENT'S PHONE NUMBER</th>
+						<th>ADDRESS</th>
+						<th>TOTAL</th>
+						<th>ACTIONS</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -69,6 +69,36 @@
 					</tr>
 				</tbody>
 			</table>
+			<nav>
+            <ul class="pagination">
+                <li class="page-item">
+                    <a th:if="${currentPage > 1}"
+                       th:href="@{'/orders/' + ${currentPage - 1}}"
+                       class="page-link"
+                       aria-label="Previous"
+                    >
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    <span th:unless="${currentPage != 1}" class="page-link text-body" aria-hidden="true">&laquo;</span>
+                </li>
+                <li th:each="index: ${#numbers.sequence(1, totalPages)}" class="page-item">
+                    <a th:if="${currentPage != index}"
+                       th:href="@{'/orders/' + ${index}}"
+                       class="page-link">[[${index}]]</a>
+                    <span th:unless="${currentPage != index}" class="page-link" aria-hidden="true">[[${index}]]</span>
+                </li>
+                <li class="page-item">
+                    <a th:if="${currentPage < totalPages}"
+                       th:href="@{'/orders/' + ${currentPage + 1}}"
+                       class="page-link"
+                       aria-label="Next"
+                    >
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    <span th:unless="${currentPage < totalPages}" class="page-link text-body" aria-hidden="true">&raquo;</span>
+                </li>
+            </ul>
+        </nav>
 			<a th:href="@{/orders/add}" class="btn btn-lg btn-primary mb-3">Add Order</a>
 			<a th:href="@{/}" class="btn btn-lg btn-warning mb-3">Back</a>
 		</div>

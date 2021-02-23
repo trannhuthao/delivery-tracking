@@ -1,6 +1,9 @@
 package vn.kase.service.v1.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vn.kase.domain.v1.OrderDetail;
@@ -47,6 +50,15 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 
         return orderDetailDtos;
     }
+
+    @Override
+	public Page<OrderDetailDto> findAllPaginated(int page, int size) {
+		Pageable pageable = PageRequest.of(page - 1, size);
+		Page<OrderDetail> ordersPaginated = this.orderDetailRepository.findAll(pageable);
+		Page<OrderDetailDto> orderDtosPaginated = ordersPaginated.map(element -> OrderDetailMapper.toDto(element));
+
+		return orderDtosPaginated;
+	}
 
     @Override
     public OrderDetailDto findById(Long id) {
