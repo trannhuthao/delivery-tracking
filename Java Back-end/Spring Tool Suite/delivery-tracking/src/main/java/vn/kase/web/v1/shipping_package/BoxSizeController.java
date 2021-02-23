@@ -1,6 +1,9 @@
 package vn.kase.web.v1.shipping_package;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,8 +23,24 @@ public class BoxSizeController {
 
     @GetMapping
     public String getBoxSizes(Model model) {
-        model.addAttribute("boxSizes", this.boxSizeService.findAll());
-        return "v1/package/box-sizes/index";
+//        model.addAttribute("boxSizes", this.boxSizeService.findAll());
+//        return "v1/package/box-sizes/index";
+
+    	return this.getBoxSizesPaginated(1, model);
+    }
+    
+    @GetMapping("/{page}")
+    public String getBoxSizesPaginated(final @PathVariable("page") int page, final Model model) {
+    	int size = 5;
+    	Page<BoxSizeDto> boxSizesPaginated = this.boxSizeService.findAllPaginated(page, size);
+    	List<BoxSizeDto> boxSizes = boxSizesPaginated.getContent();
+
+    	 model.addAttribute("currentPage", page);
+         model.addAttribute("totalPages", boxSizesPaginated.getTotalPages());
+         model.addAttribute("totalElements", boxSizesPaginated.getTotalElements());
+         model.addAttribute("boxSizes", boxSizes);
+
+    	return "v1/package/box-sizes/index";
     }
 
     @GetMapping("/detail")
