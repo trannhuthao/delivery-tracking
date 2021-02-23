@@ -26,18 +26,26 @@ public class RoleController {
 //        model.addAttribute("roles", this.roleService.findAll());
 //        return "v1/role/index";
     	
-    	return this.getRolesPaginated(1, model);
+    	return this.getRolesPaginated(1, "roleName", "asc", model);
     }
     
     @GetMapping("/{page}")
-    public String getRolesPaginated(final @PathVariable(value = "page") int page, final Model model) {
+    public String getRolesPaginated(
+            final @PathVariable(value = "page") int page,
+            final @RequestParam("sortField") String sortField,
+            final @RequestParam("sortDirection") String sortDirection,
+            final Model model
+    ) {
     	int size = 5;
-    	Page<RoleDto> rolesPaginated = this.roleService.findAllPaginated(page, size);
+    	Page<RoleDto> rolesPaginated = this.roleService.findAllPaginated(page, size, sortField, sortDirection);
     	List<RoleDto> roles = rolesPaginated.getContent();
     	
     	model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", rolesPaginated.getTotalPages());
         model.addAttribute("totalElements", rolesPaginated.getTotalElements());
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDirection", sortDirection);
+        model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
         model.addAttribute("roles", roles);
 
         return "v1/role/index";

@@ -11,7 +11,7 @@ public interface RoleService {
 
     List<RoleDto> findAll();
 
-    Page<RoleDto> findAllPaginated(int page, int size);
+    Page<RoleDto> findAllPaginated(int page, int size, String sortField, String sortDirection);
 
     RoleDto findById(Long id);
 

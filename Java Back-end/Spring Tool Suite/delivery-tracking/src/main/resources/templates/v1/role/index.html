@@ -11,8 +11,8 @@
         <table 	class="table table-bordered table-bordered table-striped table-dark table-striped table-hover text-center">
             <thead>
                 <tr class="text-warning">
-                    <th>ROLE NAME</th>
-                    <th>DESCRIPTION</th>
+                    <th><a th:href="@{'/roles/' + ${currentPage} + '?sortField=roleName&sortDirection=' + ${reverseSortDirection}}">ROLE NAME</a></th>
+                    <th><a th:href="@{'/roles/' + ${currentPage} + '?sortField=description&sortDirection=' + ${reverseSortDirection}}">DESCRIPTION</a></th>
                     <th>ACTION</th>
                 </tr>
             </thead>
