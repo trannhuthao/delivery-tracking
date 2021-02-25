@@ -29,18 +29,25 @@ public class AddressController {
 //        model.addAttribute("addresses", this.addressService.findAll());
 //        return "v1/address/index";
     	
-    	return this.getAddressesPaginated(1, model);
+    	return this.getAddressesPaginated(1, "address", "asc", model);
     }
     
     @GetMapping("/{page}")
-    public String getAddressesPaginated(@PathVariable("page") int page, Model model) {
+    public String getAddressesPaginated(
+            @PathVariable("page") int page,
+            final @RequestParam("sortField") String sortField,
+            final @RequestParam("sortDirection") String sortDirection,
+            final Model model) {
 		int size = 5;
-    	Page<AddressDto> addressesPaginated = this.addressService.findAllPaginated(page, size);
+    	Page<AddressDto> addressesPaginated = this.addressService.findAllPaginated(page, size, sortField, sortDirection);
     	List<AddressDto> addresses = addressesPaginated.getContent();
     	
     	model.addAttribute("currentPage", page);
     	model.addAttribute("totalPages", addressesPaginated.getTotalPages());
         model.addAttribute("totalElements", addressesPaginated.getTotalElements());
+        model.addAttribute("sortField",sortField);
+        model.addAttribute("sortDirection",sortDirection);
+        model.addAttribute("reverSortDirection",sortDirection.equals("asc")? "desc" : "asc");
         model.addAttribute("addresses", addresses);
 
         return "v1/address/index";

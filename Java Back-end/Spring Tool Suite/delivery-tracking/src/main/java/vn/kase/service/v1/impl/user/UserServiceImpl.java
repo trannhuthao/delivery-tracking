@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vn.kase.domain.v1.Role;
@@ -49,8 +50,9 @@ public class UserServiceImpl implements UserService {
     }
     
     @Override
-	public Page<UserDto> findAllPaginated(int page, int size) {
-		Pageable pageable = PageRequest.of(page - 1, size);
+    public Page<UserDto> findAllPaginated(int page, int size, String sortField, String sortDirection) {
+        Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
+		Pageable pageable = PageRequest.of(page - 1, size, sort);
 		Page<User> usersPaginated = this.userRepository.findAll(pageable);
 		Page<UserDto> userDtosPaginated = usersPaginated.map(element -> UserMapper.toDto(element));
 

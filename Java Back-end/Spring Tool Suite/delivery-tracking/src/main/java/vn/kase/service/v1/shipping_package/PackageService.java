@@ -11,7 +11,7 @@ public interface PackageService {
 
     List<PackageDto> findAll();
 
-    Page<PackageDto> findAllPaginated(int page, int size);
+    Page<PackageDto> findAllPaginated(int page, int size, String sortField, String sortDirection);
 
     PackageDto findById(Long id);
 

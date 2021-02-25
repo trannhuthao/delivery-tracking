@@ -11,7 +11,7 @@
         <table 	class="table table-bordered table-bordered table-striped table-dark table-striped table-hover text-center">
             <thead>
             <tr class="text-warning">
-                <th>ADDRESS</th>
+                <th><a th:href="@{'/addresses/' + ${currentPage} + '?sortField=address&sortDirection=' + ${reverSortDirection}}">ADDRESS</a></th>
                 <th>ACTION</th>
             </tr>
             </thead>

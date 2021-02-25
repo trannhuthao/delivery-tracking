@@ -15,7 +15,7 @@
         <table class="table table-responsive table-bordered table-striped table-dark table-striped table-hover text-center">
             <thead>
                 <tr class="text-warning">
-                    <th>PACKAGE NAME</th>
+                    <th><a th:href="@{'/packages/' + ${currentPage} + '?sortField=packageName&sortDirection=' + ${reverseSortDirection}}">PACKAGE NAME</a></th>
 <!--                    <th>IMAGE</th>-->
                     <th>WEIGHT</th>
                     <th>BOX SIZE</th>
