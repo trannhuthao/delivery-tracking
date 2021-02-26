@@ -39,7 +39,7 @@
 				</thead>
 				<tbody>
 					<tr th:if="${orderDetailList.empty}">
-						<td colspan="18">No orders exist.</td>
+						<td colspan="19">No orders exist.</td>
 					</tr>
 					<tr th:each="orderDetail : ${orderDetailList}">
 						<td th:text="${orderDetail.id}"></td>

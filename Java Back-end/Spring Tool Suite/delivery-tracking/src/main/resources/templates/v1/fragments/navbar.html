@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	<head>
 		<meta charset="UTF-8">
 		<title>ABC EXPRESS</title>
@@ -28,6 +28,7 @@
 				<a th:href="@{/contact}" class="w3-bar-item w3-button" style="text-decoration: none;">Contact</a>
 				<a th:href="@{/login}" class="w3-bar-item w3-button" style="text-decoration: none;">Log In</a>
 				<a th:href="@{/logout}" class="w3-bar-item w3-button" style="text-decoration: none;">Log Out</a>
+<!--				<small sec:authentication="username">Username</small>-->
 			</div>
 		</nav>
 	</body>

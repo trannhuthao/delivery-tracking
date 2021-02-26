@@ -11,7 +11,7 @@ public interface AddressService {
 
     List<AddressDto> findAll();
     
-    Page<AddressDto> findAllPaginated(int page, int size);
+    Page<AddressDto> findAllPaginated(int page, int size, String sortField, String sortDirection);
 
     AddressDto findById(Long id);
 
