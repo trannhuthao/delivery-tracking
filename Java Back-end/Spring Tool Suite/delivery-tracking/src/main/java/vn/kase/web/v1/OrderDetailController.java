@@ -78,18 +78,26 @@ public class OrderDetailController {
 //        model.addAttribute("orderDetailList", this.orderDetailService.findAll());
 //        return "v1/order-detail/index";
     	
-    	return this.getOrdersPaginated(1, model);
+    	return this.getOrdersPaginated(1, "id", "asc", model);
     }
 
     @GetMapping("/{page}")
-    public String getOrdersPaginated(final @PathVariable("page")int page, final Model model) {
+    public String getOrdersPaginated(
+            final @PathVariable("page")int page,
+            final @RequestParam("sortField") String sortField,
+            final @RequestParam("sortDirection") String sortDirection,
+            final Model model
+    ) {
     	int size = 3;
-    	Page<OrderDetailDto> ordersPaginated = this.orderDetailService.findAllPaginated(page, size);
+    	Page<OrderDetailDto> ordersPaginated = this.orderDetailService.findAllPaginated(page, size, sortField, sortDirection);
     	List<OrderDetailDto> orderDetailList = ordersPaginated.getContent();
 
     	model.addAttribute("currentPage", page);
     	model.addAttribute("totalPages", ordersPaginated.getTotalPages());
     	model.addAttribute("totalElements", ordersPaginated.getTotalElements());
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDirection", sortDirection);
+        model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
     	model.addAttribute("orderDetailList", orderDetailList);
 
     	return "v1/order-detail/index";

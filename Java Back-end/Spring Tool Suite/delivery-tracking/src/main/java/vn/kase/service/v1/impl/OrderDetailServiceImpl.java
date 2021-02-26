@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vn.kase.domain.v1.OrderDetail;
@@ -52,8 +53,9 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     }
 
     @Override
-	public Page<OrderDetailDto> findAllPaginated(int page, int size) {
-		Pageable pageable = PageRequest.of(page - 1, size);
+	public Page<OrderDetailDto> findAllPaginated(int page, int size, String sortField, String sortDirection) {
+        Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
+		Pageable pageable = PageRequest.of(page - 1, size, sort);
 		Page<OrderDetail> ordersPaginated = this.orderDetailRepository.findAll(pageable);
 		Page<OrderDetailDto> orderDtosPaginated = ordersPaginated.map(element -> OrderDetailMapper.toDto(element));
 

@@ -11,7 +11,7 @@ public interface OrderDetailService {
 
     List<OrderDetailDto> findAll();
 
-    Page<OrderDetailDto> findAllPaginated(int page, int size);
+    Page<OrderDetailDto> findAllPaginated(int page, int size, String sortField, String sortDirection);
 
     OrderDetailDto findById(Long id);
 
