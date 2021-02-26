@@ -58,7 +58,18 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public List<RoleDto> search(String description) {
+    public List<RoleDto> searchByRoleName(String roleName) {
+        List<Role> foundRoles = this.roleRepository.findAllByRoleName(roleName);
+        List<RoleDto> foundRoleDtos = new ArrayList<RoleDto>();
+        for (Role role : foundRoles) {
+            foundRoleDtos.add(RoleMapper.toDto(role));
+        }
+
+        return foundRoleDtos;
+    }
+
+    @Override
+    public List<RoleDto> searchByDescription(String description) {
         List<Role> foundRoles = this.roleRepository.findAllByDescription(description);
         List<RoleDto> foundRoleDtos = new ArrayList<RoleDto>();
         for (Role role : foundRoles) {

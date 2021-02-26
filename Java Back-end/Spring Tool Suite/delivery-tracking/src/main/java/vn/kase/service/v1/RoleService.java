@@ -15,7 +15,9 @@ public interface RoleService {
 
     RoleDto findById(Long id);
 
-    List<RoleDto> search(String description);
+    List<RoleDto> searchByRoleName(String description);
+
+    List<RoleDto> searchByDescription(String description);
 
     void update(RoleDto roleDto);
 
