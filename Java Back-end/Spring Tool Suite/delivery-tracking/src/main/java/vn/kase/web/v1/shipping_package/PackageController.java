@@ -61,18 +61,26 @@ public class PackageController {
 //        model.addAttribute("shippingPackages", this.packageService.findAll());
 //        return "v1/package/index";
     	
-    	return this.getPackagesPaginated(1, model);
+    	return this.getPackagesPaginated(1, "packageName", "asc", model);
     }
     
     @GetMapping("/{page}")
-    public String getPackagesPaginated(final @PathVariable("page") int page, final Model model) {
+    public String getPackagesPaginated(
+            final @PathVariable("page") int page,
+            final @RequestParam("sortField") String sortField,
+            final @RequestParam("sortDirection") String sortDirection,
+            final Model model
+    ) {
     	int size = 3;
-    	Page<PackageDto> packagesPaginated = this.packageService.findAllPaginated(page, size);
+    	Page<PackageDto> packagesPaginated = this.packageService.findAllPaginated(page, size, sortField, sortDirection);
     	List<PackageDto> shippingPackages = packagesPaginated.getContent();
 
     	model.addAttribute("currentPage", page);
     	model.addAttribute("totalPages", packagesPaginated.getTotalPages());
     	model.addAttribute("totalElements", packagesPaginated.getTotalElements());
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDirection", sortDirection);
+        model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
     	model.addAttribute("shippingPackages", shippingPackages);
 
     	return "v1/package/index";

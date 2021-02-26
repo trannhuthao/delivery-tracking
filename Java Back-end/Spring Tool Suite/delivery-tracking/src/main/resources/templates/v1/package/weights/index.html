@@ -11,7 +11,9 @@
 			class="table table-bordered table-bordered table-striped table-dark table-striped table-hover text-center">
 			<thead>
 				<tr class="text-warning">
-					<th>WEIGHT RANGE</th>
+					<th>
+						<a th:href="@{'/weights/' + ${currentPage} + '?sortField=weightRange&sortDirection=' + ${reverseSortDirection}}">WEIGHT RANGE</a>
+					</th>
 					<th>ACTION</th>
 				</tr>
 			</thead>
@@ -33,7 +35,7 @@
             <ul class="pagination">
                 <li class="page-item">
                     <a th:if="${currentPage > 1}"
-                       th:href="@{'/weights/' + ${currentPage - 1}}"
+                       th:href="@{'/weights/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}"
                        class="page-link"
                        aria-label="Previous"
                     >
@@ -43,13 +45,13 @@
                 </li>
                 <li th:each="index: ${#numbers.sequence(1, totalPages)}" class="page-item">
                     <a th:if="${currentPage != index}"
-                       th:href="@{'/weights/' + ${index}}"
+                       th:href="@{'/weights/' + ${index} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}"
                        class="page-link">[[${index}]]</a>
                     <span th:unless="${currentPage != index}" class="page-link" aria-hidden="true">[[${index}]]</span>
                 </li>
                 <li class="page-item">
                     <a th:if="${currentPage < totalPages}"
-                       th:href="@{'/weights/' + ${currentPage + 1}}"
+                       th:href="@{'/weights/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}"
                        class="page-link"
                        aria-label="Next"
                     >

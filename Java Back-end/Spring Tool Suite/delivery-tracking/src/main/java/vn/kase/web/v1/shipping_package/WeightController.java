@@ -27,18 +27,26 @@ public class WeightController {
 //        model.addAttribute("weights", this.weightService.findAll());
 //        return "v1/package/weights/index";
     	
-    	return this.getWeightRangesPaginated(1, model);
+    	return this.getWeightRangesPaginated(1, "weightRange", "asc", model);
     }
 
     @GetMapping("/{page}")
-    public String getWeightRangesPaginated(final @PathVariable("page") int page, final Model model) {
+    public String getWeightRangesPaginated(
+            final @PathVariable("page") int page,
+            final @RequestParam("sortField") String sortField,
+            final @RequestParam("sortDirection") String sortDirection,
+           final Model model
+    ) {
     	int size = 5;
-    	Page<WeightDto> weightsPaginated = this.weightService.findAllPaginated(page, size);
+    	Page<WeightDto> weightsPaginated = this.weightService.findAllPaginated(page, size, sortField, sortDirection);
     	List<WeightDto> weights = weightsPaginated.getContent();
 
     	model.addAttribute("currentPage", page);
     	model.addAttribute("totalPages", weightsPaginated.getTotalPages());
     	model.addAttribute("totalElements", weightsPaginated.getTotalElements());
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDirection", sortDirection);
+        model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
     	model.addAttribute("weights", weights);
 
     	return "v1/package/weights/index";

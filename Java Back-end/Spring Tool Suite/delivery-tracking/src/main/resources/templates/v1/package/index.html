@@ -15,17 +15,37 @@
         <table class="table table-responsive table-bordered table-striped table-dark table-striped table-hover text-center">
             <thead>
                 <tr class="text-warning">
-                    <th>PACKAGE NAME</th>
+                    <th>
+                        <a th:href="@{'/shipping-packages/' + ${currentPage} + '?sortField=packageName&sortDirection=' + ${reverseSortDirection}}">PACKAGE NAME</a>
+                    </th>
 <!--                    <th>IMAGE</th>-->
-                    <th>WEIGHT</th>
-                    <th>BOX SIZE</th>
-                    <th>DESCRIPTION</th>
-                    <th>STATUS</th>
-                    <th>USER</th>
-                    <th>USER'S USERNAME</th>
-                    <th>USER'S EMAIL</th>
-                    <th>USER'S PHONE NUMBER</th>
-                    <th>USER'S ADDRESS</th>
+                    <th>
+                        <a th:href="@{'/shipping-packages/' + ${currentPage} + '?sortField=weightId&sortDirection=' + ${reverseSortDirection}}">WEIGHT</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/shipping-packages/' + ${currentPage} + '?sortField=boxSizeId&sortDirection=' + ${reverseSortDirection}}">BOX SIZE</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/shipping-packages/' + ${currentPage} + '?sortField=description&sortDirection=' + ${reverseSortDirection}}">DESCRIPTION</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/shipping-packages/' + ${currentPage} + '?sortField=status&sortDirection=' + ${reverseSortDirection}}">STATUS</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/shipping-packages/' + ${currentPage} + '?sortField=userId&sortDirection=' + ${reverseSortDirection}}">USER</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/shipping-packages/' + ${currentPage} + '?sortField=userUsername&sortDirection=' + ${reverseSortDirection}}">USER'S USERNAME</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/shipping-packages/' + ${currentPage} + '?sortField=userEmail&sortDirection=' + ${reverseSortDirection}}">USER'S EMAIL</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/shipping-packages/' + ${currentPage} + '?sortField=userPhoneNumber&sortDirection=' + ${reverseSortDirection}}">USER'S PHONE NUMBER</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/shipping-packages/' + ${currentPage} + '?sortField=userAddress&sortDirection=' + ${reverseSortDirection}}">USER'S ADDRESS</a>
+                    </th>
                     <th>ACTION</th>
                 </tr>
             </thead>
@@ -57,7 +77,7 @@
             <ul class="pagination">
                 <li class="page-item">
                     <a th:if="${currentPage > 1}"
-                       th:href="@{'/shipping-packages/' + ${currentPage - 1}}"
+                       th:href="@{'/shipping-packages/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}"
                        class="page-link"
                        aria-label="Previous"
                     >
@@ -67,13 +87,13 @@
                 </li>
                 <li th:each="index: ${#numbers.sequence(1, totalPages)}" class="page-item">
                     <a th:if="${currentPage != index}"
-                       th:href="@{'/shipping-packages/' + ${index}}"
+                       th:href="@{'/shipping-packages/' + ${index} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}"
                        class="page-link">[[${index}]]</a>
                     <span th:unless="${currentPage != index}" class="page-link" aria-hidden="true">[[${index}]]</span>
                 </li>
                 <li class="page-item">
                     <a th:if="${currentPage < totalPages}"
-                       th:href="@{'/shipping-packages/' + ${currentPage + 1}}"
+                       th:href="@{'/shipping-packages/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}"
                        class="page-link"
                        aria-label="Next"
                     >

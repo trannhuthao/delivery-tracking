@@ -11,7 +11,7 @@ public interface WeightService {
 
     List<WeightDto> findAll();
     
-    Page<WeightDto> findAllPaginated(int page, int size);
+    Page<WeightDto> findAllPaginated(int page, int size, String sortField, String sortDirection);
 
     WeightDto findById(Long id);
 
