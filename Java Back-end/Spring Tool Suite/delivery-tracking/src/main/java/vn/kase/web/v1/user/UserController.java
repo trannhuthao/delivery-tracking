@@ -47,18 +47,26 @@ public class UserController {
 //        model.addAttribute("users", this.userService.findAll());
 //        return "v1/user/index";
     	
-    	return this.getUsersPaginated(1, model);
+    	return this.getUsersPaginated(1, "username", "asc", model);
     }
     
     @GetMapping("/{page}")
-    public String getUsersPaginated(final @PathVariable("page") int page, Model model) {
+    public String getUsersPaginated(
+            final @PathVariable("page") int page,
+            final @RequestParam("sortField") String sortField,
+            final @RequestParam("sortDirection") String sortDirection,
+            final Model model
+    ) {
     	int size = 3;
-    	Page<UserDto> usersPaginated = this.userService.findAllPaginated(page, size);
+    	Page<UserDto> usersPaginated = this.userService.findAllPaginated(page, size, sortField, sortDirection);
     	List<UserDto> users = usersPaginated.getContent();
 
     	 model.addAttribute("currentPage", page);
          model.addAttribute("totalPages", usersPaginated.getTotalPages());
          model.addAttribute("totalElements", usersPaginated.getTotalElements());
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDirection", sortDirection);
+        model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
          model.addAttribute("users", users);
          
          return "v1/user/index";

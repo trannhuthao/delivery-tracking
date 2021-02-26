@@ -11,7 +11,7 @@ public interface BoxSizeService {
 
     List<BoxSizeDto> findAll();
     
-    Page<BoxSizeDto> findAllPaginated(int page, int size);
+    Page<BoxSizeDto> findAllPaginated(int page, int size, String sortField, String sortDirection);
 
     BoxSizeDto findById(Long id);
 

@@ -26,18 +26,26 @@ public class BoxSizeController {
 //        model.addAttribute("boxSizes", this.boxSizeService.findAll());
 //        return "v1/package/box-sizes/index";
 
-    	return this.getBoxSizesPaginated(1, model);
+    	return this.getBoxSizesPaginated(1, "boxSize", "asc", model);
     }
     
     @GetMapping("/{page}")
-    public String getBoxSizesPaginated(final @PathVariable("page") int page, final Model model) {
+    public String getBoxSizesPaginated(
+            final @PathVariable("page") int page,
+            final @RequestParam("sortField") String sortField,
+            final @RequestParam("sortDirection") String sortDirection,
+            final Model model
+    ) {
     	int size = 5;
-    	Page<BoxSizeDto> boxSizesPaginated = this.boxSizeService.findAllPaginated(page, size);
+    	Page<BoxSizeDto> boxSizesPaginated = this.boxSizeService.findAllPaginated(page, size, sortField, sortDirection);
     	List<BoxSizeDto> boxSizes = boxSizesPaginated.getContent();
 
     	 model.addAttribute("currentPage", page);
          model.addAttribute("totalPages", boxSizesPaginated.getTotalPages());
          model.addAttribute("totalElements", boxSizesPaginated.getTotalElements());
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDirection", sortDirection);
+        model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
          model.addAttribute("boxSizes", boxSizes);
 
     	return "v1/package/box-sizes/index";

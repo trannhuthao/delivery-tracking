@@ -11,7 +11,7 @@ public interface UserService {
 
     List<UserDto> findAll();
     
-    Page<UserDto> findAllPaginated(int page, int size);
+    Page<UserDto> findAllPaginated(int page, int size, String sortField, String sortDirection);
 
     UserDto findById(Long id);
 

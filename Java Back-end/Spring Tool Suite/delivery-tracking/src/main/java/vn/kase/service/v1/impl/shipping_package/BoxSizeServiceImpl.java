@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vn.kase.domain.v1.shipping_package.BoxSize;
@@ -42,8 +43,9 @@ public class BoxSizeServiceImpl implements BoxSizeService {
     }
     
     @Override
-	public Page<BoxSizeDto> findAllPaginated(int page, int size) {
-		Pageable pageable = PageRequest.of(page - 1, size);
+	public Page<BoxSizeDto> findAllPaginated(int page, int size, String sortField, String sortDirection) {
+        Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
+		Pageable pageable = PageRequest.of(page - 1, size, sort);
 		Page<BoxSize> boxSizesPaginated = this.boxSizeRepository.findAll(pageable);
 		Page<BoxSizeDto> boxSizeDtosPaginated = boxSizesPaginated.map(element -> BoxSizeMapper.toDto(element));
 

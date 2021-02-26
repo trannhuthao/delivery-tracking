@@ -15,13 +15,27 @@
         <table class="table table-responsive table-bordered table-striped table-dark table-striped table-hover text-center">
             <thead>
                 <tr class="text-warning">
-                    <th>FULL NAME</th>
-                    <th>USERNAME</th>
-                    <th>EMAIL</th>
-                    <th>PHONE NUMBER</th>
-                    <th>DATE OF BIRTH</th>
-                    <th>ADDRESS</th>
-                    <th>ROLE</th>
+                    <th>
+                        <a th:href="@{'/users/' + ${currentPage} + '?sortField=fullName&sortDirection=' + ${reverseSortDirection}}">FULL NAME</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/users/' + ${currentPage} + '?sortField=username&sortDirection=' + ${reverseSortDirection}}">USERNAME</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/users/' + ${currentPage} + '?sortField=email&sortDirection=' + ${reverseSortDirection}}">EMAIL</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/users/' + ${currentPage} + '?sortField=phoneNumber&sortDirection=' + ${reverseSortDirection}}">PHONE NUMBER</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/users/' + ${currentPage} + '?sortField=dateOfBirth&sortDirection=' + ${reverseSortDirection}}">DATE OF BIRTH</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/users/' + ${currentPage} + '?sortField=address&sortDirection=' + ${reverseSortDirection}}">ADDRESS</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/users/' + ${currentPage} + '?sortField=roleDescription&sortDirection=' + ${reverseSortDirection}}">ROLE</a>
+                    </th>
                     <th>ACTION</th>
                 </tr>
             </thead>
@@ -49,7 +63,7 @@
             <ul class="pagination">
                 <li class="page-item">
                     <a th:if="${currentPage > 1}"
-                       th:href="@{'/users/' + ${currentPage - 1}}"
+                       th:href="@{'/users/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}"
                        class="page-link"
                        aria-label="Previous"
                     >
@@ -59,13 +73,13 @@
                 </li>
                 <li th:each="index: ${#numbers.sequence(1, totalPages)}" class="page-item">
                     <a th:if="${currentPage != index}"
-                       th:href="@{'/users/' + ${index}}"
+                       th:href="@{'/users/' + ${index} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}"
                        class="page-link">[[${index}]]</a>
                     <span th:unless="${currentPage != index}" class="page-link" aria-hidden="true">[[${index}]]</span>
                 </li>
                 <li class="page-item">
                     <a th:if="${currentPage < totalPages}"
-                       th:href="@{'/users/' + ${currentPage + 1}}"
+                       th:href="@{'/users/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}"
                        class="page-link"
                        aria-label="Next"
                     >
