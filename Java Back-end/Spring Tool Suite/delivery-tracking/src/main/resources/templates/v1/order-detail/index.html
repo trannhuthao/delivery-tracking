@@ -16,24 +16,60 @@
 			<table class="table table-responsive table-bordered table-striped table-dark table-striped table-hover text-center">
 				<thead>
 					<tr class="text-warning">
-						<th>ORDER ID</th>
-						<th>USER</th>
-						<th>USER'S USERNAME</th>
-						<th>USER'S EMAIL</th>
-						<th>USER'S PHONE NUMBER</th>
-						<th>PACKAGE ID</th>
-						<th>PACKAGE NAME</th>
-						<th>WEIGHT</th>
-						<th>BOX SIZE</th>
-						<th>DESCRIPTION</th>
-						<th>STATUS</th>
-						<th>SHIPPER ID</th>
-						<th>RECIPIENT</th>
-						<th>RECIPIENT'S USERNAME</th>
-						<th>RECIPIENT'S EMAIL</th>
-						<th>RECIPIENT'S PHONE NUMBER</th>
-						<th>ADDRESS</th>
-						<th>TOTAL</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=id&sortDirection=' + ${reverseSortDirection}}">ORDER ID</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=userFullName&sortDirection=' + ${reverseSortDirection}}">USER</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=userUsername&sortDirection=' + ${reverseSortDirection}}">USER'S USERNAME</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=userEmail&sortDirection=' + ${reverseSortDirection}}">USER'S EMAIL</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=userPhoneNumber&sortDirection=' + ${reverseSortDirection}}">USER'S PHONE NUMBER</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=shippingPackageId&sortDirection=' + ${reverseSortDirection}}">PACKAGE ID</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=shippingPackagePackageName&sortDirection=' + ${reverseSortDirection}}">PACKAGE NAME</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=shippingPackageWeightId&sortDirection=' + ${reverseSortDirection}}">WEIGHT</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=shippingPackageBoxSizeId&sortDirection=' + ${reverseSortDirection}}">BOX SIZE</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=shippingPackageDescription&sortDirection=' + ${reverseSortDirection}}">DESCRIPTION</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=shippingPackageStatus&sortDirection=' + ${reverseSortDirection}}">STATUS</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=shipperId&sortDirection=' + ${reverseSortDirection}}">SHIPPER ID</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=recipientFullName&sortDirection=' + ${reverseSortDirection}}">RECIPIENT</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=recipientUsername&sortDirection=' + ${reverseSortDirection}}">RECIPIENT'S USERNAME</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=recipientEmail&sortDirection=' + ${reverseSortDirection}}">RECIPIENT'S EMAIL</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=recipientPhoneNumber&sortDirection=' + ${reverseSortDirection}}">RECIPIENT'S PHONE NUMBER</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=recipientAddress&sortDirection=' + ${reverseSortDirection}}">ADDRESS</a>
+						</th>
+						<th>
+							<a th:href="@{'/orders/' + ${currentPage} + '?sortField=total&sortDirection=' + ${reverseSortDirection}}">TOTAL</a>
+						</th>
 						<th>ACTIONS</th>
 					</tr>
 				</thead>
@@ -43,7 +79,7 @@
 					</tr>
 					<tr th:each="orderDetail : ${orderDetailList}">
 						<td th:text="${orderDetail.id}"></td>
-						<td th:text="${orderDetail.getUserFullName}"></td>
+						<td th:text="${orderDetail.userFullName}"></td>
 						<td th:text="${orderDetail.username}"></td>
 						<td th:text="${orderDetail.userEmail}"></td>
 						<td th:text="${orderDetail.userPhoneNumber}"></td>
@@ -73,7 +109,7 @@
             <ul class="pagination">
                 <li class="page-item">
                     <a th:if="${currentPage > 1}"
-                       th:href="@{'/orders/' + ${currentPage - 1}}"
+                       th:href="@{'/orders/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}"
                        class="page-link"
                        aria-label="Previous"
                     >
@@ -83,13 +119,13 @@
                 </li>
                 <li th:each="index: ${#numbers.sequence(1, totalPages)}" class="page-item">
                     <a th:if="${currentPage != index}"
-                       th:href="@{'/orders/' + ${index}}"
+                       th:href="@{'/orders/' + ${index} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}"
                        class="page-link">[[${index}]]</a>
                     <span th:unless="${currentPage != index}" class="page-link" aria-hidden="true">[[${index}]]</span>
                 </li>
                 <li class="page-item">
                     <a th:if="${currentPage < totalPages}"
-                       th:href="@{'/orders/' + ${currentPage + 1}}"
+                       th:href="@{'/orders/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}"
                        class="page-link"
                        aria-label="Next"
                     >
